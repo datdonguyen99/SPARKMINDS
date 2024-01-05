@@ -1,0 +1,1892 @@
+2024-01-05 21:08:12 INFO  LibraryManagementApplication:50 - Starting LibraryManagementApplication using Java 20 with PID 14032 (C:\Users\datdo\IdeaProjects\library-management\target\classes started by Dat_Do in C:\Users\datdo\IdeaProjects\library-management)
+2024-01-05 21:08:12 DEBUG LibraryManagementApplication:51 - Running with Spring Boot v3.2.1, Spring v6.1.2
+2024-01-05 21:08:12 INFO  LibraryManagementApplication:662 - No active profile set, falling back to 1 default profile: "default"
+2024-01-05 21:08:12 DEBUG SpringApplication:695 - Loading source class net.sparkminds.librarymanagement.LibraryManagementApplication
+2024-01-05 21:08:12 DEBUG ChangeableUrls:251 - Matching URLs for reloading : [file:/C:/Users/datdo/IdeaProjects/library-management/target/classes/]
+2024-01-05 21:08:12 DEBUG DevToolsSettings:251 - Included patterns for restart : []
+2024-01-05 21:08:12 DEBUG DevToolsSettings:251 - Excluded patterns for restart : [/spring-boot-starter-[\w-]+/, /spring-boot/(bin|build|out)/, /spring-boot-starter/(bin|build|out)/, /spring-boot-devtools/(bin|build|out)/, /spring-boot-actuator/(bin|build|out)/, /spring-boot-autoconfigure/(bin|build|out)/]
+2024-01-05 21:08:12 INFO  DevToolsPropertyDefaultsPostProcessor:252 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-01-05 21:08:12 INFO  DevToolsPropertyDefaultsPostProcessor:252 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-01-05 21:08:12 DEBUG AnnotationConfigServletWebServerApplicationContext:672 - Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@6686eac5
+2024-01-05 21:08:12 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+2024-01-05 21:08:12 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'org.springframework.boot.autoconfigure.internalCachingMetadataReaderFactory'
+2024-01-05 21:08:13 INFO  RepositoryConfigurationDelegate:139 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-05 21:08:13 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'org.springframework.boot.autoconfigure.AutoConfigurationPackages'
+2024-01-05 21:08:13 DEBUG AutoConfigurationPackages:213 - @EnableAutoConfiguration was declared on a class in the package 'net.sparkminds.librarymanagement'. Automatic @Repository and @Entity scanning is enabled.
+2024-01-05 21:08:13 DEBUG RepositoryConfigurationDelegate:149 - Scanning for JPA repositories in packages net.sparkminds.librarymanagement.
+2024-01-05 21:08:13 INFO  RepositoryConfigurationDelegate:208 - Finished Spring Data repository scanning in 7 ms. Found 0 JPA repository interfaces.
+2024-01-05 21:08:13 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'propertySourcesPlaceholderConfigurer'
+2024-01-05 21:08:13 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'emBeanDefinitionRegistrarPostProcessor'
+2024-01-05 21:08:13 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'org.springframework.boot.sql.init.dependency.DatabaseInitializationDependencyConfigurer$DependsOnDatabaseInitializationPostProcessor'
+2024-01-05 21:08:13 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'org.springframework.boot.devtools.autoconfigure.DevToolsDataSourceAutoConfiguration$DatabaseShutdownExecutorEntityManagerFactoryDependsOnPostProcessor'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'org.springframework.context.event.internalEventListenerProcessor'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'preserveErrorControllerTargetClassPostProcessor'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'org.springframework.context.event.internalEventListenerFactory'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'org.springframework.transaction.config.internalTransactionalEventListenerFactory'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'org.springframework.context.annotation.internalPersistenceAnnotationProcessor'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'org.springframework.boot.context.properties.ConfigurationPropertiesBindingPostProcessor'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'org.springframework.boot.context.internalConfigurationPropertiesBinder'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'jdbcConnectionDetailsHikariBeanPostProcessor'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'org.springframework.aop.config.internalAutoProxyCreator'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'persistenceExceptionTranslationPostProcessor'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:952 - Autowiring by type from bean name 'persistenceExceptionTranslationPostProcessor' via factory method to bean named 'environment'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'webServerFactoryCustomizerBeanPostProcessor'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'errorPageRegistrarBeanPostProcessor'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'projectingArgumentResolverBeanPostProcessor'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'transactionAttributeSource'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'transactionInterceptor'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:952 - Autowiring by type from bean name 'transactionInterceptor' via factory method to bean named 'transactionAttributeSource'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:952 - Autowiring by type from bean name 'org.springframework.transaction.config.internalTransactionAdvisor' via factory method to bean named 'transactionAttributeSource'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:952 - Autowiring by type from bean name 'org.springframework.transaction.config.internalTransactionAdvisor' via factory method to bean named 'transactionInterceptor'
+2024-01-05 21:08:14 DEBUG UiApplicationContextUtils:86 - Unable to locate ThemeSource with name 'themeSource': using default [org.springframework.ui.context.support.ResourceBundleThemeSource@4004bc45]
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'tomcatServletWebServerFactory'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'org.springframework.boot.autoconfigure.web.servlet.ServletWebServerFactoryConfiguration$EmbeddedTomcat'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'websocketServletWebServerCustomizer'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'org.springframework.boot.autoconfigure.websocket.servlet.WebSocketServletAutoConfiguration$TomcatWebSocketConfiguration'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'servletWebServerFactoryCustomizer'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'org.springframework.boot.autoconfigure.web.servlet.ServletWebServerFactoryAutoConfiguration'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'server-org.springframework.boot.autoconfigure.web.ServerProperties'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'org.springframework.boot.context.properties.BoundConfigurationProperties'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:952 - Autowiring by type from bean name 'servletWebServerFactoryCustomizer' via factory method to bean named 'server-org.springframework.boot.autoconfigure.web.ServerProperties'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'sslBundleRegistry'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'org.springframework.boot.autoconfigure.ssl.SslAutoConfiguration'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'spring.ssl-org.springframework.boot.autoconfigure.ssl.SslProperties'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:952 - Autowiring by type from bean name 'org.springframework.boot.autoconfigure.ssl.SslAutoConfiguration' via constructor to bean named 'spring.ssl-org.springframework.boot.autoconfigure.ssl.SslProperties'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'sslPropertiesSslBundleRegistrar'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'fileWatcher'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:952 - Autowiring by type from bean name 'sslPropertiesSslBundleRegistrar' via factory method to bean named 'fileWatcher'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'tomcatServletWebServerFactoryCustomizer'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:952 - Autowiring by type from bean name 'tomcatServletWebServerFactoryCustomizer' via factory method to bean named 'server-org.springframework.boot.autoconfigure.web.ServerProperties'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'tomcatWebServerFactoryCustomizer'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'org.springframework.boot.autoconfigure.web.embedded.EmbeddedWebServerFactoryCustomizerAutoConfiguration$TomcatWebServerFactoryCustomizerConfiguration'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:952 - Autowiring by type from bean name 'tomcatWebServerFactoryCustomizer' via factory method to bean named 'environment'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:952 - Autowiring by type from bean name 'tomcatWebServerFactoryCustomizer' via factory method to bean named 'server-org.springframework.boot.autoconfigure.web.ServerProperties'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'localeCharsetMappingsCustomizer'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'org.springframework.boot.autoconfigure.web.servlet.HttpEncodingAutoConfiguration'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:952 - Autowiring by type from bean name 'org.springframework.boot.autoconfigure.web.servlet.HttpEncodingAutoConfiguration' via constructor to bean named 'server-org.springframework.boot.autoconfigure.web.ServerProperties'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'errorPageCustomizer'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:952 - Autowiring by type from bean name 'org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration' via constructor to bean named 'server-org.springframework.boot.autoconfigure.web.ServerProperties'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'dispatcherServletRegistration'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'org.springframework.boot.autoconfigure.web.servlet.DispatcherServletAutoConfiguration$DispatcherServletRegistrationConfiguration'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'dispatcherServlet'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'org.springframework.boot.autoconfigure.web.servlet.DispatcherServletAutoConfiguration$DispatcherServletConfiguration'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'spring.mvc-org.springframework.boot.autoconfigure.web.servlet.WebMvcProperties'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:952 - Autowiring by type from bean name 'dispatcherServlet' via factory method to bean named 'spring.mvc-org.springframework.boot.autoconfigure.web.servlet.WebMvcProperties'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:952 - Autowiring by type from bean name 'dispatcherServletRegistration' via factory method to bean named 'dispatcherServlet'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:952 - Autowiring by type from bean name 'dispatcherServletRegistration' via factory method to bean named 'spring.mvc-org.springframework.boot.autoconfigure.web.servlet.WebMvcProperties'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'multipartConfigElement'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'org.springframework.boot.autoconfigure.web.servlet.MultipartAutoConfiguration'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'spring.servlet.multipart-org.springframework.boot.autoconfigure.web.servlet.MultipartProperties'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:952 - Autowiring by type from bean name 'org.springframework.boot.autoconfigure.web.servlet.MultipartAutoConfiguration' via constructor to bean named 'spring.servlet.multipart-org.springframework.boot.autoconfigure.web.servlet.MultipartProperties'
+2024-01-05 21:08:14 DEBUG DefaultListableBeanFactory:952 - Autowiring by type from bean name 'errorPageCustomizer' via factory method to bean named 'dispatcherServletRegistration'
+2024-01-05 21:08:14 DEBUG TomcatServletWebServerFactory:81 - Code archive: C:\Users\datdo\.m2\repository\org\springframework\boot\spring-boot\3.2.1\spring-boot-3.2.1.jar
+2024-01-05 21:08:14 DEBUG TomcatServletWebServerFactory:125 - Code archive: C:\Users\datdo\.m2\repository\org\springframework\boot\spring-boot\3.2.1\spring-boot-3.2.1.jar
+2024-01-05 21:08:14 DEBUG TomcatServletWebServerFactory:149 - None of the document roots [src/main/webapp, public, static] point to a directory and will be ignored.
+2024-01-05 21:08:14 INFO  TomcatWebServer:109 - Tomcat initialized with port 8080 (http)
+2024-01-05 21:08:14 INFO  Http11NioProtocol:173 - Initializing ProtocolHandler ["http-nio-8080"]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [Connector["http-nio-8080"]] to [INITIALIZED]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [StandardService[Tomcat]] to [INITIALIZED]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [StandardServer[-1]] to [INITIALIZED]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [StandardServer[-1]] to [STARTING_PREP]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [StandardServer[-1]] to [STARTING]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.deploy.NamingResourcesImpl@e50f292] to [STARTING_PREP]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.deploy.NamingResourcesImpl@e50f292] to [STARTING]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.deploy.NamingResourcesImpl@e50f292] to [STARTED]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [StandardService[Tomcat]] to [STARTING_PREP]
+2024-01-05 21:08:14 INFO  StandardService:173 - Starting service [Tomcat]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [StandardService[Tomcat]] to [STARTING]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [StandardEngine[Tomcat]] to [STARTING_PREP]
+2024-01-05 21:08:14 INFO  StandardEngine:173 - Starting Servlet engine: [Apache Tomcat/10.1.17]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [SimpleRealm[StandardEngine[Tomcat]]] to [INITIALIZING]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [SimpleRealm[StandardEngine[Tomcat]]] to [INITIALIZED]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [SimpleRealm[StandardEngine[Tomcat]]] to [STARTING_PREP]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [SimpleRealm[StandardEngine[Tomcat]]] to [STARTING]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [SimpleRealm[StandardEngine[Tomcat]]] to [STARTED]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [StandardEngine[Tomcat].StandardHost[localhost]] to [INITIALIZING]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [StandardEngine[Tomcat].StandardHost[localhost]] to [INITIALIZED]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [StandardEngine[Tomcat].StandardHost[localhost]] to [STARTING_PREP]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]] to [INITIALIZING]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]] to [INITIALIZED]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]] to [STARTING_PREP]
+2024-01-05 21:08:14 DEBUG StandardContext:173 - Starting ROOT
+2024-01-05 21:08:14 DEBUG StandardContext:173 - Configuring default Resources
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.webresources.StandardRoot@4ca10125] to [INITIALIZING]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.webresources.StandardRoot@4ca10125] to [INITIALIZED]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.webresources.StandardRoot@4ca10125] to [STARTING_PREP]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.webresources.DirResourceSet@55b3a4b2] to [INITIALIZING]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.webresources.DirResourceSet@55b3a4b2] to [INITIALIZED]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.webresources.DirResourceSet@55b3a4b2] to [STARTING_PREP]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.webresources.DirResourceSet@55b3a4b2] to [STARTING]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.webresources.DirResourceSet@55b3a4b2] to [STARTED]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.webresources.StandardRoot@4ca10125] to [STARTING]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.webresources.StandardRoot@4ca10125] to [STARTED]
+2024-01-05 21:08:14 DEBUG StandardContext:173 - Processing standard container startup
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [WebappLoader[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [INITIALIZING]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [WebappLoader[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [INITIALIZED]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [WebappLoader[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [STARTING_PREP]
+2024-01-05 21:08:14 DEBUG WebappLoader:173 - Starting this Loader
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [WebappLoader[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [STARTING]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [WebappLoader[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [STARTED]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [StandardPipeline[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [INITIALIZING]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [StandardPipeline[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [INITIALIZED]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [StandardPipeline[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [STARTING_PREP]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [NonLoginAuthenticator[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [INITIALIZING]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [NonLoginAuthenticator[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [INITIALIZED]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [NonLoginAuthenticator[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [STARTING_PREP]
+2024-01-05 21:08:14 DEBUG AuthenticatorBase:173 - No SingleSignOn Valve is present
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [NonLoginAuthenticator[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [STARTING]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [NonLoginAuthenticator[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [STARTED]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [StandardContextValve[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [INITIALIZING]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [StandardContextValve[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [INITIALIZED]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [StandardContextValve[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [STARTING_PREP]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [StandardContextValve[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [STARTING]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [StandardContextValve[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [STARTED]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [StandardPipeline[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [STARTING]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [StandardPipeline[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [STARTED]
+2024-01-05 21:08:14 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.deploy.NamingResourcesImpl@5a01c08f] to [INITIALIZING]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.deploy.NamingResourcesImpl@5a01c08f] to [INITIALIZED]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.deploy.NamingResourcesImpl@5a01c08f] to [STARTING_PREP]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.deploy.NamingResourcesImpl@5a01c08f] to [STARTING]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.deploy.NamingResourcesImpl@5a01c08f] to [STARTED]
+2024-01-05 21:08:15 INFO  [/]:173 - Initializing Spring embedded WebApplicationContext
+2024-01-05 21:08:15 DEBUG ServletWebServerApplicationContext:290 - Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+2024-01-05 21:08:15 INFO  ServletWebServerApplicationContext:296 - Root WebApplicationContext: initialization completed in 2727 ms
+2024-01-05 21:08:15 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'requestContextFilter'
+2024-01-05 21:08:15 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'formContentFilter'
+2024-01-05 21:08:15 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration'
+2024-01-05 21:08:15 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'characterEncodingFilter'
+2024-01-05 21:08:15 DEBUG ServletContextInitializerBeans:234 - Mapping filters: characterEncodingFilter urls=[/*] order=-2147483648, formContentFilter urls=[/*] order=-9900, requestContextFilter urls=[/*] order=-105
+2024-01-05 21:08:15 DEBUG ServletContextInitializerBeans:234 - Mapping servlets: dispatcherServlet urls=[/]
+2024-01-05 21:08:15 DEBUG ContainerBase:173 - Add child StandardWrapper[dispatcherServlet] StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[].StandardWrapper[dispatcherServlet]] to [INITIALIZING]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[].StandardWrapper[dispatcherServlet]] to [INITIALIZED]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[].StandardWrapper[dispatcherServlet]] to [STARTING_PREP]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardPipeline[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[].StandardWrapper[dispatcherServlet]]] to [INITIALIZING]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardPipeline[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[].StandardWrapper[dispatcherServlet]]] to [INITIALIZED]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardPipeline[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[].StandardWrapper[dispatcherServlet]]] to [STARTING_PREP]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardWrapperValve[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[].StandardWrapper[dispatcherServlet]]] to [INITIALIZING]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardWrapperValve[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[].StandardWrapper[dispatcherServlet]]] to [INITIALIZED]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardWrapperValve[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[].StandardWrapper[dispatcherServlet]]] to [STARTING_PREP]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardWrapperValve[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[].StandardWrapper[dispatcherServlet]]] to [STARTING]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardWrapperValve[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[].StandardWrapper[dispatcherServlet]]] to [STARTED]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardPipeline[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[].StandardWrapper[dispatcherServlet]]] to [STARTING]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardPipeline[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[].StandardWrapper[dispatcherServlet]]] to [STARTED]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[].StandardWrapper[dispatcherServlet]] to [STARTING]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[].StandardWrapper[dispatcherServlet]] to [STARTED]
+2024-01-05 21:08:15 DEBUG StandardContext:173 - Configuring application event listeners
+2024-01-05 21:08:15 DEBUG [/]:173 - Sending application start events
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardManager[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [INITIALIZING]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardManager[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [INITIALIZED]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardManager[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [STARTING_PREP]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [org.springframework.boot.web.embedded.tomcat.LazySessionIdGenerator@e8785e8] to [INITIALIZING]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [org.springframework.boot.web.embedded.tomcat.LazySessionIdGenerator@e8785e8] to [INITIALIZED]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [org.springframework.boot.web.embedded.tomcat.LazySessionIdGenerator@e8785e8] to [STARTING_PREP]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [org.springframework.boot.web.embedded.tomcat.LazySessionIdGenerator@e8785e8] to [STARTING]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [org.springframework.boot.web.embedded.tomcat.LazySessionIdGenerator@e8785e8] to [STARTED]
+2024-01-05 21:08:15 DEBUG StandardManager:173 - Start: Loading persisted sessions
+2024-01-05 21:08:15 DEBUG StandardManager:173 - Loading persisted sessions from [C:\Users\datdo\AppData\Local\Temp\FE3A8B55E1A14EFF36E28CB9EBC01FE53E6DCAB1\servlet-sessions\SESSIONS.ser]
+2024-01-05 21:08:15 DEBUG StandardManager:173 - No persisted data file found
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardManager[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [STARTING]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardManager[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [STARTED]
+2024-01-05 21:08:15 DEBUG [/]:173 - Starting filters
+2024-01-05 21:08:15 DEBUG [/]:173 -  Starting filter 'requestContextFilter'
+2024-01-05 21:08:15 DEBUG OrderedRequestContextFilter:240 - Filter 'requestContextFilter' configured for use
+2024-01-05 21:08:15 DEBUG [/]:173 -  Starting filter 'Tomcat WebSocket (JSR356) Filter'
+2024-01-05 21:08:15 DEBUG [/]:173 -  Starting filter 'characterEncodingFilter'
+2024-01-05 21:08:15 DEBUG OrderedCharacterEncodingFilter:240 - Filter 'characterEncodingFilter' configured for use
+2024-01-05 21:08:15 DEBUG [/]:173 -  Starting filter 'formContentFilter'
+2024-01-05 21:08:15 DEBUG OrderedFormContentFilter:240 - Filter 'formContentFilter' configured for use
+2024-01-05 21:08:15 DEBUG StandardContext:173 - Starting completed
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]] to [STARTING]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]] to [STARTED]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardPipeline[StandardEngine[Tomcat].StandardHost[localhost]]] to [INITIALIZING]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardPipeline[StandardEngine[Tomcat].StandardHost[localhost]]] to [INITIALIZED]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardPipeline[StandardEngine[Tomcat].StandardHost[localhost]]] to [STARTING_PREP]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [ErrorReportValve[StandardEngine[Tomcat].StandardHost[localhost]]] to [INITIALIZING]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [ErrorReportValve[StandardEngine[Tomcat].StandardHost[localhost]]] to [INITIALIZED]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [ErrorReportValve[StandardEngine[Tomcat].StandardHost[localhost]]] to [STARTING_PREP]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [ErrorReportValve[StandardEngine[Tomcat].StandardHost[localhost]]] to [STARTING]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [ErrorReportValve[StandardEngine[Tomcat].StandardHost[localhost]]] to [STARTED]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardHostValve[StandardEngine[Tomcat].StandardHost[localhost]]] to [INITIALIZING]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardHostValve[StandardEngine[Tomcat].StandardHost[localhost]]] to [INITIALIZED]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardHostValve[StandardEngine[Tomcat].StandardHost[localhost]]] to [STARTING_PREP]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardHostValve[StandardEngine[Tomcat].StandardHost[localhost]]] to [STARTING]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardHostValve[StandardEngine[Tomcat].StandardHost[localhost]]] to [STARTED]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardPipeline[StandardEngine[Tomcat].StandardHost[localhost]]] to [STARTING]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardPipeline[StandardEngine[Tomcat].StandardHost[localhost]]] to [STARTED]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardEngine[Tomcat].StandardHost[localhost]] to [STARTING]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardEngine[Tomcat].StandardHost[localhost]] to [STARTED]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardPipeline[StandardEngine[Tomcat]]] to [INITIALIZING]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardPipeline[StandardEngine[Tomcat]]] to [INITIALIZED]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardPipeline[StandardEngine[Tomcat]]] to [STARTING_PREP]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardEngineValve[StandardEngine[Tomcat]]] to [INITIALIZING]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardEngineValve[StandardEngine[Tomcat]]] to [INITIALIZED]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardEngineValve[StandardEngine[Tomcat]]] to [STARTING_PREP]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardEngineValve[StandardEngine[Tomcat]]] to [STARTING]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardEngineValve[StandardEngine[Tomcat]]] to [STARTED]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardPipeline[StandardEngine[Tomcat]]] to [STARTING]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardPipeline[StandardEngine[Tomcat]]] to [STARTED]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardEngine[Tomcat]] to [STARTING]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardEngine[Tomcat]] to [STARTED]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.mapper.MapperListener@b6feb60] to [STARTING_PREP]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.mapper.MapperListener@b6feb60] to [STARTING]
+2024-01-05 21:08:15 DEBUG Mapper:173 - Registered host [localhost]
+2024-01-05 21:08:15 DEBUG MapperListener:173 - Register Wrapper [dispatcherServlet] in Context [] for service [StandardService[Tomcat]]
+2024-01-05 21:08:15 DEBUG MapperListener:173 - Register Context [] for service [StandardService[Tomcat]]
+2024-01-05 21:08:15 DEBUG MapperListener:173 - Register host [localhost] at domain [null] for service [StandardService[Tomcat]]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.mapper.MapperListener@b6feb60] to [STARTED]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardService[Tomcat]] to [STARTED]
+2024-01-05 21:08:15 DEBUG LifecycleBase:173 - Setting state for [StandardServer[-1]] to [STARTED]
+2024-01-05 21:08:15 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'liquibase'
+2024-01-05 21:08:15 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'org.springframework.boot.autoconfigure.liquibase.LiquibaseAutoConfiguration$LiquibaseConfiguration'
+2024-01-05 21:08:15 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'spring.liquibase-org.springframework.boot.autoconfigure.liquibase.LiquibaseProperties'
+2024-01-05 21:08:15 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'liquibaseConnectionDetails'
+2024-01-05 21:08:15 DEBUG DefaultListableBeanFactory:952 - Autowiring by type from bean name 'liquibaseConnectionDetails' via factory method to bean named 'spring.liquibase-org.springframework.boot.autoconfigure.liquibase.LiquibaseProperties'
+2024-01-05 21:08:15 DEBUG DefaultListableBeanFactory:952 - Autowiring by type from bean name 'liquibase' via factory method to bean named 'spring.liquibase-org.springframework.boot.autoconfigure.liquibase.LiquibaseProperties'
+2024-01-05 21:08:15 DEBUG DefaultListableBeanFactory:952 - Autowiring by type from bean name 'liquibase' via factory method to bean named 'liquibaseConnectionDetails'
+2024-01-05 21:08:15 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'dataSource'
+2024-01-05 21:08:15 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari'
+2024-01-05 21:08:15 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties'
+2024-01-05 21:08:15 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'jdbcConnectionDetails'
+2024-01-05 21:08:15 DEBUG DefaultListableBeanFactory:225 - Creating shared instance of singleton bean 'org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration$PooledDataSourceConfiguration'
+2024-01-05 21:08:15 DEBUG DefaultListableBeanFactory:952 - Autowiring by type from bean name 'jdbcConnectionDetails' via factory method to bean named 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties'
+2024-01-05 21:08:15 DEBUG DefaultListableBeanFactory:952 - Autowiring by type from bean name 'dataSource' via factory method to bean named 'spring.datasource-org.springframework.boot.autoconfigure.jdbc.DataSourceProperties'
+2024-01-05 21:08:15 DEBUG DefaultListableBeanFactory:952 - Autowiring by type from bean name 'dataSource' via factory method to bean named 'jdbcConnectionDetails'
+2024-01-05 21:08:15 DEBUG HikariConfig:968 - Driver class com.mysql.cj.jdbc.Driver found in Thread context class loader org.springframework.boot.devtools.restart.classloader.RestartClassLoader@14124d41
+2024-01-05 21:08:15 DEBUG servicelocator:37 - Loaded liquibase.configuration.AutoloadedConfigurations instance liquibase.GlobalConfiguration
+2024-01-05 21:08:15 DEBUG servicelocator:37 - Loaded liquibase.configuration.AutoloadedConfigurations instance liquibase.integration.commandline.LiquibaseCommandLineConfiguration
+2024-01-05 21:08:15 DEBUG servicelocator:37 - Loaded liquibase.configuration.AutoloadedConfigurations instance liquibase.logging.core.DefaultLoggerConfiguration
+2024-01-05 21:08:15 DEBUG servicelocator:37 - Loaded liquibase.configuration.AutoloadedConfigurations instance liquibase.sql.SqlConfiguration
+2024-01-05 21:08:15 DEBUG servicelocator:37 - Loaded liquibase.configuration.AutoloadedConfigurations instance liquibase.parser.ChangeLogParserConfiguration
+2024-01-05 21:08:15 DEBUG configuration:37 - Found ConfigurationDefinitions in liquibase.GlobalConfiguration
+2024-01-05 21:08:15 DEBUG configuration:37 - Found ConfigurationDefinitions in liquibase.integration.commandline.LiquibaseCommandLineConfiguration
+2024-01-05 21:08:15 DEBUG configuration:37 - Found ConfigurationDefinitions in liquibase.logging.core.DefaultLoggerConfiguration
+2024-01-05 21:08:15 DEBUG configuration:37 - Found ConfigurationDefinitions in liquibase.sql.SqlConfiguration
+2024-01-05 21:08:15 DEBUG configuration:37 - Found ConfigurationDefinitions in liquibase.parser.ChangeLogParserConfiguration
+2024-01-05 21:08:15 DEBUG servicelocator:37 - Loaded liquibase.configuration.ConfigurationValueProvider instance liquibase.configuration.core.DeprecatedConfigurationValueProvider
+2024-01-05 21:08:15 DEBUG servicelocator:37 - Loaded liquibase.configuration.ConfigurationValueProvider instance liquibase.configuration.core.SystemPropertyValueProvider
+2024-01-05 21:08:15 DEBUG servicelocator:37 - Loaded liquibase.configuration.ConfigurationValueProvider instance liquibase.configuration.core.ScopeValueProvider
+2024-01-05 21:08:15 DEBUG servicelocator:37 - Loaded liquibase.configuration.ConfigurationValueProvider instance liquibase.configuration.core.EnvironmentValueProvider
+2024-01-05 21:08:15 DEBUG servicelocator:37 - Loaded liquibase.logging.LogService instance liquibase.logging.core.BufferedLogService
+2024-01-05 21:08:15 DEBUG servicelocator:37 - Loaded liquibase.logging.LogService instance liquibase.logging.core.CompositeLogService
+2024-01-05 21:08:15 DEBUG servicelocator:37 - Loaded liquibase.logging.LogService instance liquibase.logging.core.JavaLogService
+2024-01-05 21:08:15 DEBUG servicelocator:37 - Loaded liquibase.servicelocator.ServiceLocator instance liquibase.servicelocator.StandardServiceLocator
+2024-01-05 21:08:15 DEBUG configuration:37 - No configuration value for liquibase.shouldRun aka should.run found
+2024-01-05 21:08:15 DEBUG configuration:37 - Configuration liquibase.shouldRun is using the default value of true
+2024-01-05 21:08:15 DEBUG HikariConfig:1100 - HikariPool-1 - configuration:
+2024-01-05 21:08:15 DEBUG HikariConfig:1132 - allowPoolSuspension.............false
+2024-01-05 21:08:15 DEBUG HikariConfig:1132 - autoCommit......................true
+2024-01-05 21:08:15 DEBUG HikariConfig:1132 - catalog.........................none
+2024-01-05 21:08:15 DEBUG HikariConfig:1132 - connectionInitSql...............none
+2024-01-05 21:08:15 DEBUG HikariConfig:1132 - connectionTestQuery.............none
+2024-01-05 21:08:15 DEBUG HikariConfig:1132 - connectionTimeout...............30000
+2024-01-05 21:08:15 DEBUG HikariConfig:1132 - dataSource......................none
+2024-01-05 21:08:15 DEBUG HikariConfig:1132 - dataSourceClassName.............none
+2024-01-05 21:08:15 DEBUG HikariConfig:1132 - dataSourceJNDI..................none
+2024-01-05 21:08:15 DEBUG HikariConfig:1132 - dataSourceProperties............{password=<masked>}
+2024-01-05 21:08:15 DEBUG HikariConfig:1132 - driverClassName................."com.mysql.cj.jdbc.Driver"
+2024-01-05 21:08:15 DEBUG HikariConfig:1132 - exceptionOverrideClassName......none
+2024-01-05 21:08:15 DEBUG HikariConfig:1132 - healthCheckProperties...........{}
+2024-01-05 21:08:15 DEBUG HikariConfig:1132 - healthCheckRegistry.............none
+2024-01-05 21:08:15 DEBUG HikariConfig:1132 - idleTimeout.....................600000
+2024-01-05 21:08:15 DEBUG HikariConfig:1132 - initializationFailTimeout.......1
+2024-01-05 21:08:15 DEBUG HikariConfig:1132 - isolateInternalQueries..........false
+2024-01-05 21:08:15 DEBUG HikariConfig:1132 - jdbcUrl.........................jdbc:mysql://localhost:3306/db_library
+2024-01-05 21:08:15 DEBUG HikariConfig:1132 - keepaliveTime...................0
+2024-01-05 21:08:15 DEBUG HikariConfig:1132 - leakDetectionThreshold..........0
+2024-01-05 21:08:15 DEBUG HikariConfig:1132 - maxLifetime.....................1800000
+2024-01-05 21:08:15 DEBUG HikariConfig:1132 - maximumPoolSize.................10
+2024-01-05 21:08:15 DEBUG HikariConfig:1132 - metricRegistry..................none
+2024-01-05 21:08:15 DEBUG HikariConfig:1132 - metricsTrackerFactory...........none
+2024-01-05 21:08:15 DEBUG HikariConfig:1132 - minimumIdle.....................10
+2024-01-05 21:08:15 DEBUG HikariConfig:1132 - password........................<masked>
+2024-01-05 21:08:15 DEBUG HikariConfig:1132 - poolName........................"HikariPool-1"
+2024-01-05 21:08:15 DEBUG HikariConfig:1132 - readOnly........................false
+2024-01-05 21:08:15 DEBUG HikariConfig:1132 - registerMbeans..................false
+2024-01-05 21:08:15 DEBUG HikariConfig:1132 - scheduledExecutor...............none
+2024-01-05 21:08:15 DEBUG HikariConfig:1132 - schema..........................none
+2024-01-05 21:08:15 DEBUG HikariConfig:1132 - threadFactory...................internal
+2024-01-05 21:08:15 DEBUG HikariConfig:1132 - transactionIsolation............default
+2024-01-05 21:08:15 DEBUG HikariConfig:1132 - username........................"root"
+2024-01-05 21:08:15 DEBUG HikariConfig:1132 - validationTimeout...............5000
+2024-01-05 21:08:15 INFO  HikariDataSource:110 - HikariPool-1 - Starting...
+2024-01-05 21:08:15 DEBUG security:274 - X509Certificate: Alg:SHA256withRSA, Serial:2, Subject:CN=MySQL_Server_8.0.32_Auto_Generated_Server_Certificate, Issuer:CN=MySQL_Server_8.0.32_Auto_Generated_CA_Certificate, Key type:RSA, Length:2048, Cert Id:3526361794, Valid from:3/28/23, 4:20 PM, Valid until:3/25/33, 4:20 PM
+2024-01-05 21:08:15 DEBUG security:274 - X509Certificate: Alg:SHA256withRSA, Serial:1, Subject:CN=MySQL_Server_8.0.32_Auto_Generated_CA_Certificate, Issuer:CN=MySQL_Server_8.0.32_Auto_Generated_CA_Certificate, Key type:RSA, Length:2048, Cert Id:1953070122, Valid from:3/28/23, 4:20 PM, Valid until:3/25/33, 4:20 PM
+2024-01-05 21:08:15 DEBUG security:274 -  TLSHandshake: localhost:3306, TLSv1.3, TLS_AES_256_GCM_SHA384, 3526361794
+2024-01-05 21:08:15 INFO  HikariPool:565 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@16a209f
+2024-01-05 21:08:15 INFO  HikariDataSource:123 - HikariPool-1 - Start completed.
+2024-01-05 21:08:15 DEBUG servicelocator:37 - Loaded liquibase.database.jvm.ConnectionPatterns instance liquibase.database.jvm.JdbcConnectionPatterns
+2024-01-05 21:08:15 DEBUG servicelocator:37 - Loaded liquibase.database.Database instance liquibase.database.core.CockroachDatabase
+2024-01-05 21:08:15 DEBUG servicelocator:37 - Loaded liquibase.database.Database instance liquibase.database.core.DB2Database
+2024-01-05 21:08:15 DEBUG servicelocator:37 - Loaded liquibase.database.Database instance liquibase.database.core.Db2zDatabase
+2024-01-05 21:08:15 DEBUG servicelocator:37 - Loaded liquibase.database.Database instance liquibase.database.core.DerbyDatabase
+2024-01-05 21:08:15 DEBUG servicelocator:37 - Loaded liquibase.database.Database instance liquibase.database.core.EnterpriseDBDatabase
+2024-01-05 21:08:15 DEBUG servicelocator:37 - Loaded liquibase.database.Database instance liquibase.database.core.FirebirdDatabase
+2024-01-05 21:08:15 DEBUG servicelocator:37 - Loaded liquibase.database.Database instance liquibase.database.core.H2Database
+2024-01-05 21:08:15 DEBUG servicelocator:37 - Loaded liquibase.database.Database instance liquibase.database.core.HsqlDatabase
+2024-01-05 21:08:15 DEBUG servicelocator:37 - Loaded liquibase.database.Database instance liquibase.database.core.InformixDatabase
+2024-01-05 21:08:15 DEBUG servicelocator:37 - Loaded liquibase.database.Database instance liquibase.database.core.Ingres9Database
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.database.Database instance liquibase.database.core.MSSQLDatabase
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.database.Database instance liquibase.database.core.MariaDBDatabase
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.database.Database instance liquibase.database.core.MockDatabase
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.database.Database instance liquibase.database.core.MySQLDatabase
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.database.Database instance liquibase.database.core.OracleDatabase
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.database.Database instance liquibase.database.core.PostgresDatabase
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.database.Database instance liquibase.database.core.SQLiteDatabase
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.database.Database instance liquibase.database.core.SybaseASADatabase
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.database.Database instance liquibase.database.core.SybaseDatabase
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.database.Database instance liquibase.database.core.UnsupportedDatabase
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.database.Database instance liquibase.database.core.SnowflakeDatabase
+2024-01-05 21:08:16 DEBUG database:37 - Connected to root@localhost@jdbc:mysql://localhost:3306/db_library
+2024-01-05 21:08:16 DEBUG database:37 - Setting auto commit to false from true
+2024-01-05 21:08:16 DEBUG HikariPool:414 - HikariPool-1 - Pool stats (total=1, active=1, idle=0, waiting=0)
+2024-01-05 21:08:16 DEBUG security:274 - X509Certificate: Alg:SHA256withRSA, Serial:2, Subject:CN=MySQL_Server_8.0.32_Auto_Generated_Server_Certificate, Issuer:CN=MySQL_Server_8.0.32_Auto_Generated_CA_Certificate, Key type:RSA, Length:2048, Cert Id:3526361794, Valid from:3/28/23, 4:20 PM, Valid until:3/25/33, 4:20 PM
+2024-01-05 21:08:16 DEBUG security:274 - X509Certificate: Alg:SHA256withRSA, Serial:1, Subject:CN=MySQL_Server_8.0.32_Auto_Generated_CA_Certificate, Issuer:CN=MySQL_Server_8.0.32_Auto_Generated_CA_Certificate, Key type:RSA, Length:2048, Cert Id:1953070122, Valid from:3/28/23, 4:20 PM, Valid until:3/25/33, 4:20 PM
+2024-01-05 21:08:16 DEBUG security:274 -  TLSHandshake: localhost:3306, TLSv1.3, TLS_AES_256_GCM_SHA384, 3526361794
+2024-01-05 21:08:16 DEBUG HikariPool:738 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@53b89666
+2024-01-05 21:08:16 DEBUG configuration:37 - No configuration value for liquibase.liquibaseSchemaName aka liquibase.schemaName found
+2024-01-05 21:08:16 DEBUG configuration:37 - No configuration value for liquibase.supportPropertyEscaping aka enableEscaping found
+2024-01-05 21:08:16 DEBUG configuration:37 - Configuration liquibase.supportPropertyEscaping is using the default value of false
+2024-01-05 21:08:16 DEBUG security:274 - X509Certificate: Alg:SHA256withRSA, Serial:2, Subject:CN=MySQL_Server_8.0.32_Auto_Generated_Server_Certificate, Issuer:CN=MySQL_Server_8.0.32_Auto_Generated_CA_Certificate, Key type:RSA, Length:2048, Cert Id:3526361794, Valid from:3/28/23, 4:20 PM, Valid until:3/25/33, 4:20 PM
+2024-01-05 21:08:16 DEBUG security:274 - X509Certificate: Alg:SHA256withRSA, Serial:1, Subject:CN=MySQL_Server_8.0.32_Auto_Generated_CA_Certificate, Issuer:CN=MySQL_Server_8.0.32_Auto_Generated_CA_Certificate, Key type:RSA, Length:2048, Cert Id:1953070122, Valid from:3/28/23, 4:20 PM, Valid until:3/25/33, 4:20 PM
+2024-01-05 21:08:16 DEBUG security:274 -  TLSHandshake: localhost:3306, TLSv1.3, TLS_AES_256_GCM_SHA384, 3526361794
+2024-01-05 21:08:16 DEBUG HikariPool:738 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@12859c5d
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.CalculateChecksumCommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.ChangelogSyncCommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.ChangelogSyncSqlCommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.ChangelogSyncToTagCommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.ChangelogSyncToTagSqlCommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.ClearChecksumsCommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.DbDocCommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.DiffChangelogCommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.DiffCommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.DropAllCommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.ExecuteSqlCommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.FutureRollbackCountSqlCommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.FutureRollbackFromTagSqlCommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.FutureRollbackSqlCommandStep
+2024-01-05 21:08:16 DEBUG security:274 - X509Certificate: Alg:SHA256withRSA, Serial:2, Subject:CN=MySQL_Server_8.0.32_Auto_Generated_Server_Certificate, Issuer:CN=MySQL_Server_8.0.32_Auto_Generated_CA_Certificate, Key type:RSA, Length:2048, Cert Id:3526361794, Valid from:3/28/23, 4:20 PM, Valid until:3/25/33, 4:20 PM
+2024-01-05 21:08:16 DEBUG security:274 - X509Certificate: Alg:SHA256withRSA, Serial:1, Subject:CN=MySQL_Server_8.0.32_Auto_Generated_CA_Certificate, Issuer:CN=MySQL_Server_8.0.32_Auto_Generated_CA_Certificate, Key type:RSA, Length:2048, Cert Id:1953070122, Valid from:3/28/23, 4:20 PM, Valid until:3/25/33, 4:20 PM
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.GenerateChangelogCommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.HistoryCommandStep
+2024-01-05 21:08:16 DEBUG security:274 -  TLSHandshake: localhost:3306, TLSv1.3, TLS_AES_256_GCM_SHA384, 3526361794
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.InternalHistoryCommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.InternalSnapshotCommandStep
+2024-01-05 21:08:16 DEBUG HikariPool:738 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@23dd6c47
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.ListLocksCommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.MarkNextChangesetRanCommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.MarkNextChangesetRanSqlCommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.ReleaseLocksCommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.RollbackCommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.RollbackCountCommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.RollbackCountSqlCommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.RollbackSqlCommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.RollbackToDateCommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.RollbackToDateSqlCommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.SnapshotCommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.SnapshotReferenceCommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.StartH2CommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.StatusCommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.TagCommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.TagExistsCommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.UnexpectedChangesetsCommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.UpdateCommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.UpdateCountCommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.UpdateCountSqlCommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.UpdateSqlCommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.UpdateTestingRollbackCommandStep
+2024-01-05 21:08:16 DEBUG security:274 - X509Certificate: Alg:SHA256withRSA, Serial:2, Subject:CN=MySQL_Server_8.0.32_Auto_Generated_Server_Certificate, Issuer:CN=MySQL_Server_8.0.32_Auto_Generated_CA_Certificate, Key type:RSA, Length:2048, Cert Id:3526361794, Valid from:3/28/23, 4:20 PM, Valid until:3/25/33, 4:20 PM
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.UpdateToTagCommandStep
+2024-01-05 21:08:16 DEBUG security:274 - X509Certificate: Alg:SHA256withRSA, Serial:1, Subject:CN=MySQL_Server_8.0.32_Auto_Generated_CA_Certificate, Issuer:CN=MySQL_Server_8.0.32_Auto_Generated_CA_Certificate, Key type:RSA, Length:2048, Cert Id:1953070122, Valid from:3/28/23, 4:20 PM, Valid until:3/25/33, 4:20 PM
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.UpdateToTagSqlCommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.ValidateCommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.helpers.ChangeExecListenerCommandStep
+2024-01-05 21:08:16 DEBUG security:274 -  TLSHandshake: localhost:3306, TLSv1.3, TLS_AES_256_GCM_SHA384, 3526361794
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.helpers.DatabaseChangelogCommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.helpers.DbUrlConnectionCommandStep
+2024-01-05 21:08:16 DEBUG HikariPool:738 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@72aa6312
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.helpers.DiffOutputControlCommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.helpers.LockServiceCommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.helpers.OutputWriterCommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.helpers.PreCompareCommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.helpers.ReferenceDatabaseOutputWriterCommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.helpers.ReferenceDbUrlConnectionCommandStep
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.command.CommandStep instance liquibase.command.core.helpers.ShowSummaryArgument
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.logging.mdc.MdcManager instance liquibase.logging.mdc.NoOpMdcManager
+2024-01-05 21:08:16 DEBUG configuration:37 - No configuration value for liquibase.strict found
+2024-01-05 21:08:16 DEBUG configuration:37 - Configuration liquibase.strict is using the default value of false
+2024-01-05 21:08:16 DEBUG security:274 - X509Certificate: Alg:SHA256withRSA, Serial:2, Subject:CN=MySQL_Server_8.0.32_Auto_Generated_Server_Certificate, Issuer:CN=MySQL_Server_8.0.32_Auto_Generated_CA_Certificate, Key type:RSA, Length:2048, Cert Id:3526361794, Valid from:3/28/23, 4:20 PM, Valid until:3/25/33, 4:20 PM
+2024-01-05 21:08:16 DEBUG security:274 - X509Certificate: Alg:SHA256withRSA, Serial:1, Subject:CN=MySQL_Server_8.0.32_Auto_Generated_CA_Certificate, Issuer:CN=MySQL_Server_8.0.32_Auto_Generated_CA_Certificate, Key type:RSA, Length:2048, Cert Id:1953070122, Valid from:3/28/23, 4:20 PM, Valid until:3/25/33, 4:20 PM
+2024-01-05 21:08:16 DEBUG configuration:37 - No configuration value for liquibase.command.update.changeExecListener found
+2024-01-05 21:08:16 DEBUG configuration:37 - No configuration value for liquibase.command.changeExecListener found
+2024-01-05 21:08:16 DEBUG security:274 -  TLSHandshake: localhost:3306, TLSv1.3, TLS_AES_256_GCM_SHA384, 3526361794
+2024-01-05 21:08:16 DEBUG configuration:37 - No configuration value for liquibase.command.update.changeExecListenerClass found
+2024-01-05 21:08:16 DEBUG configuration:37 - No configuration value for liquibase.command.changeExecListenerClass found
+2024-01-05 21:08:16 DEBUG configuration:37 - No configuration value for liquibase.command.update.changeExecListenerPropertiesFile found
+2024-01-05 21:08:16 DEBUG configuration:37 - No configuration value for liquibase.command.changeExecListenerPropertiesFile found
+2024-01-05 21:08:16 DEBUG HikariPool:738 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@76e4fd01
+2024-01-05 21:08:16 DEBUG configuration:37 - Found 'liquibase.command.update.changelogFile' configuration of 'classpath:/db.changelog/db.changelog-master.xml'
+    command argument 'changelogFile' of 'classpath:/db.changelog/db.changelog-master.xml'
+2024-01-05 21:08:16 DEBUG configuration:37 - Found 'liquibase.command.update.changelogParameters' configuration of 'liquibase.changelog.ChangeLogParameters@351af015'
+    command argument 'changelogParameters' of 'liquibase.changelog.ChangeLogParameters@351af015'
+2024-01-05 21:08:16 DEBUG configuration:37 - No configuration value for liquibase.command.update.contextFilter aka liquibase.command.update.contexts found
+2024-01-05 21:08:16 DEBUG configuration:37 - No configuration value for liquibase.command.contextFilter aka liquibase.command.contexts found
+2024-01-05 21:08:16 DEBUG configuration:37 - Found 'liquibase.command.update.database' configuration of 'root@localhost @ jdbc:mysql://localhost:3306/db_library (Default Schema: db_library)'
+    command argument 'database' of 'root@localhost @ jdbc:mysql://localhost:3306/db_library (Default Schema: db_library)'
+2024-01-05 21:08:16 DEBUG configuration:37 - No configuration value for liquibase.command.update.databaseChangelog found
+2024-01-05 21:08:16 DEBUG configuration:37 - No configuration value for liquibase.command.databaseChangelog found
+2024-01-05 21:08:16 DEBUG configuration:37 - No configuration value for liquibase.command.update.defaultCatalogName found
+2024-01-05 21:08:16 DEBUG configuration:37 - No configuration value for liquibase.command.defaultCatalogName found
+2024-01-05 21:08:16 DEBUG configuration:37 - No configuration value for liquibase.command.update.defaultSchemaName found
+2024-01-05 21:08:16 DEBUG configuration:37 - No configuration value for liquibase.command.defaultSchemaName found
+2024-01-05 21:08:16 DEBUG configuration:37 - No configuration value for liquibase.command.update.driver found
+2024-01-05 21:08:16 DEBUG configuration:37 - No configuration value for liquibase.command.driver found
+2024-01-05 21:08:16 DEBUG configuration:37 - No configuration value for liquibase.command.update.driverPropertiesFile found
+2024-01-05 21:08:16 DEBUG configuration:37 - No configuration value for liquibase.command.driverPropertiesFile found
+2024-01-05 21:08:16 DEBUG configuration:37 - No configuration value for liquibase.command.update.labelFilter aka liquibase.command.update.labels found
+2024-01-05 21:08:16 DEBUG configuration:37 - No configuration value for liquibase.command.labelFilter aka liquibase.command.labels found
+2024-01-05 21:08:16 DEBUG configuration:37 - No configuration value for liquibase.command.update.password found
+2024-01-05 21:08:16 DEBUG security:274 - X509Certificate: Alg:SHA256withRSA, Serial:2, Subject:CN=MySQL_Server_8.0.32_Auto_Generated_Server_Certificate, Issuer:CN=MySQL_Server_8.0.32_Auto_Generated_CA_Certificate, Key type:RSA, Length:2048, Cert Id:3526361794, Valid from:3/28/23, 4:20 PM, Valid until:3/25/33, 4:20 PM
+2024-01-05 21:08:16 DEBUG configuration:37 - No configuration value for liquibase.command.password found
+2024-01-05 21:08:16 DEBUG security:274 - X509Certificate: Alg:SHA256withRSA, Serial:1, Subject:CN=MySQL_Server_8.0.32_Auto_Generated_CA_Certificate, Issuer:CN=MySQL_Server_8.0.32_Auto_Generated_CA_Certificate, Key type:RSA, Length:2048, Cert Id:1953070122, Valid from:3/28/23, 4:20 PM, Valid until:3/25/33, 4:20 PM
+2024-01-05 21:08:16 DEBUG configuration:37 - No configuration value for liquibase.command.update.showSummary found
+2024-01-05 21:08:16 DEBUG configuration:37 - Configuration liquibase.command.update.showSummary is using the default value of SUMMARY
+2024-01-05 21:08:16 DEBUG configuration:37 - No configuration value for liquibase.command.showSummary found
+2024-01-05 21:08:16 DEBUG configuration:37 - Configuration liquibase.command.showSummary is using the default value of SUMMARY
+2024-01-05 21:08:16 DEBUG configuration:37 - Found 'liquibase.command.update.showSummaryOutput' configuration of 'LOG'
+    command argument 'showSummaryOutput' of 'LOG'
+2024-01-05 21:08:16 DEBUG configuration:37 - No configuration value for liquibase.command.update.skipDatabaseStep found
+2024-01-05 21:08:16 DEBUG configuration:37 - Configuration liquibase.command.update.skipDatabaseStep is using the default value of false
+2024-01-05 21:08:16 DEBUG configuration:37 - No configuration value for liquibase.command.skipDatabaseStep found
+2024-01-05 21:08:16 DEBUG configuration:37 - Configuration liquibase.command.skipDatabaseStep is using the default value of false
+2024-01-05 21:08:16 DEBUG security:274 -  TLSHandshake: localhost:3306, TLSv1.3, TLS_AES_256_GCM_SHA384, 3526361794
+2024-01-05 21:08:16 DEBUG configuration:37 - No configuration value for liquibase.command.update.updateNullChecksums found
+2024-01-05 21:08:16 DEBUG configuration:37 - Configuration liquibase.command.update.updateNullChecksums is using the default value of false
+2024-01-05 21:08:16 DEBUG configuration:37 - No configuration value for liquibase.command.updateNullChecksums found
+2024-01-05 21:08:16 DEBUG configuration:37 - Configuration liquibase.command.updateNullChecksums is using the default value of false
+2024-01-05 21:08:16 DEBUG configuration:37 - No configuration value for liquibase.command.update.url found
+2024-01-05 21:08:16 DEBUG configuration:37 - No configuration value for liquibase.command.url found
+2024-01-05 21:08:16 DEBUG HikariPool:738 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@174083b
+2024-01-05 21:08:16 DEBUG configuration:37 - No configuration value for liquibase.command.update.username found
+2024-01-05 21:08:16 DEBUG configuration:37 - No configuration value for liquibase.command.username found
+2024-01-05 21:08:16 DEBUG command:37 - Pipeline for command 'update: liquibase.command.core.helpers.DbUrlConnectionCommandStep then liquibase.command.core.helpers.ShowSummaryArgument then liquibase.command.core.helpers.DatabaseChangelogCommandStep then liquibase.command.core.helpers.ChangeExecListenerCommandStep then liquibase.command.core.UpdateCommandStep
+2024-01-05 21:08:16 DEBUG configuration:37 - No configuration value for liquibase.outputFile found
+2024-01-05 21:08:16 DEBUG configuration:37 - No configuration value for liquibase.outputFileEncoding found
+2024-01-05 21:08:16 DEBUG configuration:37 - Configuration liquibase.outputFileEncoding is using the default value of UTF-8
+2024-01-05 21:08:16 DEBUG command:37 - Writing output with encoding 'UTF-8'
+2024-01-05 21:08:16 DEBUG command:37 - Executing internal command dbUrlConnectionCommandStep
+2024-01-05 21:08:16 DEBUG configuration:37 - Configuration liquibase.command.update.skipDatabaseStep is using the default value of false
+2024-01-05 21:08:16 DEBUG configuration:37 - Configuration liquibase.command.skipDatabaseStep is using the default value of false
+2024-01-05 21:08:16 DEBUG command:37 - Executing internal command showSummary
+2024-01-05 21:08:16 DEBUG configuration:37 - Configuration liquibase.command.update.showSummary is using the default value of SUMMARY
+2024-01-05 21:08:16 DEBUG configuration:37 - Configuration liquibase.command.showSummary is using the default value of SUMMARY
+2024-01-05 21:08:16 DEBUG command:37 - Executing internal command changelogCommandStep
+2024-01-05 21:08:16 DEBUG security:274 - X509Certificate: Alg:SHA256withRSA, Serial:2, Subject:CN=MySQL_Server_8.0.32_Auto_Generated_Server_Certificate, Issuer:CN=MySQL_Server_8.0.32_Auto_Generated_CA_Certificate, Key type:RSA, Length:2048, Cert Id:3526361794, Valid from:3/28/23, 4:20 PM, Valid until:3/25/33, 4:20 PM
+2024-01-05 21:08:16 DEBUG security:274 - X509Certificate: Alg:SHA256withRSA, Serial:1, Subject:CN=MySQL_Server_8.0.32_Auto_Generated_CA_Certificate, Issuer:CN=MySQL_Server_8.0.32_Auto_Generated_CA_Certificate, Key type:RSA, Length:2048, Cert Id:1953070122, Valid from:3/28/23, 4:20 PM, Valid until:3/25/33, 4:20 PM
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.parser.ChangeLogParser instance liquibase.parser.core.formattedsql.FormattedSqlChangeLogParser
+2024-01-05 21:08:16 DEBUG security:274 -  TLSHandshake: localhost:3306, TLSv1.3, TLS_AES_256_GCM_SHA384, 3526361794
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.parser.ChangeLogParser instance liquibase.parser.core.json.JsonChangeLogParser
+2024-01-05 21:08:16 DEBUG HikariPool:738 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3a846dd2
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.parser.ChangeLogParser instance liquibase.parser.core.sql.SqlChangeLogParser
+2024-01-05 21:08:16 DEBUG configuration:37 - No configuration value for liquibase.validateXmlChangelogFiles found
+2024-01-05 21:08:16 DEBUG configuration:37 - Configuration liquibase.validateXmlChangelogFiles is using the default value of true
+2024-01-05 21:08:16 DEBUG configuration:37 - No configuration value for liquibase.secureParsing found
+2024-01-05 21:08:16 DEBUG configuration:37 - Configuration liquibase.secureParsing is using the default value of true
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.parser.ChangeLogParser instance liquibase.parser.core.xml.XMLChangeLogSAXParser
+2024-01-05 21:08:16 DEBUG servicelocator:37 - Loaded liquibase.parser.ChangeLogParser instance liquibase.parser.core.yaml.YamlChangeLogParser
+2024-01-05 21:08:16 DEBUG parser:37 - Matched file 'classpath:/db.changelog/db.changelog-master.xml' to parser 'XMLChangeLogSAXParser'
+2024-01-05 21:08:16 INFO  command:37 - Command execution complete
+2024-01-05 21:08:16 DEBUG security:274 - X509Certificate: Alg:SHA256withRSA, Serial:2, Subject:CN=MySQL_Server_8.0.32_Auto_Generated_Server_Certificate, Issuer:CN=MySQL_Server_8.0.32_Auto_Generated_CA_Certificate, Key type:RSA, Length:2048, Cert Id:3526361794, Valid from:3/28/23, 4:20 PM, Valid until:3/25/33, 4:20 PM
+2024-01-05 21:08:16 DEBUG security:274 - X509Certificate: Alg:SHA256withRSA, Serial:1, Subject:CN=MySQL_Server_8.0.32_Auto_Generated_CA_Certificate, Issuer:CN=MySQL_Server_8.0.32_Auto_Generated_CA_Certificate, Key type:RSA, Length:2048, Cert Id:1953070122, Valid from:3/28/23, 4:20 PM, Valid until:3/25/33, 4:20 PM
+2024-01-05 21:08:16 WARN  AnnotationConfigServletWebServerApplicationContext:633 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.ChangeLogParseException: ERROR: The file 'classpath:/db.changelog/db.changelog-master.xml' was not found.
+The file property cannot be configured with a fully qualified path, but must be a relative path on the property,
+and any local or remote base of the path set on the search path.
+2024-01-05 21:08:16 INFO  HikariDataSource:350 - HikariPool-1 - Shutdown initiated...
+2024-01-05 21:08:16 DEBUG HikariPool:414 - HikariPool-1 - Before shutdown stats (total=8, active=0, idle=8, waiting=0)
+2024-01-05 21:08:16 DEBUG PoolBase:132 - HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@16a209f: (connection evicted)
+2024-01-05 21:08:16 DEBUG security:274 -  TLSHandshake: localhost:3306, TLSv1.3, TLS_AES_256_GCM_SHA384, 3526361794
+2024-01-05 21:08:16 DEBUG PoolBase:132 - HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@53b89666: (connection evicted)
+2024-01-05 21:08:16 DEBUG PoolBase:132 - HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@12859c5d: (connection evicted)
+2024-01-05 21:08:16 DEBUG HikariPool:738 - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@56bb693b
+2024-01-05 21:08:16 DEBUG PoolBase:132 - HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@23dd6c47: (connection evicted)
+2024-01-05 21:08:16 DEBUG PoolBase:132 - HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@72aa6312: (connection evicted)
+2024-01-05 21:08:16 DEBUG PoolBase:132 - HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@76e4fd01: (connection evicted)
+2024-01-05 21:08:16 DEBUG PoolBase:132 - HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@174083b: (connection evicted)
+2024-01-05 21:08:16 DEBUG PoolBase:132 - HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@3a846dd2: (connection evicted)
+2024-01-05 21:08:16 DEBUG HikariPool:414 - HikariPool-1 - After adding stats (total=1, active=0, idle=1, waiting=0)
+2024-01-05 21:08:16 DEBUG PoolBase:132 - HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@56bb693b: (connection evicted)
+2024-01-05 21:08:16 DEBUG HikariPool:414 - HikariPool-1 - After shutdown stats (total=0, active=0, idle=0, waiting=0)
+2024-01-05 21:08:16 INFO  HikariDataSource:352 - HikariPool-1 - Shutdown completed.
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardServer[-1]] to [STOPPING_PREP]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardServer[-1]] to [STOPPING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardService[Tomcat]] to [STOPPING_PREP]
+2024-01-05 21:08:16 INFO  StandardService:173 - Stopping service [Tomcat]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardService[Tomcat]] to [STOPPING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardEngine[Tomcat]] to [STOPPING_PREP]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardEngine[Tomcat]] to [STOPPING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardPipeline[StandardEngine[Tomcat]]] to [STOPPING_PREP]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardPipeline[StandardEngine[Tomcat]]] to [STOPPING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardEngineValve[StandardEngine[Tomcat]]] to [STOPPING_PREP]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardEngineValve[StandardEngine[Tomcat]]] to [STOPPING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardEngineValve[StandardEngine[Tomcat]]] to [STOPPED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardPipeline[StandardEngine[Tomcat]]] to [STOPPED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardEngine[Tomcat].StandardHost[localhost]] to [STOPPING_PREP]
+2024-01-05 21:08:16 DEBUG MapperListener:173 - Unregister host [localhost] at domain [null] for service [StandardService[Tomcat]]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardEngine[Tomcat].StandardHost[localhost]] to [STOPPING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardPipeline[StandardEngine[Tomcat].StandardHost[localhost]]] to [STOPPING_PREP]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardPipeline[StandardEngine[Tomcat].StandardHost[localhost]]] to [STOPPING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [ErrorReportValve[StandardEngine[Tomcat].StandardHost[localhost]]] to [STOPPING_PREP]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [ErrorReportValve[StandardEngine[Tomcat].StandardHost[localhost]]] to [STOPPING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [ErrorReportValve[StandardEngine[Tomcat].StandardHost[localhost]]] to [STOPPED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardHostValve[StandardEngine[Tomcat].StandardHost[localhost]]] to [STOPPING_PREP]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardHostValve[StandardEngine[Tomcat].StandardHost[localhost]]] to [STOPPING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardHostValve[StandardEngine[Tomcat].StandardHost[localhost]]] to [STOPPED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardPipeline[StandardEngine[Tomcat].StandardHost[localhost]]] to [STOPPED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]] to [STOPPING_PREP]
+2024-01-05 21:08:16 DEBUG MapperListener:173 - Unregister Context [] for service [StandardService[Tomcat]]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]] to [STOPPING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[].StandardWrapper[dispatcherServlet]] to [STOPPING_PREP]
+2024-01-05 21:08:16 DEBUG MapperListener:173 - Unregister Wrapper [dispatcherServlet] in Context [] for service [StandardService[Tomcat]]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[].StandardWrapper[dispatcherServlet]] to [STOPPING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardPipeline[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[].StandardWrapper[dispatcherServlet]]] to [STOPPING_PREP]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardPipeline[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[].StandardWrapper[dispatcherServlet]]] to [STOPPING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardWrapperValve[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[].StandardWrapper[dispatcherServlet]]] to [STOPPING_PREP]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardWrapperValve[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[].StandardWrapper[dispatcherServlet]]] to [STOPPING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardWrapperValve[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[].StandardWrapper[dispatcherServlet]]] to [STOPPED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardPipeline[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[].StandardWrapper[dispatcherServlet]]] to [STOPPED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[].StandardWrapper[dispatcherServlet]] to [STOPPED]
+2024-01-05 21:08:16 DEBUG [/]:173 - Stopping filters
+2024-01-05 21:08:16 DEBUG [/]:173 -  Stopping filter 'requestContextFilter'
+2024-01-05 21:08:16 DEBUG ApplicationFilterConfig:173 - JMX de-registration complete for filter of type [org.springframework.boot.web.servlet.filter.OrderedRequestContextFilter] and name [requestContextFilter]
+2024-01-05 21:08:16 DEBUG [/]:173 -  Stopping filter 'Tomcat WebSocket (JSR356) Filter'
+2024-01-05 21:08:16 DEBUG ApplicationFilterConfig:173 - JMX de-registration complete for filter of type [org.apache.tomcat.websocket.server.WsFilter] and name [Tomcat WebSocket (JSR356) Filter]
+2024-01-05 21:08:16 DEBUG [/]:173 -  Stopping filter 'characterEncodingFilter'
+2024-01-05 21:08:16 DEBUG ApplicationFilterConfig:173 - JMX de-registration complete for filter of type [org.springframework.boot.web.servlet.filter.OrderedCharacterEncodingFilter] and name [characterEncodingFilter]
+2024-01-05 21:08:16 DEBUG [/]:173 -  Stopping filter 'formContentFilter'
+2024-01-05 21:08:16 DEBUG ApplicationFilterConfig:173 - JMX de-registration complete for filter of type [org.springframework.boot.web.servlet.filter.OrderedFormContentFilter] and name [formContentFilter]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardManager[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [STOPPING_PREP]
+2024-01-05 21:08:16 DEBUG StandardManager:173 - Stopping
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardManager[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [STOPPING]
+2024-01-05 21:08:16 DEBUG StandardManager:173 - Unloading persisted sessions
+2024-01-05 21:08:16 DEBUG StandardManager:173 - No persisted sessions to unload
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [org.springframework.boot.web.embedded.tomcat.LazySessionIdGenerator@e8785e8] to [STOPPING_PREP]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [org.springframework.boot.web.embedded.tomcat.LazySessionIdGenerator@e8785e8] to [STOPPING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [org.springframework.boot.web.embedded.tomcat.LazySessionIdGenerator@e8785e8] to [STOPPED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardManager[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [STOPPED]
+2024-01-05 21:08:16 DEBUG StandardContext:173 - Sending application stop events
+2024-01-05 21:08:16 DEBUG StandardContext:173 - Processing standard container shutdown
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.deploy.NamingResourcesImpl@5a01c08f] to [STOPPING_PREP]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.deploy.NamingResourcesImpl@5a01c08f] to [STOPPING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.deploy.NamingResourcesImpl@5a01c08f] to [STOPPED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardPipeline[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [STOPPING_PREP]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardPipeline[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [STOPPING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [NonLoginAuthenticator[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [STOPPING_PREP]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [NonLoginAuthenticator[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [STOPPING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [NonLoginAuthenticator[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [STOPPED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardContextValve[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [STOPPING_PREP]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardContextValve[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [STOPPING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardContextValve[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [STOPPED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardPipeline[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [STOPPED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [WebappLoader[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [STOPPING_PREP]
+2024-01-05 21:08:16 DEBUG WebappLoader:173 - Stopping this Loader
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [WebappLoader[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [STOPPING]
+2024-01-05 21:08:16 DEBUG WebappClassLoaderBase:173 - getResourceAsStream(org/apache/catalina/loader/JdbcLeakPrevention.class)
+2024-01-05 21:08:16 DEBUG WebappClassLoaderBase:173 -   Delegating to parent classloader org.springframework.boot.devtools.restart.classloader.RestartClassLoader@14124d41
+2024-01-05 21:08:16 DEBUG WebappClassLoaderBase:173 -   --> Returning stream from parent
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [WebappLoader[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [STOPPED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.webresources.StandardRoot@4ca10125] to [STOPPING_PREP]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.webresources.DirResourceSet@55b3a4b2] to [STOPPING_PREP]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.webresources.DirResourceSet@55b3a4b2] to [STOPPING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.webresources.DirResourceSet@55b3a4b2] to [STOPPED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.webresources.DirResourceSet@55b3a4b2] to [DESTROYING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.webresources.DirResourceSet@55b3a4b2] to [DESTROYED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.webresources.StandardRoot@4ca10125] to [STOPPING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.webresources.StandardRoot@4ca10125] to [STOPPED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[].StandardWrapper[dispatcherServlet]] to [DESTROYING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardPipeline[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[].StandardWrapper[dispatcherServlet]]] to [DESTROYING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardWrapperValve[Container is null]] to [DESTROYING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardWrapperValve[Container is null]] to [DESTROYED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardPipeline[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[].StandardWrapper[dispatcherServlet]]] to [DESTROYED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[].StandardWrapper[dispatcherServlet]] to [DESTROYED]
+2024-01-05 21:08:16 DEBUG StandardContext:173 - resetContext Tomcat:j2eeType=WebModule,name=//localhost/,J2EEApplication=none,J2EEServer=none
+2024-01-05 21:08:16 DEBUG StandardContext:173 - Stopping complete
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]] to [STOPPED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardEngine[Tomcat].StandardHost[localhost]] to [STOPPED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [SimpleRealm[StandardEngine[Tomcat]]] to [STOPPING_PREP]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [SimpleRealm[StandardEngine[Tomcat]]] to [STOPPING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [SimpleRealm[StandardEngine[Tomcat]]] to [STOPPED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardEngine[Tomcat]] to [STOPPED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.mapper.MapperListener@b6feb60] to [STOPPING_PREP]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.mapper.MapperListener@b6feb60] to [STOPPING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.mapper.MapperListener@b6feb60] to [STOPPED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardService[Tomcat]] to [STOPPED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.deploy.NamingResourcesImpl@e50f292] to [STOPPING_PREP]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.deploy.NamingResourcesImpl@e50f292] to [STOPPING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.deploy.NamingResourcesImpl@e50f292] to [STOPPED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardServer[-1]] to [STOPPED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardServer[-1]] to [DESTROYING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardService[Tomcat]] to [DESTROYING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.mapper.MapperListener@b6feb60] to [DESTROYING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.mapper.MapperListener@b6feb60] to [DESTROYED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardEngine[Tomcat]] to [DESTROYING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [SimpleRealm[StandardEngine[Tomcat]]] to [DESTROYING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [SimpleRealm[StandardEngine[Tomcat]]] to [DESTROYED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardPipeline[StandardEngine[Tomcat]]] to [DESTROYING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardEngineValve[Container is null]] to [DESTROYING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardEngineValve[Container is null]] to [DESTROYED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardPipeline[StandardEngine[Tomcat]]] to [DESTROYED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardEngine[Tomcat].StandardHost[localhost]] to [DESTROYING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardPipeline[StandardEngine[Tomcat].StandardHost[localhost]]] to [DESTROYING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [ErrorReportValve[Container is null]] to [DESTROYING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [ErrorReportValve[Container is null]] to [DESTROYED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardHostValve[Container is null]] to [DESTROYING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardHostValve[Container is null]] to [DESTROYED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardPipeline[StandardEngine[Tomcat].StandardHost[localhost]]] to [DESTROYED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]] to [DESTROYING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.deploy.NamingResourcesImpl@5a01c08f] to [DESTROYING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.deploy.NamingResourcesImpl@5a01c08f] to [DESTROYED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [WebappLoader[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [DESTROYING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [WebappLoader[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [DESTROYED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardManager[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [DESTROYING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardManager[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [DESTROYED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.webresources.StandardRoot@4ca10125] to [DESTROYING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.webresources.StandardRoot@4ca10125] to [DESTROYED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardPipeline[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [DESTROYING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [NonLoginAuthenticator[Container is null]] to [DESTROYING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [NonLoginAuthenticator[Container is null]] to [DESTROYED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardContextValve[Container is null]] to [DESTROYING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardContextValve[Container is null]] to [DESTROYED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardPipeline[StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]]] to [DESTROYED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardEngine[Tomcat].StandardHost[localhost].TomcatEmbeddedContext[]] to [DESTROYED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardEngine[Tomcat].StandardHost[localhost]] to [DESTROYED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardEngine[Tomcat]] to [DESTROYED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardService[Tomcat]] to [DESTROYED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.deploy.NamingResourcesImpl@e50f292] to [DESTROYING]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [org.apache.catalina.deploy.NamingResourcesImpl@e50f292] to [DESTROYED]
+2024-01-05 21:08:16 DEBUG LifecycleBase:173 - Setting state for [StandardServer[-1]] to [DESTROYED]
+2024-01-05 21:08:16 DEBUG Restarter:251 - Creating new Restarter for thread Thread[#1,main,5,main]
+2024-01-05 21:08:16 DEBUG Restarter:251 - Immediately restarting application
+2024-01-05 21:08:16 DEBUG Restarter:251 - Starting application net.sparkminds.librarymanagement.LibraryManagementApplication with URLs [file:/C:/Users/datdo/IdeaProjects/library-management/target/classes/]
+2024-01-05 21:08:16 DEBUG ConditionEvaluationReportLogger:72 - 
+
+
+============================
+CONDITIONS EVALUATION REPORT
+============================
+
+
+Positive matches:
+-----------------
+
+   AopAutoConfiguration matched:
+      - @ConditionalOnProperty (spring.aop.auto=true) matched (OnPropertyCondition)
+
+   AopAutoConfiguration.AspectJAutoProxyingConfiguration matched:
+      - @ConditionalOnClass found required class 'org.aspectj.weaver.Advice' (OnClassCondition)
+
+   AopAutoConfiguration.AspectJAutoProxyingConfiguration.CglibAutoProxyConfiguration matched:
+      - @ConditionalOnProperty (spring.aop.proxy-target-class=true) matched (OnPropertyCondition)
+
+   ApplicationAvailabilityAutoConfiguration#applicationAvailability matched:
+      - @ConditionalOnMissingBean (types: org.springframework.boot.availability.ApplicationAvailability; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   DataSourceAutoConfiguration matched:
+      - @ConditionalOnClass found required classes 'javax.sql.DataSource', 'org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType' (OnClassCondition)
+      - @ConditionalOnMissingBean (types: io.r2dbc.spi.ConnectionFactory; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   DataSourceAutoConfiguration.PooledDataSourceConfiguration matched:
+      - AnyNestedCondition 1 matched 1 did not; NestedCondition on DataSourceAutoConfiguration.PooledDataSourceCondition.PooledDataSourceAvailable PooledDataSource found supported DataSource; NestedCondition on DataSourceAutoConfiguration.PooledDataSourceCondition.ExplicitType @ConditionalOnProperty (spring.datasource.type) did not find property 'type' (DataSourceAutoConfiguration.PooledDataSourceCondition)
+      - @ConditionalOnMissingBean (types: javax.sql.DataSource,javax.sql.XADataSource; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   DataSourceAutoConfiguration.PooledDataSourceConfiguration#jdbcConnectionDetails matched:
+      - @ConditionalOnMissingBean (types: org.springframework.boot.autoconfigure.jdbc.JdbcConnectionDetails; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   DataSourceConfiguration.Hikari matched:
+      - @ConditionalOnClass found required class 'com.zaxxer.hikari.HikariDataSource' (OnClassCondition)
+      - @ConditionalOnProperty (spring.datasource.type=com.zaxxer.hikari.HikariDataSource) matched (OnPropertyCondition)
+      - @ConditionalOnMissingBean (types: javax.sql.DataSource; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   DataSourceInitializationConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.jdbc.datasource.init.DatabasePopulator' (OnClassCondition)
+      - @ConditionalOnSingleCandidate (types: javax.sql.DataSource; SearchStrategy: all) found a single bean 'dataSource'; @ConditionalOnMissingBean (types: org.springframework.boot.autoconfigure.sql.init.SqlDataSourceScriptDatabaseInitializer,org.springframework.boot.autoconfigure.sql.init.SqlR2dbcScriptDatabaseInitializer; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   DataSourceJmxConfiguration matched:
+      - @ConditionalOnProperty (spring.jmx.enabled=true) matched (OnPropertyCondition)
+
+   DataSourceJmxConfiguration.Hikari matched:
+      - @ConditionalOnClass found required class 'com.zaxxer.hikari.HikariDataSource' (OnClassCondition)
+      - @ConditionalOnSingleCandidate (types: javax.sql.DataSource; SearchStrategy: all) found a single bean 'dataSource' (OnBeanCondition)
+
+   DataSourcePoolMetadataProvidersConfiguration.HikariPoolDataSourceMetadataProviderConfiguration matched:
+      - @ConditionalOnClass found required class 'com.zaxxer.hikari.HikariDataSource' (OnClassCondition)
+
+   DataSourceTransactionManagerAutoConfiguration matched:
+      - @ConditionalOnClass found required classes 'org.springframework.jdbc.core.JdbcTemplate', 'org.springframework.transaction.TransactionManager' (OnClassCondition)
+
+   DataSourceTransactionManagerAutoConfiguration.JdbcTransactionManagerConfiguration matched:
+      - @ConditionalOnSingleCandidate (types: javax.sql.DataSource; SearchStrategy: all) found a single bean 'dataSource' (OnBeanCondition)
+
+   DevToolsDataSourceAutoConfiguration matched:
+      - Devtools devtools enabled. (OnEnabledDevToolsCondition)
+      - DevTools DataSource Condition found auto-configured DataSource (DevToolsDataSourceAutoConfiguration.DevToolsDataSourceCondition)
+
+   DevToolsDataSourceAutoConfiguration.DatabaseShutdownExecutorEntityManagerFactoryDependsOnPostProcessor matched:
+      - @ConditionalOnClass found required class 'org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean' (OnClassCondition)
+      - @ConditionalOnBean (types: org.springframework.orm.jpa.AbstractEntityManagerFactoryBean; SearchStrategy: all) found bean '&entityManagerFactory' (OnBeanCondition)
+
+   DispatcherServletAutoConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.web.servlet.DispatcherServlet' (OnClassCondition)
+      - found 'session' scope (OnWebApplicationCondition)
+
+   DispatcherServletAutoConfiguration.DispatcherServletConfiguration matched:
+      - @ConditionalOnClass found required class 'jakarta.servlet.ServletRegistration' (OnClassCondition)
+      - Default DispatcherServlet did not find dispatcher servlet beans (DispatcherServletAutoConfiguration.DefaultDispatcherServletCondition)
+
+   DispatcherServletAutoConfiguration.DispatcherServletRegistrationConfiguration matched:
+      - @ConditionalOnClass found required class 'jakarta.servlet.ServletRegistration' (OnClassCondition)
+      - DispatcherServlet Registration did not find servlet registration bean (DispatcherServletAutoConfiguration.DispatcherServletRegistrationCondition)
+
+   DispatcherServletAutoConfiguration.DispatcherServletRegistrationConfiguration#dispatcherServletRegistration matched:
+      - @ConditionalOnBean (names: dispatcherServlet types: org.springframework.web.servlet.DispatcherServlet; SearchStrategy: all) found bean 'dispatcherServlet' (OnBeanCondition)
+
+   EmbeddedWebServerFactoryCustomizerAutoConfiguration matched:
+      - @ConditionalOnWebApplication (required) found 'session' scope (OnWebApplicationCondition)
+      - @ConditionalOnWarDeployment the application is not deployed as a WAR file. (OnWarDeploymentCondition)
+
+   EmbeddedWebServerFactoryCustomizerAutoConfiguration.TomcatWebServerFactoryCustomizerConfiguration matched:
+      - @ConditionalOnClass found required classes 'org.apache.catalina.startup.Tomcat', 'org.apache.coyote.UpgradeProtocol' (OnClassCondition)
+
+   ErrorMvcAutoConfiguration matched:
+      - @ConditionalOnClass found required classes 'jakarta.servlet.Servlet', 'org.springframework.web.servlet.DispatcherServlet' (OnClassCondition)
+      - found 'session' scope (OnWebApplicationCondition)
+
+   ErrorMvcAutoConfiguration#basicErrorController matched:
+      - @ConditionalOnMissingBean (types: org.springframework.boot.web.servlet.error.ErrorController; SearchStrategy: current) did not find any beans (OnBeanCondition)
+
+   ErrorMvcAutoConfiguration#errorAttributes matched:
+      - @ConditionalOnMissingBean (types: org.springframework.boot.web.servlet.error.ErrorAttributes; SearchStrategy: current) did not find any beans (OnBeanCondition)
+
+   ErrorMvcAutoConfiguration.DefaultErrorViewResolverConfiguration#conventionErrorViewResolver matched:
+      - @ConditionalOnBean (types: org.springframework.web.servlet.DispatcherServlet; SearchStrategy: all) found bean 'dispatcherServlet'; @ConditionalOnMissingBean (types: org.springframework.boot.autoconfigure.web.servlet.error.ErrorViewResolver; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   ErrorMvcAutoConfiguration.WhitelabelErrorViewConfiguration matched:
+      - @ConditionalOnProperty (server.error.whitelabel.enabled) matched (OnPropertyCondition)
+      - ErrorTemplate Missing did not find error template view (ErrorMvcAutoConfiguration.ErrorTemplateMissingCondition)
+
+   ErrorMvcAutoConfiguration.WhitelabelErrorViewConfiguration#beanNameViewResolver matched:
+      - @ConditionalOnMissingBean (types: org.springframework.web.servlet.view.BeanNameViewResolver; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   ErrorMvcAutoConfiguration.WhitelabelErrorViewConfiguration#defaultErrorView matched:
+      - @ConditionalOnMissingBean (names: error; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   GenericCacheConfiguration matched:
+      - Cache org.springframework.boot.autoconfigure.cache.GenericCacheConfiguration automatic cache type (CacheCondition)
+
+   HibernateJpaAutoConfiguration matched:
+      - @ConditionalOnClass found required classes 'org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean', 'jakarta.persistence.EntityManager', 'org.hibernate.engine.spi.SessionImplementor' (OnClassCondition)
+
+   HibernateJpaConfiguration matched:
+      - @ConditionalOnSingleCandidate (types: javax.sql.DataSource; SearchStrategy: all) found a single bean 'dataSource' (OnBeanCondition)
+
+   HttpEncodingAutoConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.web.filter.CharacterEncodingFilter' (OnClassCondition)
+      - found 'session' scope (OnWebApplicationCondition)
+      - @ConditionalOnProperty (server.servlet.encoding.enabled) matched (OnPropertyCondition)
+
+   HttpEncodingAutoConfiguration#characterEncodingFilter matched:
+      - @ConditionalOnMissingBean (types: org.springframework.web.filter.CharacterEncodingFilter; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   HttpMessageConvertersAutoConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.http.converter.HttpMessageConverter' (OnClassCondition)
+      - NoneNestedConditions 0 matched 1 did not; NestedCondition on HttpMessageConvertersAutoConfiguration.NotReactiveWebApplicationCondition.ReactiveWebApplication did not find reactive web application classes (HttpMessageConvertersAutoConfiguration.NotReactiveWebApplicationCondition)
+
+   HttpMessageConvertersAutoConfiguration#messageConverters matched:
+      - @ConditionalOnMissingBean (types: org.springframework.boot.autoconfigure.http.HttpMessageConverters; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   HttpMessageConvertersAutoConfiguration.StringHttpMessageConverterConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.http.converter.StringHttpMessageConverter' (OnClassCondition)
+
+   HttpMessageConvertersAutoConfiguration.StringHttpMessageConverterConfiguration#stringHttpMessageConverter matched:
+      - @ConditionalOnMissingBean (types: org.springframework.http.converter.StringHttpMessageConverter; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   JacksonAutoConfiguration matched:
+      - @ConditionalOnClass found required class 'com.fasterxml.jackson.databind.ObjectMapper' (OnClassCondition)
+
+   JacksonAutoConfiguration.Jackson2ObjectMapperBuilderCustomizerConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.http.converter.json.Jackson2ObjectMapperBuilder' (OnClassCondition)
+
+   JacksonAutoConfiguration.JacksonObjectMapperBuilderConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.http.converter.json.Jackson2ObjectMapperBuilder' (OnClassCondition)
+
+   JacksonAutoConfiguration.JacksonObjectMapperBuilderConfiguration#jacksonObjectMapperBuilder matched:
+      - @ConditionalOnMissingBean (types: org.springframework.http.converter.json.Jackson2ObjectMapperBuilder; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   JacksonAutoConfiguration.JacksonObjectMapperConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.http.converter.json.Jackson2ObjectMapperBuilder' (OnClassCondition)
+
+   JacksonAutoConfiguration.JacksonObjectMapperConfiguration#jacksonObjectMapper matched:
+      - @ConditionalOnMissingBean (types: com.fasterxml.jackson.databind.ObjectMapper; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   JacksonAutoConfiguration.ParameterNamesModuleConfiguration matched:
+      - @ConditionalOnClass found required class 'com.fasterxml.jackson.module.paramnames.ParameterNamesModule' (OnClassCondition)
+
+   JacksonAutoConfiguration.ParameterNamesModuleConfiguration#parameterNamesModule matched:
+      - @ConditionalOnMissingBean (types: com.fasterxml.jackson.module.paramnames.ParameterNamesModule; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   JacksonHttpMessageConvertersConfiguration.MappingJackson2HttpMessageConverterConfiguration matched:
+      - @ConditionalOnClass found required class 'com.fasterxml.jackson.databind.ObjectMapper' (OnClassCondition)
+      - @ConditionalOnProperty (spring.mvc.converters.preferred-json-mapper=jackson) matched (OnPropertyCondition)
+      - @ConditionalOnBean (types: com.fasterxml.jackson.databind.ObjectMapper; SearchStrategy: all) found bean 'jacksonObjectMapper' (OnBeanCondition)
+
+   JacksonHttpMessageConvertersConfiguration.MappingJackson2HttpMessageConverterConfiguration#mappingJackson2HttpMessageConverter matched:
+      - @ConditionalOnMissingBean (types: org.springframework.http.converter.json.MappingJackson2HttpMessageConverter ignored: org.springframework.hateoas.server.mvc.TypeConstrainedMappingJackson2HttpMessageConverter,org.springframework.data.rest.webmvc.alps.AlpsJsonHttpMessageConverter; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   JdbcClientAutoConfiguration matched:
+      - @ConditionalOnSingleCandidate (types: org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate; SearchStrategy: all) found a single bean 'namedParameterJdbcTemplate'; @ConditionalOnMissingBean (types: org.springframework.jdbc.core.simple.JdbcClient; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   JdbcTemplateAutoConfiguration matched:
+      - @ConditionalOnClass found required classes 'javax.sql.DataSource', 'org.springframework.jdbc.core.JdbcTemplate' (OnClassCondition)
+      - @ConditionalOnSingleCandidate (types: javax.sql.DataSource; SearchStrategy: all) found a single bean 'dataSource' (OnBeanCondition)
+
+   JdbcTemplateConfiguration matched:
+      - @ConditionalOnMissingBean (types: org.springframework.jdbc.core.JdbcOperations; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   JpaBaseConfiguration#entityManagerFactory matched:
+      - @ConditionalOnMissingBean (types: org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean,jakarta.persistence.EntityManagerFactory; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   JpaBaseConfiguration#entityManagerFactoryBuilder matched:
+      - @ConditionalOnMissingBean (types: org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   JpaBaseConfiguration#jpaVendorAdapter matched:
+      - @ConditionalOnMissingBean (types: org.springframework.orm.jpa.JpaVendorAdapter; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   JpaBaseConfiguration#transactionManager matched:
+      - @ConditionalOnMissingBean (types: org.springframework.transaction.TransactionManager; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   JpaBaseConfiguration.JpaWebConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.web.servlet.config.annotation.WebMvcConfigurer' (OnClassCondition)
+      - found 'session' scope (OnWebApplicationCondition)
+      - @ConditionalOnProperty (spring.jpa.open-in-view=true) matched (OnPropertyCondition)
+      - @ConditionalOnMissingBean (types: org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor,org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   JpaBaseConfiguration.PersistenceManagedTypesConfiguration matched:
+      - @ConditionalOnMissingBean (types: org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean,jakarta.persistence.EntityManagerFactory; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   JpaBaseConfiguration.PersistenceManagedTypesConfiguration#persistenceManagedTypes matched:
+      - @ConditionalOnMissingBean (types: org.springframework.orm.jpa.persistenceunit.PersistenceManagedTypes; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   JpaRepositoriesAutoConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.data.jpa.repository.JpaRepository' (OnClassCondition)
+      - @ConditionalOnProperty (spring.data.jpa.repositories.enabled=true) matched (OnPropertyCondition)
+      - @ConditionalOnBean (types: javax.sql.DataSource; SearchStrategy: all) found bean 'dataSource'; @ConditionalOnMissingBean (types: org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean,org.springframework.data.jpa.repository.config.JpaRepositoryConfigExtension; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   JtaAutoConfiguration matched:
+      - @ConditionalOnClass found required class 'jakarta.transaction.Transaction' (OnClassCondition)
+      - @ConditionalOnProperty (spring.jta.enabled) matched (OnPropertyCondition)
+
+   LifecycleAutoConfiguration#defaultLifecycleProcessor matched:
+      - @ConditionalOnMissingBean (names: lifecycleProcessor; SearchStrategy: current) did not find any beans (OnBeanCondition)
+
+   LiquibaseAutoConfiguration matched:
+      - @ConditionalOnClass found required classes 'liquibase.integration.spring.SpringLiquibase', 'liquibase.change.DatabaseChange' (OnClassCondition)
+      - @ConditionalOnProperty (spring.liquibase.enabled) matched (OnPropertyCondition)
+      - AnyNestedCondition 2 matched 1 did not; NestedCondition on LiquibaseAutoConfiguration.LiquibaseDataSourceCondition.LiquibaseUrlCondition @ConditionalOnProperty (spring.liquibase.url) did not find property 'url'; NestedCondition on LiquibaseAutoConfiguration.LiquibaseDataSourceCondition.JdbcConnectionDetailsCondition @ConditionalOnBean (types: org.springframework.boot.autoconfigure.jdbc.JdbcConnectionDetails; SearchStrategy: all) found bean 'jdbcConnectionDetails'; NestedCondition on LiquibaseAutoConfiguration.LiquibaseDataSourceCondition.DataSourceBeanCondition @ConditionalOnBean (types: javax.sql.DataSource; SearchStrategy: all) found bean 'dataSource' (LiquibaseAutoConfiguration.LiquibaseDataSourceCondition)
+
+   LiquibaseAutoConfiguration.LiquibaseConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.jdbc.core.ConnectionCallback' (OnClassCondition)
+      - @ConditionalOnMissingBean (types: liquibase.integration.spring.SpringLiquibase; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   LiquibaseAutoConfiguration.LiquibaseConfiguration#liquibaseConnectionDetails matched:
+      - @ConditionalOnMissingBean (types: org.springframework.boot.autoconfigure.liquibase.LiquibaseConnectionDetails; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   LocalDevToolsAutoConfiguration matched:
+      - Initialized Restarter Condition available and initialized (OnInitializedRestarterCondition)
+
+   LocalDevToolsAutoConfiguration.LiveReloadConfiguration matched:
+      - @ConditionalOnProperty (spring.devtools.livereload.enabled) matched (OnPropertyCondition)
+
+   LocalDevToolsAutoConfiguration.LiveReloadConfiguration#liveReloadServer matched:
+      - @ConditionalOnMissingBean (types: org.springframework.boot.devtools.livereload.LiveReloadServer; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   LocalDevToolsAutoConfiguration.RestartConfiguration matched:
+      - @ConditionalOnProperty (spring.devtools.restart.enabled) matched (OnPropertyCondition)
+
+   LocalDevToolsAutoConfiguration.RestartConfiguration#classPathFileSystemWatcher matched:
+      - @ConditionalOnMissingBean (types: org.springframework.boot.devtools.classpath.ClassPathFileSystemWatcher; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   LocalDevToolsAutoConfiguration.RestartConfiguration#classPathRestartStrategy matched:
+      - @ConditionalOnMissingBean (types: org.springframework.boot.devtools.classpath.ClassPathRestartStrategy; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   LocalDevToolsAutoConfiguration.RestartConfiguration#conditionEvaluationDeltaLoggingListener matched:
+      - @ConditionalOnProperty (spring.devtools.restart.log-condition-evaluation-delta) matched (OnPropertyCondition)
+
+   MultipartAutoConfiguration matched:
+      - @ConditionalOnClass found required classes 'jakarta.servlet.Servlet', 'org.springframework.web.multipart.support.StandardServletMultipartResolver', 'jakarta.servlet.MultipartConfigElement' (OnClassCondition)
+      - found 'session' scope (OnWebApplicationCondition)
+      - @ConditionalOnProperty (spring.servlet.multipart.enabled) matched (OnPropertyCondition)
+
+   MultipartAutoConfiguration#multipartConfigElement matched:
+      - @ConditionalOnMissingBean (types: jakarta.servlet.MultipartConfigElement; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   MultipartAutoConfiguration#multipartResolver matched:
+      - @ConditionalOnMissingBean (types: org.springframework.web.multipart.MultipartResolver; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   NamedParameterJdbcTemplateConfiguration matched:
+      - @ConditionalOnSingleCandidate (types: org.springframework.jdbc.core.JdbcTemplate; SearchStrategy: all) found a single bean 'jdbcTemplate'; @ConditionalOnMissingBean (types: org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   NoOpCacheConfiguration matched:
+      - Cache org.springframework.boot.autoconfigure.cache.NoOpCacheConfiguration automatic cache type (CacheCondition)
+
+   PersistenceExceptionTranslationAutoConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor' (OnClassCondition)
+
+   PersistenceExceptionTranslationAutoConfiguration#persistenceExceptionTranslationPostProcessor matched:
+      - @ConditionalOnProperty (spring.dao.exceptiontranslation.enabled) matched (OnPropertyCondition)
+      - @ConditionalOnMissingBean (types: org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   PropertyPlaceholderAutoConfiguration#propertySourcesPlaceholderConfigurer matched:
+      - @ConditionalOnMissingBean (types: org.springframework.context.support.PropertySourcesPlaceholderConfigurer; SearchStrategy: current) did not find any beans (OnBeanCondition)
+
+   RestClientAutoConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.web.client.RestClient' (OnClassCondition)
+      - NoneNestedConditions 0 matched 1 did not; NestedCondition on NotReactiveWebApplicationCondition.ReactiveWebApplication did not find reactive web application classes (NotReactiveWebApplicationCondition)
+
+   RestClientAutoConfiguration#httpMessageConvertersRestClientCustomizer matched:
+      - @ConditionalOnMissingBean (types: org.springframework.boot.autoconfigure.web.client.HttpMessageConvertersRestClientCustomizer; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   RestClientAutoConfiguration#restClientBuilder matched:
+      - @ConditionalOnMissingBean (types: org.springframework.web.client.RestClient$Builder; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   RestClientAutoConfiguration#restClientBuilderConfigurer matched:
+      - @ConditionalOnMissingBean (types: org.springframework.boot.autoconfigure.web.client.RestClientBuilderConfigurer; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   RestClientAutoConfiguration#restClientSsl matched:
+      - @ConditionalOnBean (types: org.springframework.boot.ssl.SslBundles; SearchStrategy: all) found bean 'sslBundleRegistry'; @ConditionalOnMissingBean (types: org.springframework.boot.autoconfigure.web.client.RestClientSsl; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   RestTemplateAutoConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.web.client.RestTemplate' (OnClassCondition)
+      - NoneNestedConditions 0 matched 1 did not; NestedCondition on NotReactiveWebApplicationCondition.ReactiveWebApplication did not find reactive web application classes (NotReactiveWebApplicationCondition)
+
+   RestTemplateAutoConfiguration#restTemplateBuilder matched:
+      - @ConditionalOnMissingBean (types: org.springframework.boot.web.client.RestTemplateBuilder; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   ServletWebServerFactoryAutoConfiguration matched:
+      - @ConditionalOnClass found required class 'jakarta.servlet.ServletRequest' (OnClassCondition)
+      - found 'session' scope (OnWebApplicationCondition)
+
+   ServletWebServerFactoryAutoConfiguration#tomcatServletWebServerFactoryCustomizer matched:
+      - @ConditionalOnClass found required class 'org.apache.catalina.startup.Tomcat' (OnClassCondition)
+
+   ServletWebServerFactoryConfiguration.EmbeddedTomcat matched:
+      - @ConditionalOnClass found required classes 'jakarta.servlet.Servlet', 'org.apache.catalina.startup.Tomcat', 'org.apache.coyote.UpgradeProtocol' (OnClassCondition)
+      - @ConditionalOnMissingBean (types: org.springframework.boot.web.servlet.server.ServletWebServerFactory; SearchStrategy: current) did not find any beans (OnBeanCondition)
+
+   SimpleCacheConfiguration matched:
+      - Cache org.springframework.boot.autoconfigure.cache.SimpleCacheConfiguration automatic cache type (CacheCondition)
+
+   SpringDataWebAutoConfiguration matched:
+      - @ConditionalOnClass found required classes 'org.springframework.data.web.PageableHandlerMethodArgumentResolver', 'org.springframework.web.servlet.config.annotation.WebMvcConfigurer' (OnClassCondition)
+      - found 'session' scope (OnWebApplicationCondition)
+      - @ConditionalOnMissingBean (types: org.springframework.data.web.PageableHandlerMethodArgumentResolver; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   SpringDataWebAutoConfiguration#pageableCustomizer matched:
+      - @ConditionalOnMissingBean (types: org.springframework.data.web.config.PageableHandlerMethodArgumentResolverCustomizer; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   SpringDataWebAutoConfiguration#sortCustomizer matched:
+      - @ConditionalOnMissingBean (types: org.springframework.data.web.config.SortHandlerMethodArgumentResolverCustomizer; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   SqlInitializationAutoConfiguration matched:
+      - @ConditionalOnProperty (spring.sql.init.enabled) matched (OnPropertyCondition)
+      - NoneNestedConditions 0 matched 1 did not; NestedCondition on SqlInitializationAutoConfiguration.SqlInitializationModeCondition.ModeIsNever @ConditionalOnProperty (spring.sql.init.mode=never) did not find property 'mode' (SqlInitializationAutoConfiguration.SqlInitializationModeCondition)
+
+   SslAutoConfiguration#sslBundleRegistry matched:
+      - @ConditionalOnMissingBean (types: org.springframework.boot.ssl.SslBundleRegistry,org.springframework.boot.ssl.SslBundles; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   TaskExecutionAutoConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor' (OnClassCondition)
+
+   TaskExecutorConfigurations.SimpleAsyncTaskExecutorBuilderConfiguration#simpleAsyncTaskExecutorBuilder matched:
+      - @ConditionalOnMissingBean (types: org.springframework.boot.task.SimpleAsyncTaskExecutorBuilder; SearchStrategy: all) did not find any beans (OnBeanCondition)
+      - @ConditionalOnThreading found PLATFORM (OnThreadingCondition)
+
+   TaskExecutorConfigurations.TaskExecutorBuilderConfiguration#taskExecutorBuilder matched:
+      - @ConditionalOnMissingBean (types: org.springframework.boot.task.TaskExecutorBuilder; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   TaskExecutorConfigurations.TaskExecutorConfiguration matched:
+      - @ConditionalOnMissingBean (types: java.util.concurrent.Executor; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   TaskExecutorConfigurations.TaskExecutorConfiguration#applicationTaskExecutor matched:
+      - @ConditionalOnThreading found PLATFORM (OnThreadingCondition)
+
+   TaskExecutorConfigurations.ThreadPoolTaskExecutorBuilderConfiguration#threadPoolTaskExecutorBuilder matched:
+      - @ConditionalOnMissingBean (types: org.springframework.boot.task.TaskExecutorBuilder,org.springframework.boot.task.ThreadPoolTaskExecutorBuilder; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   TaskSchedulingAutoConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler' (OnClassCondition)
+
+   TaskSchedulingConfigurations.SimpleAsyncTaskSchedulerBuilderConfiguration#simpleAsyncTaskSchedulerBuilder matched:
+      - @ConditionalOnMissingBean (types: org.springframework.boot.task.SimpleAsyncTaskSchedulerBuilder; SearchStrategy: all) did not find any beans (OnBeanCondition)
+      - @ConditionalOnThreading found PLATFORM (OnThreadingCondition)
+
+   TaskSchedulingConfigurations.TaskSchedulerBuilderConfiguration#taskSchedulerBuilder matched:
+      - @ConditionalOnMissingBean (types: org.springframework.boot.task.TaskSchedulerBuilder; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   TaskSchedulingConfigurations.ThreadPoolTaskSchedulerBuilderConfiguration#threadPoolTaskSchedulerBuilder matched:
+      - @ConditionalOnMissingBean (types: org.springframework.boot.task.TaskSchedulerBuilder,org.springframework.boot.task.ThreadPoolTaskSchedulerBuilder; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   TransactionAutoConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.transaction.PlatformTransactionManager' (OnClassCondition)
+
+   TransactionAutoConfiguration.EnableTransactionManagementConfiguration matched:
+      - @ConditionalOnBean (types: org.springframework.transaction.TransactionManager; SearchStrategy: all) found bean 'transactionManager'; @ConditionalOnMissingBean (types: org.springframework.transaction.annotation.AbstractTransactionManagementConfiguration; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   TransactionAutoConfiguration.EnableTransactionManagementConfiguration.CglibAutoProxyConfiguration matched:
+      - @ConditionalOnProperty (spring.aop.proxy-target-class=true) matched (OnPropertyCondition)
+
+   TransactionAutoConfiguration.TransactionTemplateConfiguration matched:
+      - @ConditionalOnSingleCandidate (types: org.springframework.transaction.PlatformTransactionManager; SearchStrategy: all) found a single bean 'transactionManager' (OnBeanCondition)
+
+   TransactionAutoConfiguration.TransactionTemplateConfiguration#transactionTemplate matched:
+      - @ConditionalOnMissingBean (types: org.springframework.transaction.support.TransactionOperations; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   TransactionManagerCustomizationAutoConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.transaction.PlatformTransactionManager' (OnClassCondition)
+
+   TransactionManagerCustomizationAutoConfiguration#platformTransactionManagerCustomizers matched:
+      - @ConditionalOnMissingBean (types: org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizers; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   WebMvcAutoConfiguration matched:
+      - @ConditionalOnClass found required classes 'jakarta.servlet.Servlet', 'org.springframework.web.servlet.DispatcherServlet', 'org.springframework.web.servlet.config.annotation.WebMvcConfigurer' (OnClassCondition)
+      - found 'session' scope (OnWebApplicationCondition)
+      - @ConditionalOnMissingBean (types: org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   WebMvcAutoConfiguration#formContentFilter matched:
+      - @ConditionalOnProperty (spring.mvc.formcontent.filter.enabled) matched (OnPropertyCondition)
+      - @ConditionalOnMissingBean (types: org.springframework.web.filter.FormContentFilter; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   WebMvcAutoConfiguration.EnableWebMvcConfiguration#flashMapManager matched:
+      - @ConditionalOnMissingBean (names: flashMapManager; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   WebMvcAutoConfiguration.EnableWebMvcConfiguration#localeResolver matched:
+      - @ConditionalOnMissingBean (names: localeResolver; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   WebMvcAutoConfiguration.EnableWebMvcConfiguration#themeResolver matched:
+      - @ConditionalOnMissingBean (names: themeResolver; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter#defaultViewResolver matched:
+      - @ConditionalOnMissingBean (types: org.springframework.web.servlet.view.InternalResourceViewResolver; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter#requestContextFilter matched:
+      - @ConditionalOnMissingBean (types: org.springframework.web.context.request.RequestContextListener,org.springframework.web.filter.RequestContextFilter; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter#viewResolver matched:
+      - @ConditionalOnBean (types: org.springframework.web.servlet.ViewResolver; SearchStrategy: all) found beans 'defaultViewResolver', 'beanNameViewResolver', 'mvcViewResolver'; @ConditionalOnMissingBean (names: viewResolver types: org.springframework.web.servlet.view.ContentNegotiatingViewResolver; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   WebSocketServletAutoConfiguration matched:
+      - @ConditionalOnClass found required classes 'jakarta.servlet.Servlet', 'jakarta.websocket.server.ServerContainer' (OnClassCondition)
+      - found 'session' scope (OnWebApplicationCondition)
+
+   WebSocketServletAutoConfiguration.TomcatWebSocketConfiguration matched:
+      - @ConditionalOnClass found required classes 'org.apache.catalina.startup.Tomcat', 'org.apache.tomcat.websocket.server.WsSci' (OnClassCondition)
+
+   WebSocketServletAutoConfiguration.TomcatWebSocketConfiguration#websocketServletWebServerCustomizer matched:
+      - @ConditionalOnMissingBean (names: websocketServletWebServerCustomizer; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+
+Negative matches:
+-----------------
+
+   ActiveMQAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'jakarta.jms.ConnectionFactory' (OnClassCondition)
+
+   AopAutoConfiguration.AspectJAutoProxyingConfiguration.JdkDynamicAutoProxyConfiguration:
+      Did not match:
+         - @ConditionalOnProperty (spring.aop.proxy-target-class=false) did not find property 'proxy-target-class' (OnPropertyCondition)
+
+   AopAutoConfiguration.ClassProxyingConfiguration:
+      Did not match:
+         - @ConditionalOnMissingClass found unwanted class 'org.aspectj.weaver.Advice' (OnClassCondition)
+
+   ArtemisAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'jakarta.jms.ConnectionFactory' (OnClassCondition)
+
+   BatchAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.batch.core.launch.JobLauncher' (OnClassCondition)
+
+   Cache2kCacheConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.cache2k.Cache2kBuilder' (OnClassCondition)
+
+   CacheAutoConfiguration:
+      Did not match:
+         - @ConditionalOnBean (types: org.springframework.cache.interceptor.CacheAspectSupport; SearchStrategy: all) did not find any beans of type org.springframework.cache.interceptor.CacheAspectSupport (OnBeanCondition)
+      Matched:
+         - @ConditionalOnClass found required class 'org.springframework.cache.CacheManager' (OnClassCondition)
+
+   CacheAutoConfiguration.CacheManagerEntityManagerFactoryDependsOnPostProcessor:
+      Did not match:
+         - Ancestor org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration did not match (ConditionEvaluationReport.AncestorsMatchedCondition)
+      Matched:
+         - @ConditionalOnClass found required class 'org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean' (OnClassCondition)
+
+   CaffeineCacheConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'com.github.benmanes.caffeine.cache.Caffeine' (OnClassCondition)
+
+   CassandraAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'com.datastax.oss.driver.api.core.CqlSession' (OnClassCondition)
+
+   CassandraDataAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'com.datastax.oss.driver.api.core.CqlSession' (OnClassCondition)
+
+   CassandraReactiveDataAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'com.datastax.oss.driver.api.core.CqlSession' (OnClassCondition)
+
+   CassandraReactiveRepositoriesAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.data.cassandra.ReactiveSession' (OnClassCondition)
+
+   CassandraRepositoriesAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'com.datastax.oss.driver.api.core.CqlSession' (OnClassCondition)
+
+   ClientHttpConnectorAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.web.reactive.function.client.WebClient' (OnClassCondition)
+
+   CodecsAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.web.reactive.function.client.WebClient' (OnClassCondition)
+
+   CouchbaseAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'com.couchbase.client.java.Cluster' (OnClassCondition)
+
+   CouchbaseCacheConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'com.couchbase.client.java.Cluster' (OnClassCondition)
+
+   CouchbaseDataAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'com.couchbase.client.java.Bucket' (OnClassCondition)
+
+   CouchbaseReactiveDataAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'com.couchbase.client.java.Cluster' (OnClassCondition)
+
+   CouchbaseReactiveRepositoriesAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'com.couchbase.client.java.Cluster' (OnClassCondition)
+
+   CouchbaseRepositoriesAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'com.couchbase.client.java.Bucket' (OnClassCondition)
+
+   DataSourceAutoConfiguration.EmbeddedDatabaseConfiguration:
+      Did not match:
+         - EmbeddedDataSource spring.datasource.url is set (DataSourceAutoConfiguration.EmbeddedDatabaseCondition)
+
+   DataSourceCheckpointRestoreConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.crac.Resource' (OnClassCondition)
+
+   DataSourceConfiguration.Dbcp2:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.apache.commons.dbcp2.BasicDataSource' (OnClassCondition)
+
+   DataSourceConfiguration.Generic:
+      Did not match:
+         - @ConditionalOnProperty (spring.datasource.type) did not find property 'spring.datasource.type' (OnPropertyCondition)
+
+   DataSourceConfiguration.OracleUcp:
+      Did not match:
+         - @ConditionalOnClass did not find required classes 'oracle.ucp.jdbc.PoolDataSourceImpl', 'oracle.jdbc.OracleConnection' (OnClassCondition)
+
+   DataSourceConfiguration.Tomcat:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.apache.tomcat.jdbc.pool.DataSource' (OnClassCondition)
+
+   DataSourceJmxConfiguration.TomcatDataSourceJmxConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.apache.tomcat.jdbc.pool.DataSourceProxy' (OnClassCondition)
+
+   DataSourcePoolMetadataProvidersConfiguration.CommonsDbcp2PoolDataSourceMetadataProviderConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.apache.commons.dbcp2.BasicDataSource' (OnClassCondition)
+
+   DataSourcePoolMetadataProvidersConfiguration.OracleUcpPoolDataSourceMetadataProviderConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required classes 'oracle.ucp.jdbc.PoolDataSource', 'oracle.jdbc.OracleConnection' (OnClassCondition)
+
+   DataSourcePoolMetadataProvidersConfiguration.TomcatDataSourcePoolMetadataProviderConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.apache.tomcat.jdbc.pool.DataSource' (OnClassCondition)
+
+   DataSourceTransactionManagerAutoConfiguration.JdbcTransactionManagerConfiguration#transactionManager:
+      Did not match:
+         - @ConditionalOnMissingBean (types: org.springframework.transaction.TransactionManager; SearchStrategy: all) found beans of type 'org.springframework.transaction.TransactionManager' transactionManager (OnBeanCondition)
+
+   DevToolsR2dbcAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'io.r2dbc.spi.ConnectionFactory' (OnClassCondition)
+
+   DispatcherServletAutoConfiguration.DispatcherServletConfiguration#multipartResolver:
+      Did not match:
+         - @ConditionalOnBean (types: org.springframework.web.multipart.MultipartResolver; SearchStrategy: all) did not find any beans of type org.springframework.web.multipart.MultipartResolver (OnBeanCondition)
+
+   ElasticsearchClientAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'co.elastic.clients.elasticsearch.ElasticsearchClient' (OnClassCondition)
+
+   ElasticsearchDataAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.data.elasticsearch.client.elc.ElasticsearchTemplate' (OnClassCondition)
+
+   ElasticsearchRepositoriesAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.data.elasticsearch.repository.ElasticsearchRepository' (OnClassCondition)
+
+   ElasticsearchRestClientAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.elasticsearch.client.RestClientBuilder' (OnClassCondition)
+
+   EmbeddedLdapAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'com.unboundid.ldap.listener.InMemoryDirectoryServer' (OnClassCondition)
+
+   EmbeddedWebServerFactoryCustomizerAutoConfiguration.JettyWebServerFactoryCustomizerConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required classes 'org.eclipse.jetty.server.Server', 'org.eclipse.jetty.util.Loader', 'org.eclipse.jetty.ee10.webapp.WebAppContext' (OnClassCondition)
+
+   EmbeddedWebServerFactoryCustomizerAutoConfiguration.NettyWebServerFactoryCustomizerConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'reactor.netty.http.server.HttpServer' (OnClassCondition)
+
+   EmbeddedWebServerFactoryCustomizerAutoConfiguration.TomcatWebServerFactoryCustomizerConfiguration#tomcatVirtualThreadsProtocolHandlerCustomizer:
+      Did not match:
+         - @ConditionalOnThreading did not find VIRTUAL (OnThreadingCondition)
+
+   EmbeddedWebServerFactoryCustomizerAutoConfiguration.UndertowWebServerFactoryCustomizerConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required classes 'io.undertow.Undertow', 'org.xnio.SslClientAuthMode' (OnClassCondition)
+
+   ErrorWebFluxAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.web.reactive.config.WebFluxConfigurer' (OnClassCondition)
+
+   FlywayAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.flywaydb.core.Flyway' (OnClassCondition)
+
+   FreeMarkerAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'freemarker.template.Configuration' (OnClassCondition)
+
+   GraphQlAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'graphql.GraphQL' (OnClassCondition)
+
+   GraphQlQueryByExampleAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'graphql.GraphQL' (OnClassCondition)
+
+   GraphQlQuerydslAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'com.querydsl.core.Query' (OnClassCondition)
+
+   GraphQlRSocketAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'graphql.GraphQL' (OnClassCondition)
+
+   GraphQlReactiveQueryByExampleAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'graphql.GraphQL' (OnClassCondition)
+
+   GraphQlReactiveQuerydslAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'com.querydsl.core.Query' (OnClassCondition)
+
+   GraphQlWebFluxAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'graphql.GraphQL' (OnClassCondition)
+
+   GraphQlWebFluxSecurityAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'graphql.GraphQL' (OnClassCondition)
+
+   GraphQlWebMvcAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'graphql.GraphQL' (OnClassCondition)
+
+   GraphQlWebMvcSecurityAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'graphql.GraphQL' (OnClassCondition)
+
+   GroovyTemplateAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'groovy.text.markup.MarkupTemplateEngine' (OnClassCondition)
+
+   GsonAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'com.google.gson.Gson' (OnClassCondition)
+
+   GsonHttpMessageConvertersConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'com.google.gson.Gson' (OnClassCondition)
+
+   H2ConsoleAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.h2.server.web.JakartaWebServlet' (OnClassCondition)
+
+   HazelcastAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'com.hazelcast.core.HazelcastInstance' (OnClassCondition)
+
+   HazelcastCacheConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'com.hazelcast.core.HazelcastInstance' (OnClassCondition)
+
+   HazelcastJpaDependencyAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'com.hazelcast.core.HazelcastInstance' (OnClassCondition)
+
+   HttpHandlerAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.web.reactive.DispatcherHandler' (OnClassCondition)
+
+   HypermediaAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.hateoas.EntityModel' (OnClassCondition)
+
+   InfinispanCacheConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.infinispan.spring.embedded.provider.SpringEmbeddedCacheManager' (OnClassCondition)
+
+   InfluxDbAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.influxdb.InfluxDB' (OnClassCondition)
+
+   IntegrationAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.integration.config.EnableIntegration' (OnClassCondition)
+
+   JCacheCacheConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'javax.cache.Caching' (OnClassCondition)
+
+   JacksonHttpMessageConvertersConfiguration.MappingJackson2XmlHttpMessageConverterConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'com.fasterxml.jackson.dataformat.xml.XmlMapper' (OnClassCondition)
+
+   JdbcRepositoriesAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.data.jdbc.repository.config.AbstractJdbcConfiguration' (OnClassCondition)
+
+   JerseyAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.glassfish.jersey.server.spring.SpringComponentProvider' (OnClassCondition)
+
+   JmsAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'jakarta.jms.Message' (OnClassCondition)
+
+   JmxAutoConfiguration:
+      Did not match:
+         - @ConditionalOnProperty (spring.jmx.enabled=true) did not find property 'enabled' (OnPropertyCondition)
+      Matched:
+         - @ConditionalOnClass found required class 'org.springframework.jmx.export.MBeanExporter' (OnClassCondition)
+
+   JndiConnectionFactoryAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.jms.core.JmsTemplate' (OnClassCondition)
+
+   JndiDataSourceAutoConfiguration:
+      Did not match:
+         - @ConditionalOnProperty (spring.datasource.jndi-name) did not find property 'jndi-name' (OnPropertyCondition)
+      Matched:
+         - @ConditionalOnClass found required classes 'javax.sql.DataSource', 'org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType' (OnClassCondition)
+
+   JndiJtaConfiguration:
+      Did not match:
+         - @ConditionalOnJndi JNDI environment is not available (OnJndiCondition)
+      Matched:
+         - @ConditionalOnClass found required class 'org.springframework.transaction.jta.JtaTransactionManager' (OnClassCondition)
+
+   JooqAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.jooq.DSLContext' (OnClassCondition)
+
+   JpaRepositoriesAutoConfiguration#entityManagerFactoryBootstrapExecutorCustomizer:
+      Did not match:
+         - AnyNestedCondition 0 matched 2 did not; NestedCondition on JpaRepositoriesAutoConfiguration.BootstrapExecutorCondition.LazyBootstrapMode @ConditionalOnProperty (spring.data.jpa.repositories.bootstrap-mode=lazy) did not find property 'bootstrap-mode'; NestedCondition on JpaRepositoriesAutoConfiguration.BootstrapExecutorCondition.DeferredBootstrapMode @ConditionalOnProperty (spring.data.jpa.repositories.bootstrap-mode=deferred) did not find property 'bootstrap-mode' (JpaRepositoriesAutoConfiguration.BootstrapExecutorCondition)
+
+   JsonbAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'jakarta.json.bind.Jsonb' (OnClassCondition)
+
+   JsonbHttpMessageConvertersConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'jakarta.json.bind.Jsonb' (OnClassCondition)
+
+   KafkaAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.kafka.core.KafkaTemplate' (OnClassCondition)
+
+   LdapAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.ldap.core.ContextSource' (OnClassCondition)
+
+   LdapRepositoriesAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.data.ldap.repository.LdapRepository' (OnClassCondition)
+
+   MailSenderAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'jakarta.mail.internet.MimeMessage' (OnClassCondition)
+
+   MailSenderValidatorAutoConfiguration:
+      Did not match:
+         - @ConditionalOnSingleCandidate did not find required type 'org.springframework.mail.javamail.JavaMailSenderImpl' (OnBeanCondition)
+
+   MessageSourceAutoConfiguration:
+      Did not match:
+         - ResourceBundle did not find bundle with basename messages (MessageSourceAutoConfiguration.ResourceBundleCondition)
+
+   MongoAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'com.mongodb.client.MongoClient' (OnClassCondition)
+
+   MongoDataAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'com.mongodb.client.MongoClient' (OnClassCondition)
+
+   MongoReactiveAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'com.mongodb.reactivestreams.client.MongoClient' (OnClassCondition)
+
+   MongoReactiveDataAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'com.mongodb.reactivestreams.client.MongoClient' (OnClassCondition)
+
+   MongoReactiveRepositoriesAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'com.mongodb.reactivestreams.client.MongoClient' (OnClassCondition)
+
+   MongoRepositoriesAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'com.mongodb.client.MongoClient' (OnClassCondition)
+
+   MustacheAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'com.samskivert.mustache.Mustache' (OnClassCondition)
+
+   Neo4jAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.neo4j.driver.Driver' (OnClassCondition)
+
+   Neo4jDataAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.neo4j.driver.Driver' (OnClassCondition)
+
+   Neo4jReactiveDataAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.neo4j.driver.Driver' (OnClassCondition)
+
+   Neo4jReactiveRepositoriesAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.neo4j.driver.Driver' (OnClassCondition)
+
+   Neo4jRepositoriesAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.neo4j.driver.Driver' (OnClassCondition)
+
+   NettyAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'io.netty.util.NettyRuntime' (OnClassCondition)
+
+   OAuth2AuthorizationServerAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.security.oauth2.server.authorization.OAuth2Authorization' (OnClassCondition)
+
+   OAuth2AuthorizationServerJwtAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.security.oauth2.server.authorization.OAuth2Authorization' (OnClassCondition)
+
+   OAuth2ClientAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.security.config.annotation.web.configuration.EnableWebSecurity' (OnClassCondition)
+
+   OAuth2ResourceServerAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.security.oauth2.server.resource.authentication.BearerTokenAuthenticationToken' (OnClassCondition)
+
+   ProjectInfoAutoConfiguration#buildProperties:
+      Did not match:
+         - @ConditionalOnResource did not find resource '${spring.info.build.location:classpath:META-INF/build-info.properties}' (OnResourceCondition)
+
+   ProjectInfoAutoConfiguration#gitProperties:
+      Did not match:
+         - GitResource did not find git info at classpath:git.properties (ProjectInfoAutoConfiguration.GitResourceAvailableCondition)
+
+   PulsarAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.apache.pulsar.client.api.PulsarClient' (OnClassCondition)
+
+   PulsarReactiveAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.apache.pulsar.client.api.PulsarClient' (OnClassCondition)
+
+   QuartzAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.quartz.Scheduler' (OnClassCondition)
+
+   R2dbcAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'io.r2dbc.spi.ConnectionFactory' (OnClassCondition)
+
+   R2dbcDataAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.data.r2dbc.core.R2dbcEntityTemplate' (OnClassCondition)
+
+   R2dbcInitializationConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required classes 'io.r2dbc.spi.ConnectionFactory', 'org.springframework.r2dbc.connection.init.DatabasePopulator' (OnClassCondition)
+
+   R2dbcRepositoriesAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'io.r2dbc.spi.ConnectionFactory' (OnClassCondition)
+
+   R2dbcTransactionManagerAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.r2dbc.connection.R2dbcTransactionManager' (OnClassCondition)
+
+   RSocketGraphQlClientAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'graphql.GraphQL' (OnClassCondition)
+
+   RSocketMessagingAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'io.rsocket.RSocket' (OnClassCondition)
+
+   RSocketRequesterAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'io.rsocket.RSocket' (OnClassCondition)
+
+   RSocketSecurityAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.security.rsocket.core.SecuritySocketAcceptorInterceptor' (OnClassCondition)
+
+   RSocketServerAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'io.rsocket.core.RSocketServer' (OnClassCondition)
+
+   RSocketStrategiesAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'io.netty.buffer.PooledByteBufAllocator' (OnClassCondition)
+
+   RabbitAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'com.rabbitmq.client.Channel' (OnClassCondition)
+
+   ReactiveElasticsearchClientAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'co.elastic.clients.transport.ElasticsearchTransport' (OnClassCondition)
+
+   ReactiveElasticsearchRepositoriesAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.data.elasticsearch.client.elc.ReactiveElasticsearchClient' (OnClassCondition)
+
+   ReactiveMultipartAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.web.reactive.config.WebFluxConfigurer' (OnClassCondition)
+
+   ReactiveOAuth2ClientAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'reactor.core.publisher.Flux' (OnClassCondition)
+
+   ReactiveOAuth2ResourceServerAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity' (OnClassCondition)
+
+   ReactiveSecurityAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'reactor.core.publisher.Flux' (OnClassCondition)
+
+   ReactiveUserDetailsServiceAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.security.authentication.ReactiveAuthenticationManager' (OnClassCondition)
+
+   ReactiveWebServerFactoryAutoConfiguration:
+      Did not match:
+         - @ConditionalOnWebApplication did not find reactive web application classes (OnWebApplicationCondition)
+
+   ReactorAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'reactor.core.publisher.Hooks' (OnClassCondition)
+
+   RedisAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.data.redis.core.RedisOperations' (OnClassCondition)
+
+   RedisCacheConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.data.redis.connection.RedisConnectionFactory' (OnClassCondition)
+
+   RedisReactiveAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'reactor.core.publisher.Flux' (OnClassCondition)
+
+   RedisRepositoriesAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.data.redis.repository.configuration.EnableRedisRepositories' (OnClassCondition)
+
+   RemoteDevToolsAutoConfiguration:
+      Did not match:
+         - @ConditionalOnProperty (spring.devtools.remote.secret) did not find property 'secret' (OnPropertyCondition)
+      Matched:
+         - @ConditionalOnClass found required classes 'jakarta.servlet.Filter', 'org.springframework.http.server.ServerHttpRequest' (OnClassCondition)
+
+   RepositoryRestMvcAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguration' (OnClassCondition)
+
+   Saml2RelyingPartyAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.security.saml2.provider.service.registration.RelyingPartyRegistrationRepository' (OnClassCondition)
+
+   SecurityAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.security.authentication.DefaultAuthenticationEventPublisher' (OnClassCondition)
+
+   SecurityFilterAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.security.config.http.SessionCreationPolicy' (OnClassCondition)
+
+   SendGridAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'com.sendgrid.SendGrid' (OnClassCondition)
+
+   ServletWebServerFactoryAutoConfiguration.ForwardedHeaderFilterConfiguration:
+      Did not match:
+         - @ConditionalOnProperty (server.forward-headers-strategy=framework) did not find property 'server.forward-headers-strategy' (OnPropertyCondition)
+
+   ServletWebServerFactoryConfiguration.EmbeddedJetty:
+      Did not match:
+         - @ConditionalOnClass did not find required classes 'org.eclipse.jetty.server.Server', 'org.eclipse.jetty.util.Loader', 'org.eclipse.jetty.ee10.webapp.WebAppContext' (OnClassCondition)
+
+   ServletWebServerFactoryConfiguration.EmbeddedUndertow:
+      Did not match:
+         - @ConditionalOnClass did not find required classes 'io.undertow.Undertow', 'org.xnio.SslClientAuthMode' (OnClassCondition)
+
+   SessionAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.session.Session' (OnClassCondition)
+
+   SpringApplicationAdminJmxAutoConfiguration:
+      Did not match:
+         - @ConditionalOnProperty (spring.application.admin.enabled=true) did not find property 'enabled' (OnPropertyCondition)
+
+   TaskExecutorConfigurations.SimpleAsyncTaskExecutorBuilderConfiguration#simpleAsyncTaskExecutorBuilderVirtualThreads:
+      Did not match:
+         - @ConditionalOnMissingBean (types: org.springframework.boot.task.SimpleAsyncTaskExecutorBuilder; SearchStrategy: all) found beans of type 'org.springframework.boot.task.SimpleAsyncTaskExecutorBuilder' simpleAsyncTaskExecutorBuilder (OnBeanCondition)
+
+   TaskExecutorConfigurations.TaskExecutorConfiguration#applicationTaskExecutorVirtualThreads:
+      Did not match:
+         - @ConditionalOnThreading did not find VIRTUAL (OnThreadingCondition)
+
+   TaskSchedulingAutoConfiguration#scheduledBeanLazyInitializationExcludeFilter:
+      Did not match:
+         - @ConditionalOnBean (names: org.springframework.context.annotation.internalScheduledAnnotationProcessor; SearchStrategy: all) did not find any beans named org.springframework.context.annotation.internalScheduledAnnotationProcessor (OnBeanCondition)
+
+   TaskSchedulingConfigurations.SimpleAsyncTaskSchedulerBuilderConfiguration#simpleAsyncTaskSchedulerBuilderVirtualThreads:
+      Did not match:
+         - @ConditionalOnMissingBean (types: org.springframework.boot.task.SimpleAsyncTaskSchedulerBuilder; SearchStrategy: all) found beans of type 'org.springframework.boot.task.SimpleAsyncTaskSchedulerBuilder' simpleAsyncTaskSchedulerBuilder (OnBeanCondition)
+
+   TaskSchedulingConfigurations.TaskSchedulerConfiguration:
+      Did not match:
+         - @ConditionalOnBean (names: org.springframework.context.annotation.internalScheduledAnnotationProcessor; SearchStrategy: all) did not find any beans named org.springframework.context.annotation.internalScheduledAnnotationProcessor (OnBeanCondition)
+
+   ThymeleafAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.thymeleaf.spring6.SpringTemplateEngine' (OnClassCondition)
+
+   TransactionAutoConfiguration#transactionalOperator:
+      Did not match:
+         - @ConditionalOnSingleCandidate (types: org.springframework.transaction.ReactiveTransactionManager; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   TransactionAutoConfiguration.AspectJTransactionManagementConfiguration:
+      Did not match:
+         - @ConditionalOnBean (types: org.springframework.transaction.aspectj.AbstractTransactionAspect; SearchStrategy: all) did not find any beans of type org.springframework.transaction.aspectj.AbstractTransactionAspect (OnBeanCondition)
+
+   TransactionAutoConfiguration.EnableTransactionManagementConfiguration.JdkDynamicAutoProxyConfiguration:
+      Did not match:
+         - @ConditionalOnProperty (spring.aop.proxy-target-class=false) did not find property 'proxy-target-class' (OnPropertyCondition)
+
+   UserDetailsServiceAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.security.authentication.AuthenticationManager' (OnClassCondition)
+
+   ValidationAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'jakarta.validation.executable.ExecutableValidator' (OnClassCondition)
+
+   WebClientAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.web.reactive.function.client.WebClient' (OnClassCondition)
+
+   WebFluxAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.web.reactive.config.WebFluxConfigurer' (OnClassCondition)
+
+   WebMvcAutoConfiguration#hiddenHttpMethodFilter:
+      Did not match:
+         - @ConditionalOnProperty (spring.mvc.hiddenmethod.filter.enabled) did not find property 'enabled' (OnPropertyCondition)
+
+   WebMvcAutoConfiguration.ProblemDetailsErrorHandlingConfiguration:
+      Did not match:
+         - @ConditionalOnProperty (spring.mvc.problemdetails.enabled=true) did not find property 'enabled' (OnPropertyCondition)
+
+   WebMvcAutoConfiguration.ResourceChainCustomizerConfiguration:
+      Did not match:
+         - @ConditionalOnEnabledResourceChain did not find class org.webjars.WebJarAssetLocator (OnEnabledResourceChainCondition)
+
+   WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter#beanNameViewResolver:
+      Did not match:
+         - @ConditionalOnMissingBean (types: org.springframework.web.servlet.view.BeanNameViewResolver; SearchStrategy: all) found beans of type 'org.springframework.web.servlet.view.BeanNameViewResolver' beanNameViewResolver (OnBeanCondition)
+
+   WebServiceTemplateAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.oxm.Marshaller' (OnClassCondition)
+
+   WebServicesAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.ws.transport.http.MessageDispatcherServlet' (OnClassCondition)
+
+   WebSessionIdResolverAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'reactor.core.publisher.Mono' (OnClassCondition)
+
+   WebSocketMessagingAutoConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer' (OnClassCondition)
+
+   WebSocketReactiveAutoConfiguration:
+      Did not match:
+         - @ConditionalOnWebApplication did not find reactive web application classes (OnWebApplicationCondition)
+
+   WebSocketServletAutoConfiguration.JettyWebSocketConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.eclipse.jetty.ee10.websocket.jakarta.server.config.JakartaWebSocketServletContainerInitializer' (OnClassCondition)
+
+   WebSocketServletAutoConfiguration.UndertowWebSocketConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'io.undertow.websockets.jsr.Bootstrap' (OnClassCondition)
+
+   XADataSourceAutoConfiguration:
+      Did not match:
+         - @ConditionalOnBean (types: org.springframework.boot.jdbc.XADataSourceWrapper; SearchStrategy: all) did not find any beans of type org.springframework.boot.jdbc.XADataSourceWrapper (OnBeanCondition)
+      Matched:
+         - @ConditionalOnClass found required classes 'javax.sql.DataSource', 'jakarta.transaction.TransactionManager', 'org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType' (OnClassCondition)
+
+
+Exclusions:
+-----------
+
+    None
+
+
+Unconditional classes:
+----------------------
+
+    org.springframework.boot.autoconfigure.context.ConfigurationPropertiesAutoConfiguration
+
+    org.springframework.boot.autoconfigure.ssl.SslAutoConfiguration
+
+    org.springframework.boot.autoconfigure.context.LifecycleAutoConfiguration
+
+    org.springframework.boot.autoconfigure.context.PropertyPlaceholderAutoConfiguration
+
+    org.springframework.boot.autoconfigure.availability.ApplicationAvailabilityAutoConfiguration
+
+    org.springframework.boot.autoconfigure.info.ProjectInfoAutoConfiguration
+
+
+
+2024-01-05 21:08:16 ERROR SpringApplication:855 - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.ChangeLogParseException: ERROR: The file 'classpath:/db.changelog/db.changelog-master.xml' was not found.
+The file property cannot be configured with a fully qualified path, but must be a relative path on the property,
+and any local or remote base of the path set on the search path.
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1773) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:312) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1232) ~[spring-context-6.1.2.jar:6.1.2]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:950) ~[spring-context-6.1.2.jar:6.1.2]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625) ~[spring-context-6.1.2.jar:6.1.2]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:762) [spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:464) [spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334) [spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1358) [spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1347) [spring-boot-3.2.1.jar:3.2.1]
+	at net.sparkminds.librarymanagement.LibraryManagementApplication.main(LibraryManagementApplication.java:10) [classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578) ~[?:?]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) [spring-boot-devtools-3.2.1.jar:3.2.1]
+Caused by: liquibase.exception.CommandExecutionException: liquibase.exception.ChangeLogParseException: ERROR: The file 'classpath:/db.changelog/db.changelog-master.xml' was not found.
+The file property cannot be configured with a fully qualified path, but must be a relative path on the property,
+and any local or remote base of the path set on the search path.
+	at liquibase.command.CommandScope.execute(CommandScope.java:237) ~[liquibase-core-4.24.0.jar:?]
+	at liquibase.Liquibase.lambda$update$0(Liquibase.java:222) ~[liquibase-core-4.24.0.jar:?]
+	at liquibase.Scope.lambda$child$0(Scope.java:184) ~[liquibase-core-4.24.0.jar:?]
+	at liquibase.Scope.child(Scope.java:193) ~[liquibase-core-4.24.0.jar:?]
+	at liquibase.Scope.child(Scope.java:183) ~[liquibase-core-4.24.0.jar:?]
+	at liquibase.Scope.child(Scope.java:162) ~[liquibase-core-4.24.0.jar:?]
+	at liquibase.Liquibase.runInScope(Liquibase.java:1371) ~[liquibase-core-4.24.0.jar:?]
+	at liquibase.Liquibase.update(Liquibase.java:211) ~[liquibase-core-4.24.0.jar:?]
+	at liquibase.Liquibase.update(Liquibase.java:193) ~[liquibase-core-4.24.0.jar:?]
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:331) ~[liquibase-core-4.24.0.jar:?]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:286) ~[liquibase-core-4.24.0.jar:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1820) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1769) ~[spring-beans-6.1.2.jar:6.1.2]
+	... 21 more
+Caused by: liquibase.exception.ChangeLogParseException: ERROR: The file 'classpath:/db.changelog/db.changelog-master.xml' was not found.
+The file property cannot be configured with a fully qualified path, but must be a relative path on the property,
+and any local or remote base of the path set on the search path.
+	at liquibase.parser.core.xml.XMLChangeLogSAXParser.parseToNode(XMLChangeLogSAXParser.java:114) ~[liquibase-core-4.24.0.jar:?]
+	at liquibase.parser.core.xml.AbstractChangeLogParser.parse(AbstractChangeLogParser.java:15) ~[liquibase-core-4.24.0.jar:?]
+	at liquibase.command.core.helpers.DatabaseChangelogCommandStep.lambda$getDatabaseChangeLog$0(DatabaseChangelogCommandStep.java:129) ~[liquibase-core-4.24.0.jar:?]
+	at liquibase.Scope.child(Scope.java:193) ~[liquibase-core-4.24.0.jar:?]
+	at liquibase.Scope.child(Scope.java:169) ~[liquibase-core-4.24.0.jar:?]
+	at liquibase.command.core.helpers.DatabaseChangelogCommandStep.getDatabaseChangeLog(DatabaseChangelogCommandStep.java:128) ~[liquibase-core-4.24.0.jar:?]
+	at liquibase.command.core.helpers.DatabaseChangelogCommandStep.run(DatabaseChangelogCommandStep.java:87) ~[liquibase-core-4.24.0.jar:?]
+	at liquibase.command.CommandScope.execute(CommandScope.java:214) ~[liquibase-core-4.24.0.jar:?]
+	at liquibase.Liquibase.lambda$update$0(Liquibase.java:222) ~[liquibase-core-4.24.0.jar:?]
+	at liquibase.Scope.lambda$child$0(Scope.java:184) ~[liquibase-core-4.24.0.jar:?]
+	at liquibase.Scope.child(Scope.java:193) ~[liquibase-core-4.24.0.jar:?]
+	at liquibase.Scope.child(Scope.java:183) ~[liquibase-core-4.24.0.jar:?]
+	at liquibase.Scope.child(Scope.java:162) ~[liquibase-core-4.24.0.jar:?]
+	at liquibase.Liquibase.runInScope(Liquibase.java:1371) ~[liquibase-core-4.24.0.jar:?]
+	at liquibase.Liquibase.update(Liquibase.java:211) ~[liquibase-core-4.24.0.jar:?]
+	at liquibase.Liquibase.update(Liquibase.java:193) ~[liquibase-core-4.24.0.jar:?]
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:331) ~[liquibase-core-4.24.0.jar:?]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:286) ~[liquibase-core-4.24.0.jar:?]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1820) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1769) ~[spring-beans-6.1.2.jar:6.1.2]
+	... 21 more
