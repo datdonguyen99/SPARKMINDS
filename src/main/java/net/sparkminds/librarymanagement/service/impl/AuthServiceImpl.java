@@ -1,23 +1,26 @@
 package net.sparkminds.librarymanagement.service.impl;
 
+import lombok.RequiredArgsConstructor;
 import net.sparkminds.librarymanagement.entity.User;
 import net.sparkminds.librarymanagement.payload.RegisterDTO;
 import net.sparkminds.librarymanagement.repository.UserRepository;
 import net.sparkminds.librarymanagement.service.AuthService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class AuthServiceImpl implements AuthService {
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    public AuthServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+    private final PasswordEncoder passwordEncoder;
+
 
     @Override
     public String register(RegisterDTO registerDTO) {
         // check for email exists in db
-        if (userRepository.existsByEmail(registerDTO.getEmail())) {
+        boolean existEmail = userRepository.existsByEmail(registerDTO.getEmail());
+        if (existEmail) {
             throw new RuntimeException("Email is already exist!");
         }
 
@@ -25,11 +28,12 @@ public class AuthServiceImpl implements AuthService {
         User user = User.builder()
                 .name(registerDTO.getName())
                 .email(registerDTO.getEmail())
-                .password(registerDTO.getPassword())
+                .password(passwordEncoder.encode(registerDTO.getPassword()))
                 .build();
 
         // save user entity to db
         userRepository.save(user);
+
         return "User registered successfully!";
     }
 }
