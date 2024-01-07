@@ -1,5 +1,6 @@
 package net.sparkminds.librarymanagement.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import net.sparkminds.librarymanagement.payload.RegisterDTO;
 import net.sparkminds.librarymanagement.service.AuthService;
@@ -16,10 +17,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
     private final AuthService authService;
 
-    // register REST API
+    /**
+     * register user
+     *
+     * @param registerDTO registerDTO
+     * @return {@link ResponseEntity}
+     * @see String
+     */
     @PostMapping(value = {"/register", "/sign-up"})
-    public ResponseEntity<String> register(@RequestBody RegisterDTO registerDTO) {
-        String response = authService.register(registerDTO);
-        return new ResponseEntity<>(response, HttpStatus.CREATED);
+    public ResponseEntity<String> register(@RequestBody @Valid RegisterDTO registerDTO) {
+        return new ResponseEntity<>(authService.register(registerDTO), HttpStatus.CREATED);
     }
 }
