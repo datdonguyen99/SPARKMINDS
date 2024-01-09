@@ -2,9 +2,11 @@ package net.sparkminds.librarymanagement.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import net.sparkminds.librarymanagement.entity.User;
+import net.sparkminds.librarymanagement.exception.LibraryManagementException;
 import net.sparkminds.librarymanagement.payload.RegisterDTO;
 import net.sparkminds.librarymanagement.repository.UserRepository;
 import net.sparkminds.librarymanagement.service.AuthService;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +23,7 @@ public class AuthServiceImpl implements AuthService {
         // check for email exists in db
         boolean existEmail = userRepository.existsByEmail(registerDTO.getEmail());
         if (existEmail) {
-            throw new RuntimeException("Email is already exist!");
+            throw new LibraryManagementException(HttpStatus.BAD_REQUEST, "Email is already exist!");
         }
 
         // create user entity using Builder pattern
