@@ -1,5 +1,6 @@
 package net.sparkminds.librarymanagement.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -12,16 +13,20 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.JoinColumn;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.BatchSize;
 
 import java.util.Set;
 
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 @Builder
@@ -38,19 +43,33 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "name", length = 50)
+    @Size(min = 1, max = 50)
     private String name;
 
     // email required notnull and unique to use authorize
-    @Column(nullable = false, unique = true)
+    @Email
+    @NotNull
+    @Column(name = "email", unique = true, length = 254)
+    @Size(min = 5, max = 254)
     private String email;
 
-    @Column(nullable = false)
+    @JsonIgnore
+    @NotNull
+    @Column(name = "password_hash", nullable = false, length = 60)
+    @Size(min = 6, max = 60)
     private String password;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")
     )
+    @BatchSize(size = 20)
     private Set<Role> roles;
+
+    @NotNull
+    @Column(name = "enabled", nullable = false)
+    private boolean enabled;
 }

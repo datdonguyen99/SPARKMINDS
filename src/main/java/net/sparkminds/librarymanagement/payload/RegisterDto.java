@@ -12,7 +12,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class RegisterDTO {
+public class RegisterDto {
+    @Size(min = 1, max = 50, message = "Name must be between 1 and 50 characters")
     private String name;
 
     @NotEmpty(message = "Email field is required")
