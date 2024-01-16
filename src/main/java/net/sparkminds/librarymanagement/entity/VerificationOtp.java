@@ -6,7 +6,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ForeignKey;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Table;
@@ -31,15 +30,16 @@ import static net.sparkminds.librarymanagement.utils.AppConstants.EXPIRATION;
 public class VerificationOtp {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "otp", length = 6)
     @Size(min = 6, max = 6)
     private String otp;
 
-    @OneToOne(targetEntity = User.class, fetch = FetchType.EAGER)
-    @JoinColumn(nullable = false, name = "user_id", foreignKey = @ForeignKey(name = "FK_VERIFY_OTP_USER"))
-    private User user;
+    @OneToOne(targetEntity = Account.class, fetch = FetchType.LAZY)
+    @JoinColumn(nullable = false, name = "account_id", referencedColumnName = "id")
+    private Account account;
 
     @Column(name = "expire_date")
     @Future
@@ -57,10 +57,10 @@ public class VerificationOtp {
         this.expiryDate = calculateExpiryDate(EXPIRATION);
     }
 
-    public VerificationOtp(final User user, final String otp) {
+    public VerificationOtp(final Account account, final String otp) {
         super();
         this.otp = otp;
-        this.user = user;
+        this.account = account;
         this.expiryDate = calculateExpiryDate(EXPIRATION);
     }
 

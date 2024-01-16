@@ -6,12 +6,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ForeignKey;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Future;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -32,15 +30,16 @@ import static net.sparkminds.librarymanagement.utils.AppConstants.EXPIRATION;
 public class VerificationToken {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "token", unique = true, length = 50)
     @Size(min = 1, max = 50)
     private String token;
 
-    @OneToOne(targetEntity = User.class, fetch = FetchType.EAGER)
-    @JoinColumn(nullable = false, name = "user_id", foreignKey = @ForeignKey(name = "FK_VERIFY_TOKEN_USER"))
-    private User user;
+    @OneToOne(targetEntity = Account.class, fetch = FetchType.LAZY)
+    @JoinColumn(nullable = false, name = "account_id", referencedColumnName = "id")
+    private Account account;
 
     @Column(name = "expire_date")
     @Future
@@ -58,10 +57,10 @@ public class VerificationToken {
         this.expiryDate = calculateExpiryDate(EXPIRATION);
     }
 
-    public VerificationToken(final User user, final String token) {
+    public VerificationToken(final Account account, final String token) {
         super();
         this.token = token;
-        this.user = user;
+        this.account = account;
         this.expiryDate = calculateExpiryDate(EXPIRATION);
     }
 

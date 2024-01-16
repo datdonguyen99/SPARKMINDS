@@ -5,6 +5,7 @@ import freemarker.template.TemplateException;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
+import net.sparkminds.librarymanagement.entity.Account;
 import net.sparkminds.librarymanagement.entity.User;
 import net.sparkminds.librarymanagement.exception.ResourceInvalidException;
 import net.sparkminds.librarymanagement.exception.ResourceNotFoundException;
@@ -33,14 +34,14 @@ public class MailSenderServiceImpl implements MailSenderService {
     private final VerificationOtpRepository otpRepository;
 
     @Override
-    public void sendVerificationEmail(User user, String siteURL) {
-        String toAddress = user.getEmail();
+    public void sendVerificationEmail(Account account, String siteURL) {
+        String toAddress = account.getEmail();
         String fromAddress = "datdn@automail.com";
         String senderName = "Automatic-Verify-Mail";
         String subject = "Please verify your registration!";
-        String verifyURL = siteURL + "/verify/token?code=" + tokenRepository.findByUser(user).getToken();
-        String otp = otpRepository.findByUser(user).getOtp();
-        String emailContent = getEmailContent(user, verifyURL, otp);
+        String verifyURL = siteURL + "/verify/token?code=" + tokenRepository.findByAccount(account).getToken();
+        String otp = otpRepository.findByAccount(account).getOtp();
+        String emailContent = getEmailContent(account, verifyURL, otp);
         MimeMessage message = javaMailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message);
 
@@ -58,12 +59,12 @@ public class MailSenderServiceImpl implements MailSenderService {
         javaMailSender.send(message);
     }
 
-    private String getEmailContent(User user, String verifyURL, String otp) {
+    private String getEmailContent(Account account, String verifyURL, String otp) {
         StringWriter stringWriter = new StringWriter();
         Map<String, Object> model = new HashMap<>();
         Configuration configuration = new Configuration(Configuration.DEFAULT_INCOMPATIBLE_IMPROVEMENTS);
 
-        model.put("user", user);
+        model.put("user", account);
         model.put("verifyURL", verifyURL);
         model.put("otp", otp);
 

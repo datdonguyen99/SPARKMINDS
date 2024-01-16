@@ -1,6 +1,7 @@
 package net.sparkminds.librarymanagement.service.impl;
 
 import lombok.RequiredArgsConstructor;
+import net.sparkminds.librarymanagement.entity.Account;
 import net.sparkminds.librarymanagement.entity.Role;
 import net.sparkminds.librarymanagement.entity.User;
 import net.sparkminds.librarymanagement.entity.VerificationOtp;
@@ -16,14 +17,15 @@ import net.sparkminds.librarymanagement.repository.VerificationTokenRepository;
 import net.sparkminds.librarymanagement.service.MailSenderService;
 import net.sparkminds.librarymanagement.service.RegisterService;
 import net.sparkminds.librarymanagement.utils.RoleName;
+import net.sparkminds.librarymanagement.utils.Status;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.text.DecimalFormat;
 import java.util.Random;
 import java.util.UUID;
 import java.util.Calendar;
-import java.util.Collections;
 
 import static net.sparkminds.librarymanagement.utils.AppConstants.*;
 
@@ -47,6 +49,7 @@ public class RegisterServiceImpl implements RegisterService {
     private static String decimalFormat = "000000";
 
     @Override
+    @Transactional
     public void register(RegisterDto registerDTO) {
         // check for email exists in db
         boolean existEmail = userRepository.existsByEmail(registerDTO.getEmail());
@@ -54,18 +57,17 @@ public class RegisterServiceImpl implements RegisterService {
             throw new ResourceInvalidException("Email already existed in the system", "user.email.email-existed");
         }
 
-        // create user entity using Builder pattern
         User user = User.builder()
                 .name(registerDTO.getName())
                 .email(registerDTO.getEmail())
                 .password(passwordEncoder.encode(registerDTO.getPassword()))
-                .enabled(false)
+                .status(Status.INACTIVE)
                 .build();
 
         // set role is USER by default
         Role role = roleRepository.findByRoleName(RoleName.ROLE_USER)
                 .orElseThrow(() -> new ResourceNotFoundException("Role not existed", "user.role.role-not-existed"));
-        user.setRoles(Collections.singleton(role));
+        user.setRole(role);
 
         // save user entity to db
         userRepository.save(user);
@@ -83,8 +85,8 @@ public class RegisterServiceImpl implements RegisterService {
     }
 
     @Override
-    public void createVerificationTokenForUser(final User user, final String token) {
-        final VerificationToken myToken = new VerificationToken(user, token);
+    public void createVerificationTokenForUser(final Account account, final String token) {
+        final VerificationToken myToken = new VerificationToken(account, token);
         tokenRepository.save(myToken);
     }
 
@@ -125,7 +127,7 @@ public class RegisterServiceImpl implements RegisterService {
             return TOKEN_INVALID;
         } else if (validateToken.equals(TOKEN_EXPIRE)) {
             User user = userRepository.findByVerificationToken(token);
-            if (user != null && !user.isEnabled()) {
+            if (user != null && user.getStatus().equals(Status.INACTIVE)) {
                 // update new token for user
                 tokenRepository.save(generateNewVerificationToken(token));
 
@@ -136,8 +138,8 @@ public class RegisterServiceImpl implements RegisterService {
             }
         } else {
             User user = userRepository.findByVerificationToken(token);
-            if (user != null && !user.isEnabled()) {
-                user.setEnabled(true);
+            if (user != null && user.getStatus().equals(Status.INACTIVE)) {
+                user.setStatus(Status.ACTIVE);
                 userRepository.save(user);
 
                 return TOKEN_VALID;
@@ -148,7 +150,7 @@ public class RegisterServiceImpl implements RegisterService {
     }
 
     @Override
-    public void createVerificationOtpForUser(final User user, final String otp) {
+    public void createVerificationOtpForUser(final Account user, final String otp) {
         final VerificationOtp myOtp = new VerificationOtp(user, otp);
         otpRepository.save(myOtp);
     }
@@ -190,7 +192,7 @@ public class RegisterServiceImpl implements RegisterService {
             return OTP_INVALID;
         } else if (validateOtp.equals(OTP_EXPIRE)) {
             User user = userRepository.findByVerificationOtp(otpDto.getOtp());
-            if (user != null && !user.isEnabled()) {
+            if (user != null && user.getStatus().equals(Status.INACTIVE)) {
                 // update new OTP for user
                 otpRepository.save(generateNewVerificationOtp(otpDto.getOtp()));
 
@@ -201,8 +203,8 @@ public class RegisterServiceImpl implements RegisterService {
             }
         } else {
             User user = userRepository.findByVerificationOtp(otpDto.getOtp());
-            if (user != null && !user.isEnabled()) {
-                user.setEnabled(true);
+            if (user != null && user.getStatus().equals(Status.INACTIVE)) {
+                user.setStatus(Status.ACTIVE);
                 userRepository.save(user);
 
                 return OTP_VALID;
