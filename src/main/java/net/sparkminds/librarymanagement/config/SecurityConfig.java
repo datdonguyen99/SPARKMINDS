@@ -47,7 +47,7 @@ public class SecurityConfig {
         http
                 .csrf(CsrfConfigurer::disable)        // Disable CSRF protection
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers(HttpMethod.GET, "api/v1/**").permitAll()        // Allow unauthenticated access to GET requests under "api/v1/"
+                        .requestMatchers("api/v1/**").permitAll()        // Allow unauthenticated access to GET requests under "api/v1/"
                         .requestMatchers("/api/v1/auth/**").permitAll()        // Allow unauthenticated access to requests under "/api/v1/auth/"
                         .anyRequest().authenticated()        // Require authentication for any other request
                 );

@@ -1,6 +1,7 @@
 package net.sparkminds.librarymanagement.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.GeneratedValue;
@@ -15,11 +16,11 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
-import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
@@ -31,9 +32,7 @@ import net.sparkminds.librarymanagement.utils.Status;
 @Setter
 @SuperBuilder
 @Entity
-@Table(name = "accounts", uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"email"})
-})
+@Table(name = "accounts", uniqueConstraints = {@UniqueConstraint(columnNames = {"email"})})
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Account {
     /**
@@ -45,13 +44,12 @@ public class Account {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "name", length = 50)
+    @Column(name = "username", length = 50)
     @Size(min = 1, max = 50)
-    private String name;
+    private String username;
 
-    // email required notnull and unique to use authorize
-    @Email
     @NotNull
+    @Pattern(regexp = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$", message = "Invalid email format")
     @Column(name = "email", unique = true, length = 254)
     @Size(min = 5, max = 254)
     private String email;
@@ -67,7 +65,13 @@ public class Account {
     @Column(name = "status", nullable = false)
     private Status status;
 
-    @ManyToOne(targetEntity = Role.class, fetch = FetchType.LAZY)
+    @ManyToOne(targetEntity = Role.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = false, name = "role_id", referencedColumnName = "id")
     private Role role;
+
+    @OneToOne(mappedBy = "account", fetch = FetchType.EAGER)
+    private VerificationToken verificationToken;
+
+    @OneToOne(mappedBy = "account", fetch = FetchType.EAGER)
+    private VerificationOtp verificationOtp;
 }

@@ -3,8 +3,10 @@ package net.sparkminds.librarymanagement.controller.common;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import net.sparkminds.librarymanagement.exception.ResourceInvalidException;
-import net.sparkminds.librarymanagement.payload.OtpDto;
-import net.sparkminds.librarymanagement.payload.RegisterDto;
+import net.sparkminds.librarymanagement.payload.request.OtpDto;
+import net.sparkminds.librarymanagement.payload.request.RegisterDto;
+import net.sparkminds.librarymanagement.payload.request.ResendDto;
+import net.sparkminds.librarymanagement.payload.response.MessageResponse;
 import net.sparkminds.librarymanagement.service.RegisterService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import static net.sparkminds.librarymanagement.utils.AppConstants.*;
 
 @RestController
-@RequestMapping("api/v1/auth")
+@RequestMapping("api/v1/")
 @RequiredArgsConstructor
 public class RegisterController {
     private final RegisterService registerService;
@@ -30,9 +32,9 @@ public class RegisterController {
      * @return {@link ResponseEntity}
      */
     @PostMapping(value = {"/register", "/sign-up"})
-    public ResponseEntity<Object> register(@RequestBody @Valid RegisterDto registerDTO) {
+    public ResponseEntity<Void> register(@RequestBody @Valid RegisterDto registerDTO) {
         registerService.register(registerDTO);
-        return new ResponseEntity<>("Register successfully!", HttpStatus.CREATED);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     /**
@@ -42,25 +44,18 @@ public class RegisterController {
      * @return {@link ResponseEntity}
      */
     @GetMapping("/verify/token")
-    public ResponseEntity<Object> verifyUserByToken(@RequestParam("code") String code) {
+    public ResponseEntity<MessageResponse> verifyUserByToken(@RequestParam("code") String code) {
         String tokenStatus = registerService.verifyToken(code);
-        ResponseEntity<Object> response;
+        ResponseEntity<MessageResponse> response;
 
-        switch (tokenStatus) {
-            case "":
-                throw new ResourceInvalidException("User already enabled", "");
-
-            case TOKEN_INVALID:
-                response = new ResponseEntity<>("Verify email fail, token invalid!", HttpStatus.UNAUTHORIZED);
-                break;
-
-            case TOKEN_EXPIRE:
-                response = new ResponseEntity<>("Verify email fail, token expire!", HttpStatus.FORBIDDEN);
-                break;
-
-            default:
-                response = new ResponseEntity<>("Verify email successfully!", HttpStatus.OK);
-                break;
+        if (tokenStatus.equals(TOKEN_INVALID)) {
+            response = new ResponseEntity<>(new MessageResponse("Verify email fail, token invalid!"), HttpStatus.UNAUTHORIZED);
+        } else if (tokenStatus.equals(TOKEN_EXPIRE)) {
+            response = new ResponseEntity<>(new MessageResponse("Verify email fail, token expire!"), HttpStatus.FORBIDDEN);
+        } else if (tokenStatus.equals(TOKEN_VALID)) {
+            response = new ResponseEntity<>(new MessageResponse("Verify email successfully!"), HttpStatus.OK);
+        } else {
+            throw new ResourceInvalidException("User already enabled", "");
         }
 
         return response;
@@ -73,20 +68,44 @@ public class RegisterController {
      * @return {@link ResponseEntity}
      */
     @PostMapping("/verify/otp")
-    public ResponseEntity<Object> verifyUserByOtp(@RequestBody @Valid OtpDto otpDto) {
+    public ResponseEntity<MessageResponse> verifyUserByOtp(@RequestBody @Valid OtpDto otpDto) {
         String otpStatus = registerService.verifyOtp(otpDto);
-        ResponseEntity<Object> response;
+        ResponseEntity<MessageResponse> response;
 
         if (otpStatus.equals(OTP_INVALID)) {
-            response = new ResponseEntity<>("Verify email fail, OTP invalid!", HttpStatus.UNAUTHORIZED);
+            response = new ResponseEntity<>(new MessageResponse("Verify email fail, OTP invalid!"), HttpStatus.UNAUTHORIZED);
         } else if (otpStatus.equals(OTP_EXPIRE)) {
-            response = new ResponseEntity<>("Verify email fail, OTP expire!", HttpStatus.FORBIDDEN);
+            response = new ResponseEntity<>(new MessageResponse("Verify email fail, OTP expire!"), HttpStatus.FORBIDDEN);
         } else if (otpStatus.equals(OTP_VALID)) {
-            response = new ResponseEntity<>("Verify email successfully!", HttpStatus.OK);
+            response = new ResponseEntity<>(new MessageResponse("Verify email successfully!"), HttpStatus.OK);
         } else {
             throw new ResourceInvalidException("User already enabled", "");
         }
 
         return response;
+    }
+
+    /**
+     * resend token
+     *
+     * @param resendDto resendDto
+     * @return {@link ResponseEntity}
+     */
+    @PostMapping("/resend/token")
+    public ResponseEntity<Void> resendToken(@RequestBody @Valid ResendDto resendDto) {
+        registerService.resendToken(resendDto);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    /**
+     * resend otp
+     *
+     * @param resendDto resendDto
+     * @return {@link ResponseEntity}
+     */
+    @PostMapping("/resend/otp")
+    public ResponseEntity<Void> resendOtp(@RequestBody @Valid ResendDto resendDto) {
+        registerService.resendOTP(resendDto);
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 }

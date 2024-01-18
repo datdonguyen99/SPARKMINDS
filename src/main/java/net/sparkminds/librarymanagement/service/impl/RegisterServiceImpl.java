@@ -1,15 +1,16 @@
 package net.sparkminds.librarymanagement.service.impl;
 
 import lombok.RequiredArgsConstructor;
-import net.sparkminds.librarymanagement.entity.Account;
-import net.sparkminds.librarymanagement.entity.Role;
 import net.sparkminds.librarymanagement.entity.User;
-import net.sparkminds.librarymanagement.entity.VerificationOtp;
 import net.sparkminds.librarymanagement.entity.VerificationToken;
+import net.sparkminds.librarymanagement.entity.VerificationOtp;
+import net.sparkminds.librarymanagement.entity.Role;
+import net.sparkminds.librarymanagement.entity.Account;
 import net.sparkminds.librarymanagement.exception.ResourceInvalidException;
 import net.sparkminds.librarymanagement.exception.ResourceNotFoundException;
-import net.sparkminds.librarymanagement.payload.OtpDto;
-import net.sparkminds.librarymanagement.payload.RegisterDto;
+import net.sparkminds.librarymanagement.payload.request.OtpDto;
+import net.sparkminds.librarymanagement.payload.request.RegisterDto;
+import net.sparkminds.librarymanagement.payload.request.ResendDto;
 import net.sparkminds.librarymanagement.repository.RoleRepository;
 import net.sparkminds.librarymanagement.repository.UserRepository;
 import net.sparkminds.librarymanagement.repository.VerificationOtpRepository;
@@ -20,7 +21,6 @@ import net.sparkminds.librarymanagement.utils.RoleName;
 import net.sparkminds.librarymanagement.utils.Status;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.text.DecimalFormat;
 import java.util.Random;
@@ -49,7 +49,6 @@ public class RegisterServiceImpl implements RegisterService {
     private static String decimalFormat = "000000";
 
     @Override
-    @Transactional
     public void register(RegisterDto registerDTO) {
         // check for email exists in db
         boolean existEmail = userRepository.existsByEmail(registerDTO.getEmail());
@@ -58,10 +57,11 @@ public class RegisterServiceImpl implements RegisterService {
         }
 
         User user = User.builder()
-                .name(registerDTO.getName())
+                .username(registerDTO.getUsername())
                 .email(registerDTO.getEmail())
                 .password(passwordEncoder.encode(registerDTO.getPassword()))
                 .status(Status.INACTIVE)
+                .phoneNumber(registerDTO.getPhoneNumber())
                 .build();
 
         // set role is USER by default
@@ -81,17 +81,15 @@ public class RegisterServiceImpl implements RegisterService {
         createVerificationOtpForUser(user, vOtp.getOtp());
 
         // send email
-        mailSenderService.sendVerificationEmail(user, SITE_URL);
+        mailSenderService.sendVerificationEmail(user.getEmail(), SITE_URL);
     }
 
-    @Override
-    public void createVerificationTokenForUser(final Account account, final String token) {
-        final VerificationToken myToken = new VerificationToken(account, token);
+    private void createVerificationTokenForUser(final User user, final String token) {
+        final VerificationToken myToken = new VerificationToken(user, token);
         tokenRepository.save(myToken);
     }
 
-    @Override
-    public VerificationToken generateNewVerificationToken(final String existingVerificationToken) {
+    private VerificationToken generateNewVerificationToken(final String existingVerificationToken) {
         VerificationToken vToken = tokenRepository.findByToken(existingVerificationToken);
 
         if (vToken != null) {
@@ -103,8 +101,7 @@ public class RegisterServiceImpl implements RegisterService {
         return vToken;
     }
 
-    @Override
-    public String validateVerificationToken(final String token) {
+    private String getVerificationTokenStatus(final String token) {
         final VerificationToken verificationToken = tokenRepository.findByToken(token);
         final Calendar cal = Calendar.getInstance();
 
@@ -121,42 +118,63 @@ public class RegisterServiceImpl implements RegisterService {
 
     @Override
     public String verifyToken(String token) {
-        String validateToken = validateVerificationToken(token);
-
-        if (validateToken.equals(TOKEN_INVALID)) {
-            return TOKEN_INVALID;
-        } else if (validateToken.equals(TOKEN_EXPIRE)) {
-            User user = userRepository.findByVerificationToken(token);
-            if (user != null && user.getStatus().equals(Status.INACTIVE)) {
-                // update new token for user
-                tokenRepository.save(generateNewVerificationToken(token));
-
-                // resend email with new token
-                mailSenderService.sendVerificationEmail(user, SITE_URL);
-
-                return TOKEN_EXPIRE;
-            }
-        } else {
-            User user = userRepository.findByVerificationToken(token);
-            if (user != null && user.getStatus().equals(Status.INACTIVE)) {
-                user.setStatus(Status.ACTIVE);
-                userRepository.save(user);
-
-                return TOKEN_VALID;
-            }
+        VerificationToken verificationToken = tokenRepository.findByToken(token);
+        if (verificationToken == null) {
+            throw new ResourceNotFoundException("Not found token", "");
         }
 
-        return "";
+        User userByToken = userRepository.findById(verificationToken.getAccount().getId()).orElseThrow(() -> new ResourceNotFoundException("Not found user", ""));
+
+        String tokenStatus = getVerificationTokenStatus(token);
+
+        if (userByToken.getStatus().equals(Status.ACTIVE)) {
+            return "";
+        }
+
+        if (tokenStatus.equals(TOKEN_EXPIRE)) {
+            VerificationToken vToken = tokenRepository.findByToken(token);
+            tokenRepository.delete(vToken);
+            return TOKEN_EXPIRE;
+        }
+
+        if (tokenStatus.equals(TOKEN_VALID)) {
+            userByToken.setStatus(Status.ACTIVE);
+            userRepository.save(userByToken);
+
+            VerificationToken vToken = tokenRepository.findByToken(token);
+            tokenRepository.delete(vToken);
+
+            VerificationOtp vOtp = otpRepository.findByAccount(userByToken);
+            otpRepository.delete(vOtp);
+
+            return TOKEN_VALID;
+        }
+
+        return TOKEN_INVALID;
     }
 
     @Override
-    public void createVerificationOtpForUser(final Account user, final String otp) {
+    public void resendToken(ResendDto resendTokenDto) {
+        Account account = userRepository.findByEmail(resendTokenDto.getEmail());
+        User user = (User) account;
+
+        VerificationToken vToken = tokenRepository.findByAccount(account);
+        if (vToken != null) {
+            throw new ResourceInvalidException("invalid token, token exist", "");
+        }
+        vToken = generateNewVerificationToken(UUID.randomUUID().toString());
+        createVerificationTokenForUser(user, vToken.getToken());
+
+        mailSenderService.sendVerificationEmail(resendTokenDto.getEmail(), SITE_URL);
+
+    }
+
+    private void createVerificationOtpForUser(final User user, final String otp) {
         final VerificationOtp myOtp = new VerificationOtp(user, otp);
         otpRepository.save(myOtp);
     }
 
-    @Override
-    public VerificationOtp generateNewVerificationOtp(final String existingVerificationOtp) {
+    private VerificationOtp generateNewVerificationOtp(final String existingVerificationOtp) {
         VerificationOtp vOtp = otpRepository.findByOtp(existingVerificationOtp);
 
         if (vOtp != null) {
@@ -168,8 +186,7 @@ public class RegisterServiceImpl implements RegisterService {
         return vOtp;
     }
 
-    @Override
-    public String validateVerificationOtp(final String otp) {
+    private String getVerificationOtpStatus(final String otp) {
         final VerificationOtp verificationOtp = otpRepository.findByOtp(otp);
         final Calendar cal = Calendar.getInstance();
 
@@ -186,31 +203,55 @@ public class RegisterServiceImpl implements RegisterService {
 
     @Override
     public String verifyOtp(OtpDto otpDto) {
-        String validateOtp = validateVerificationOtp(otpDto.getOtp());
-
-        if (validateOtp.equals(OTP_INVALID)) {
-            return OTP_INVALID;
-        } else if (validateOtp.equals(OTP_EXPIRE)) {
-            User user = userRepository.findByVerificationOtp(otpDto.getOtp());
-            if (user != null && user.getStatus().equals(Status.INACTIVE)) {
-                // update new OTP for user
-                otpRepository.save(generateNewVerificationOtp(otpDto.getOtp()));
-
-                // resend email with new OTP
-                mailSenderService.sendVerificationEmail(user, SITE_URL);
-
-                return OTP_EXPIRE;
-            }
-        } else {
-            User user = userRepository.findByVerificationOtp(otpDto.getOtp());
-            if (user != null && user.getStatus().equals(Status.INACTIVE)) {
-                user.setStatus(Status.ACTIVE);
-                userRepository.save(user);
-
-                return OTP_VALID;
-            }
+        VerificationOtp verificationOtp = otpRepository.findByOtp(otpDto.getOtp());
+        if (verificationOtp == null) {
+            throw new ResourceNotFoundException("Not found OTP", "");
         }
 
-        return "";
+        User userByOtp = (User) userRepository.findByEmail(otpDto.getEmail());
+//        User userByOtp = userRepository.findById(verificationOtp.getAccount().getId()).orElseThrow(() -> new ResourceNotFoundException("Not found user", ""));
+
+        String otpStatus = getVerificationOtpStatus(otpDto.getOtp());
+
+        if (userByOtp.getStatus().equals(Status.ACTIVE)) {
+            return "";
+        }
+
+        if (otpStatus.equals(OTP_EXPIRE)) {
+            VerificationOtp vOtp = otpRepository.findByOtp(otpDto.getOtp());
+            otpRepository.delete(vOtp);
+            return OTP_EXPIRE;
+        }
+
+        if (otpStatus.equals(OTP_VALID)) {
+            userByOtp.setStatus(Status.ACTIVE);
+            userRepository.save(userByOtp);
+
+            VerificationToken vToken = tokenRepository.findByAccount(userByOtp);
+            tokenRepository.delete(vToken);
+
+            VerificationOtp vOtp = otpRepository.findByOtp(otpDto.getOtp());
+            otpRepository.delete(vOtp);
+
+            return OTP_VALID;
+        }
+
+        return OTP_INVALID;
+    }
+
+    @Override
+    public void resendOTP(ResendDto resendDto) {
+        Account account = userRepository.findByEmail(resendDto.getEmail());
+        User user = (User) account;
+
+        VerificationOtp vOtp = otpRepository.findByAccount(user);
+        if (vOtp != null) {
+            throw new ResourceInvalidException("OTP exist", "");
+        }
+
+        vOtp = generateNewVerificationOtp(new DecimalFormat(decimalFormat).format(random.nextInt(999999)));
+        createVerificationOtpForUser(user, vOtp.getOtp());
+
+        mailSenderService.sendVerificationEmail(resendDto.getEmail(), SITE_URL);
     }
 }

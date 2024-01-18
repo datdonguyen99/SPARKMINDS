@@ -53,7 +53,7 @@
 
                 <h1>Registration Verification</h1>
 
-                <p>Dear ${user.name} ,</p>
+                <p>Dear ${account.username} ,</p>
 
                 <p>Thank you for registering with our website. To complete your registration, please click the link below to verify your email address:</p>
 

@@ -6,9 +6,9 @@ import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
 import net.sparkminds.librarymanagement.entity.Account;
-import net.sparkminds.librarymanagement.entity.User;
 import net.sparkminds.librarymanagement.exception.ResourceInvalidException;
 import net.sparkminds.librarymanagement.exception.ResourceNotFoundException;
+import net.sparkminds.librarymanagement.repository.UserRepository;
 import net.sparkminds.librarymanagement.repository.VerificationOtpRepository;
 import net.sparkminds.librarymanagement.repository.VerificationTokenRepository;
 import net.sparkminds.librarymanagement.service.MailSenderService;
@@ -33,8 +33,11 @@ public class MailSenderServiceImpl implements MailSenderService {
 
     private final VerificationOtpRepository otpRepository;
 
+    private final UserRepository userRepository;
+
     @Override
-    public void sendVerificationEmail(Account account, String siteURL) {
+    public void sendVerificationEmail(String email, String siteURL) {
+        Account account = userRepository.findByEmail(email);
         String toAddress = account.getEmail();
         String fromAddress = "datdn@automail.com";
         String senderName = "Automatic-Verify-Mail";
@@ -64,7 +67,7 @@ public class MailSenderServiceImpl implements MailSenderService {
         Map<String, Object> model = new HashMap<>();
         Configuration configuration = new Configuration(Configuration.DEFAULT_INCOMPATIBLE_IMPROVEMENTS);
 
-        model.put("user", account);
+        model.put("account", account);
         model.put("verifyURL", verifyURL);
         model.put("otp", otp);
 

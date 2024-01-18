@@ -8,9 +8,14 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.FetchType;
 import lombok.Getter;
 import lombok.Setter;
 import net.sparkminds.librarymanagement.utils.RoleName;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -25,4 +30,7 @@ public class Role {
     @Enumerated(EnumType.STRING)
     @Column(name = "role_name", nullable = false)
     private RoleName roleName;
+
+    @OneToMany(mappedBy = "role", fetch = FetchType.LAZY)
+    private List<Account> accountList = new ArrayList<>();
 }

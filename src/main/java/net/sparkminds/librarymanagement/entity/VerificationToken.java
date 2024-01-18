@@ -37,7 +37,7 @@ public class VerificationToken {
     @Size(min = 1, max = 50)
     private String token;
 
-    @OneToOne(targetEntity = Account.class, fetch = FetchType.LAZY)
+    @OneToOne(targetEntity = Account.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = false, name = "account_id", referencedColumnName = "id")
     private Account account;
 

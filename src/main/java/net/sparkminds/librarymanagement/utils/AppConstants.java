@@ -9,6 +9,6 @@ public class AppConstants {
     public static final String OTP_EXPIRE = "TOKEN_EXPIRE";
     public static final String OTP_VALID = "TOKEN_VALID";
     public static final String EMAIL_TEMPLATE_FILE_PATH = "src/main/resources/templates/email.ftlh";
-    public static final String SITE_URL = "http://localhost:8080/api/v1/auth";
+    public static final String SITE_URL = "http://localhost:8080/api/v1";
     private AppConstants(){}
 }

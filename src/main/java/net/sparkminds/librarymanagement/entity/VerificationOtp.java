@@ -33,11 +33,11 @@ public class VerificationOtp {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "otp", length = 6)
+    @Column(name = "otp", unique = true, length = 6)
     @Size(min = 6, max = 6)
     private String otp;
 
-    @OneToOne(targetEntity = Account.class, fetch = FetchType.LAZY)
+    @OneToOne(targetEntity = Account.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = false, name = "account_id", referencedColumnName = "id")
     private Account account;
 
