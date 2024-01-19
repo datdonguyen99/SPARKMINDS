@@ -7,11 +7,11 @@ import net.sparkminds.librarymanagement.payload.request.ResendDto;
 public interface RegisterService {
     void register(RegisterDto registerDTO);
 
-    String verifyToken(String token);
+    void verifyToken(String token);
 
     void resendToken(ResendDto resendDto);
 
-    String verifyOtp(OtpDto otpDto);
+    void verifyOtp(OtpDto otpDto);
 
     void resendOTP(ResendDto resendDto);
 }

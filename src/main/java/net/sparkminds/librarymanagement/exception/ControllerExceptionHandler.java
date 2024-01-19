@@ -12,7 +12,7 @@ import java.util.Date;
 @ControllerAdvice
 public class ControllerExceptionHandler {
     @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<Object> resourceNotFoundException(ResourceNotFoundException ex) {
+    public ResponseEntity<ErrorResponse> resourceNotFoundException(ResourceNotFoundException ex) {
         ErrorResponse message = ErrorResponse.builder()
                 .message(ex.getMessage())
                 .messageCode(ex.getMsgCode())
@@ -24,7 +24,7 @@ public class ControllerExceptionHandler {
     }
 
     @ExceptionHandler(ResourceInvalidException.class)
-    public ResponseEntity<Object> resourceInvalidException(ResourceInvalidException ex) {
+    public ResponseEntity<ErrorResponse> resourceInvalidException(ResourceInvalidException ex) {
         ErrorResponse message = ErrorResponse.builder()
                 .message(ex.getMessage())
                 .messageCode(ex.getMsgCode())
@@ -35,8 +35,32 @@ public class ControllerExceptionHandler {
         return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(ResourceUnauthorizedException.class)
+    public ResponseEntity<ErrorResponse> resourceUnauthorizedException(ResourceUnauthorizedException ex) {
+        ErrorResponse message = ErrorResponse.builder()
+                .message(ex.getMessage())
+                .messageCode(ex.getMsgCode())
+                .statusCode(HttpStatus.UNAUTHORIZED.value())
+                .timestamp(new Date())
+                .build();
+
+        return new ResponseEntity<>(message, HttpStatus.UNAUTHORIZED);
+    }
+
+    @ExceptionHandler(ResourceForbiddenException.class)
+    public ResponseEntity<ErrorResponse> resourceForbiddenException(ResourceForbiddenException ex) {
+        ErrorResponse message = ErrorResponse.builder()
+                .message(ex.getMessage())
+                .messageCode(ex.getMsgCode())
+                .statusCode(HttpStatus.FORBIDDEN.value())
+                .timestamp(new Date())
+                .build();
+
+        return new ResponseEntity<>(message, HttpStatus.FORBIDDEN);
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<Object> methodArgumentNotValidException(MethodArgumentNotValidException ex) {
+    public ResponseEntity<ErrorResponse> methodArgumentNotValidException(MethodArgumentNotValidException ex) {
         ErrorResponse message = ErrorResponse.builder()
                 .message(ex.getBindingResult().getFieldErrors().stream()
                         .map(FieldError::getDefaultMessage)
@@ -50,7 +74,7 @@ public class ControllerExceptionHandler {
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<Object> globalExceptionHandler(Exception ex) {
+    public ResponseEntity<ErrorResponse> globalExceptionHandler(Exception ex) {
         ErrorResponse message = ErrorResponse.builder()
                 .message(ex.getMessage())
                 .statusCode(HttpStatus.INTERNAL_SERVER_ERROR.value())

@@ -6,8 +6,10 @@ import net.sparkminds.librarymanagement.entity.VerificationToken;
 import net.sparkminds.librarymanagement.entity.VerificationOtp;
 import net.sparkminds.librarymanagement.entity.Role;
 import net.sparkminds.librarymanagement.entity.Account;
+import net.sparkminds.librarymanagement.exception.ResourceForbiddenException;
 import net.sparkminds.librarymanagement.exception.ResourceInvalidException;
 import net.sparkminds.librarymanagement.exception.ResourceNotFoundException;
+import net.sparkminds.librarymanagement.exception.ResourceUnauthorizedException;
 import net.sparkminds.librarymanagement.payload.request.OtpDto;
 import net.sparkminds.librarymanagement.payload.request.RegisterDto;
 import net.sparkminds.librarymanagement.payload.request.ResendDto;
@@ -117,7 +119,7 @@ public class RegisterServiceImpl implements RegisterService {
     }
 
     @Override
-    public String verifyToken(String token) {
+    public void verifyToken(String token) {
         VerificationToken verificationToken = tokenRepository.findByToken(token);
         if (verificationToken == null) {
             throw new ResourceNotFoundException("Not found token", "");
@@ -128,16 +130,16 @@ public class RegisterServiceImpl implements RegisterService {
         String tokenStatus = getVerificationTokenStatus(token);
 
         if (userByToken.getStatus().equals(Status.ACTIVE)) {
-            return "";
+            throw new ResourceInvalidException("User already enabled", "");
         }
 
-        if (tokenStatus.equals(TOKEN_EXPIRE)) {
+        if (tokenStatus.equals(TOKEN_INVALID)) {
+            throw new ResourceUnauthorizedException("Verify email fail, link invalid!", "");
+        } else if (tokenStatus.equals(TOKEN_EXPIRE)) {
             VerificationToken vToken = tokenRepository.findByToken(token);
             tokenRepository.delete(vToken);
-            return TOKEN_EXPIRE;
-        }
-
-        if (tokenStatus.equals(TOKEN_VALID)) {
+            throw new ResourceForbiddenException("Verify email fail, link expired!", "");
+        } else {
             userByToken.setStatus(Status.ACTIVE);
             userRepository.save(userByToken);
 
@@ -146,11 +148,7 @@ public class RegisterServiceImpl implements RegisterService {
 
             VerificationOtp vOtp = otpRepository.findByAccount(userByToken);
             otpRepository.delete(vOtp);
-
-            return TOKEN_VALID;
         }
-
-        return TOKEN_INVALID;
     }
 
     @Override
@@ -202,28 +200,29 @@ public class RegisterServiceImpl implements RegisterService {
     }
 
     @Override
-    public String verifyOtp(OtpDto otpDto) {
+    public void verifyOtp(OtpDto otpDto) {
         VerificationOtp verificationOtp = otpRepository.findByOtp(otpDto.getOtp());
         if (verificationOtp == null) {
             throw new ResourceNotFoundException("Not found OTP", "");
         }
 
         User userByOtp = (User) userRepository.findByEmail(otpDto.getEmail());
-//        User userByOtp = userRepository.findById(verificationOtp.getAccount().getId()).orElseThrow(() -> new ResourceNotFoundException("Not found user", ""));
+        if (userByOtp == null) {
+            throw new ResourceNotFoundException("Not found user with email " + otpDto.getEmail(), "");
+        }
 
         String otpStatus = getVerificationOtpStatus(otpDto.getOtp());
-
         if (userByOtp.getStatus().equals(Status.ACTIVE)) {
-            return "";
+            throw new ResourceInvalidException("User already enabled", "");
         }
 
-        if (otpStatus.equals(OTP_EXPIRE)) {
+        if (otpStatus.equals(OTP_INVALID)) {
+            throw new ResourceUnauthorizedException("Verify email fail, OTP invalid!", "");
+        } else if (otpStatus.equals(OTP_EXPIRE)) {
             VerificationOtp vOtp = otpRepository.findByOtp(otpDto.getOtp());
             otpRepository.delete(vOtp);
-            return OTP_EXPIRE;
-        }
-
-        if (otpStatus.equals(OTP_VALID)) {
+            throw new ResourceForbiddenException("Verify email fail, OTP expire!", "");
+        } else {
             userByOtp.setStatus(Status.ACTIVE);
             userRepository.save(userByOtp);
 
@@ -232,11 +231,7 @@ public class RegisterServiceImpl implements RegisterService {
 
             VerificationOtp vOtp = otpRepository.findByOtp(otpDto.getOtp());
             otpRepository.delete(vOtp);
-
-            return OTP_VALID;
         }
-
-        return OTP_INVALID;
     }
 
     @Override
