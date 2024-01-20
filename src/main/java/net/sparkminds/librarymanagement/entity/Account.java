@@ -35,6 +35,8 @@ import net.sparkminds.librarymanagement.utils.Status;
 @Table(name = "accounts", uniqueConstraints = {@UniqueConstraint(columnNames = {"email"})})
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Account {
+    private static final long serialVersionUID = 1L;
+
     /**
      * id is primary key of table accounts
      * Use database auto-increment mechanism to create a value for PK
@@ -49,7 +51,7 @@ public class Account {
     private String username;
 
     @NotNull
-    @Pattern(regexp = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$", message = "Invalid email format")
+    @Pattern(regexp = "^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$", message = "Invalid email format")
     @Column(name = "email", unique = true, length = 254)
     @Size(min = 5, max = 254)
     private String email;

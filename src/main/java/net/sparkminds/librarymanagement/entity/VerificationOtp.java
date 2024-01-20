@@ -10,6 +10,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -34,7 +35,8 @@ public class VerificationOtp {
     private Long id;
 
     @Column(name = "otp", unique = true, length = 6)
-    @Size(min = 6, max = 6)
+    @Size(min = 6, max = 6, message = "OTP must contain 6 digits")
+    @Pattern(regexp = "^\\d{6}$", message = "Invalid OTP format")
     private String otp;
 
     @OneToOne(targetEntity = Account.class, fetch = FetchType.EAGER)
@@ -61,12 +63,6 @@ public class VerificationOtp {
         super();
         this.otp = otp;
         this.account = account;
-        this.expiryDate = calculateExpiryDate(EXPIRATION);
-    }
-
-    public VerificationOtp(final String otp) {
-        super();
-        this.otp = otp;
         this.expiryDate = calculateExpiryDate(EXPIRATION);
     }
 }

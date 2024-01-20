@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 import net.sparkminds.librarymanagement.entity.Account;
 import net.sparkminds.librarymanagement.exception.ResourceInvalidException;
 import net.sparkminds.librarymanagement.exception.ResourceNotFoundException;
-import net.sparkminds.librarymanagement.repository.UserRepository;
+import net.sparkminds.librarymanagement.repository.AccountRepository;
 import net.sparkminds.librarymanagement.repository.VerificationOtpRepository;
 import net.sparkminds.librarymanagement.repository.VerificationTokenRepository;
 import net.sparkminds.librarymanagement.service.MailSenderService;
@@ -33,11 +33,11 @@ public class MailSenderServiceImpl implements MailSenderService {
 
     private final VerificationOtpRepository otpRepository;
 
-    private final UserRepository userRepository;
+    private final AccountRepository accountRepository;
 
     @Override
     public void sendVerificationEmail(String email, String siteURL) {
-        Account account = userRepository.findByEmail(email);
+        Account account = accountRepository.findByEmail(email);
         String toAddress = account.getEmail();
         String fromAddress = "datdn@automail.com";
         String senderName = "Automatic-Verify-Mail";

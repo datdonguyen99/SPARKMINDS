@@ -32,7 +32,7 @@ public class User extends Account {
     private String address;
 
     @Column(name = "phone_number", length = 10)
-    @Size(min = 10, max = 10)
-    @Pattern(regexp = "^[0-9]{10}$", message = "Phone number must be 10 digits")
+    @Size(min = 10, max = 10, message = "Phone number must be 10 digits")
+    @Pattern(regexp = "^(\\+84|0)(3[2-9]|5[689]|7[06-9]|8[1-9]|9\\d)\\d{7}$", message = "Invalid phone number")
     private String phoneNumber;
 }

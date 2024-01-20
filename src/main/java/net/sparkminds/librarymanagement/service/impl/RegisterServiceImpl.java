@@ -13,10 +13,7 @@ import net.sparkminds.librarymanagement.exception.ResourceUnauthorizedException;
 import net.sparkminds.librarymanagement.payload.request.OtpDto;
 import net.sparkminds.librarymanagement.payload.request.RegisterDto;
 import net.sparkminds.librarymanagement.payload.request.ResendDto;
-import net.sparkminds.librarymanagement.repository.RoleRepository;
-import net.sparkminds.librarymanagement.repository.UserRepository;
-import net.sparkminds.librarymanagement.repository.VerificationOtpRepository;
-import net.sparkminds.librarymanagement.repository.VerificationTokenRepository;
+import net.sparkminds.librarymanagement.repository.*;
 import net.sparkminds.librarymanagement.service.MailSenderService;
 import net.sparkminds.librarymanagement.service.RegisterService;
 import net.sparkminds.librarymanagement.utils.RoleName;
@@ -25,6 +22,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.text.DecimalFormat;
+import java.util.Date;
 import java.util.Random;
 import java.util.UUID;
 import java.util.Calendar;
@@ -35,6 +33,8 @@ import static net.sparkminds.librarymanagement.utils.AppConstants.*;
 @RequiredArgsConstructor
 public class RegisterServiceImpl implements RegisterService {
     private final UserRepository userRepository;
+
+    private final AccountRepository accountRepository;
 
     private final PasswordEncoder passwordEncoder;
 
@@ -75,32 +75,15 @@ public class RegisterServiceImpl implements RegisterService {
         userRepository.save(user);
 
         // create and save token corresponding to user_id in db
-        VerificationToken vToken = generateNewVerificationToken(UUID.randomUUID().toString());
-        createVerificationTokenForUser(user, vToken.getToken());
+        VerificationToken vToken = new VerificationToken(user, UUID.randomUUID().toString());
+        tokenRepository.save(vToken);
 
         // create and save otp corresponding to user_id in db
-        VerificationOtp vOtp = generateNewVerificationOtp(new DecimalFormat(decimalFormat).format(random.nextInt(999999)));
-        createVerificationOtpForUser(user, vOtp.getOtp());
+        VerificationOtp vOtp = new VerificationOtp(user, new DecimalFormat(decimalFormat).format(random.nextInt(999999)));
+        otpRepository.save(vOtp);
 
         // send email
         mailSenderService.sendVerificationEmail(user.getEmail(), SITE_URL);
-    }
-
-    private void createVerificationTokenForUser(final User user, final String token) {
-        final VerificationToken myToken = new VerificationToken(user, token);
-        tokenRepository.save(myToken);
-    }
-
-    private VerificationToken generateNewVerificationToken(final String existingVerificationToken) {
-        VerificationToken vToken = tokenRepository.findByToken(existingVerificationToken);
-
-        if (vToken != null) {
-            vToken.updateToken(UUID.randomUUID().toString());
-        } else {
-            vToken = new VerificationToken(UUID.randomUUID().toString());
-        }
-
-        return vToken;
     }
 
     private String getVerificationTokenStatus(final String token) {
@@ -152,36 +135,23 @@ public class RegisterServiceImpl implements RegisterService {
     }
 
     @Override
-    public void resendToken(ResendDto resendTokenDto) {
-        Account account = userRepository.findByEmail(resendTokenDto.getEmail());
+    public void resendToken(ResendDto resendDto) {
+        Account account = accountRepository.findByEmail(resendDto.getEmail());
         User user = (User) account;
-
         VerificationToken vToken = tokenRepository.findByAccount(account);
-        if (vToken != null) {
-            throw new ResourceInvalidException("invalid token, token exist", "");
+
+        if (vToken != null && !vToken.getExpiryDate().before(new Date())) {
+            throw new ResourceInvalidException("token not expired, plz use link to authenticate", "token.token-not-expired");
         }
-        vToken = generateNewVerificationToken(UUID.randomUUID().toString());
-        createVerificationTokenForUser(user, vToken.getToken());
 
-        mailSenderService.sendVerificationEmail(resendTokenDto.getEmail(), SITE_URL);
-
-    }
-
-    private void createVerificationOtpForUser(final User user, final String otp) {
-        final VerificationOtp myOtp = new VerificationOtp(user, otp);
-        otpRepository.save(myOtp);
-    }
-
-    private VerificationOtp generateNewVerificationOtp(final String existingVerificationOtp) {
-        VerificationOtp vOtp = otpRepository.findByOtp(existingVerificationOtp);
-
-        if (vOtp != null) {
-            vOtp.updateOtp(new DecimalFormat(decimalFormat).format(random.nextInt(999999)));
+        if (vToken == null) {
+            vToken = new VerificationToken(user, UUID.randomUUID().toString());
         } else {
-            vOtp = new VerificationOtp(new DecimalFormat(decimalFormat).format(random.nextInt(999999)));
+            vToken.updateToken(UUID.randomUUID().toString());
         }
+        tokenRepository.save(vToken);
 
-        return vOtp;
+        mailSenderService.sendVerificationEmail(resendDto.getEmail(), SITE_URL);
     }
 
     private String getVerificationOtpStatus(final String otp) {
@@ -206,7 +176,7 @@ public class RegisterServiceImpl implements RegisterService {
             throw new ResourceNotFoundException("Not found OTP", "");
         }
 
-        User userByOtp = (User) userRepository.findByEmail(otpDto.getEmail());
+        User userByOtp = (User) accountRepository.findByEmail(otpDto.getEmail());
         if (userByOtp == null) {
             throw new ResourceNotFoundException("Not found user with email " + otpDto.getEmail(), "");
         }
@@ -236,16 +206,20 @@ public class RegisterServiceImpl implements RegisterService {
 
     @Override
     public void resendOTP(ResendDto resendDto) {
-        Account account = userRepository.findByEmail(resendDto.getEmail());
+        Account account = accountRepository.findByEmail(resendDto.getEmail());
         User user = (User) account;
+        VerificationOtp vOtp = otpRepository.findByAccount(account);
 
-        VerificationOtp vOtp = otpRepository.findByAccount(user);
-        if (vOtp != null) {
-            throw new ResourceInvalidException("OTP exist", "");
+        if (vOtp != null && !vOtp.getExpiryDate().before(new Date())) {
+            throw new ResourceInvalidException("OTP not expired, plz use OTP to authenticate", "otp.otp-not-expired");
         }
 
-        vOtp = generateNewVerificationOtp(new DecimalFormat(decimalFormat).format(random.nextInt(999999)));
-        createVerificationOtpForUser(user, vOtp.getOtp());
+        if (vOtp == null) {
+            vOtp = new VerificationOtp(user, new DecimalFormat(decimalFormat).format(random.nextInt(999999)));
+        } else {
+            vOtp.updateOtp(new DecimalFormat(decimalFormat).format(random.nextInt(999999)));
+        }
+        otpRepository.save(vOtp);
 
         mailSenderService.sendVerificationEmail(resendDto.getEmail(), SITE_URL);
     }

@@ -63,10 +63,4 @@ public class VerificationToken {
         this.account = account;
         this.expiryDate = calculateExpiryDate(EXPIRATION);
     }
-
-    public VerificationToken(final String token) {
-        super();
-        this.token = token;
-        this.expiryDate = calculateExpiryDate(EXPIRATION);
-    }
 }
