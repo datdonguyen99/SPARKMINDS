@@ -14,6 +14,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.validation.constraints.Pattern;
@@ -25,6 +26,9 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import net.sparkminds.librarymanagement.utils.Status;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -76,4 +80,7 @@ public class Account {
 
     @OneToOne(mappedBy = "account", fetch = FetchType.EAGER)
     private VerificationOtp verificationOtp;
+
+    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY)
+    private List<RefreshToken> refreshTokens = new ArrayList<>();
 }
