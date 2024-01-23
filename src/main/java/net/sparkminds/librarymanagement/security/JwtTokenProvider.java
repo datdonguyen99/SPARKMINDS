@@ -7,7 +7,9 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.UnsupportedJwtException;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
-import net.sparkminds.librarymanagement.exception.ResourceInvalidException;
+import net.sparkminds.librarymanagement.exception.ResourceUnauthorizedException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -19,27 +21,44 @@ import java.util.Date;
 
 @Component
 public class JwtTokenProvider {
+    private static final Logger logger = LoggerFactory.getLogger(JwtTokenProvider.class);
+
     @Value("${sparkminds.app.jwtSecret}")
     private String jwtSecret;
 
     @Value("${sparkminds.app.jwtExpirationMs}")
     private Long jwtExpirationMs;        // milliseconds
 
-    // generate JWT token from username
-    public String generateJwtTokenFromEmail(String email) {
-        return Jwts.builder()
-                .setSubject(email)
-                .setIssuedAt(Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant()))
-                .setExpiration(Date.from(LocalDateTime.now().plus(jwtExpirationMs, ChronoUnit.MILLIS).atZone(ZoneId.systemDefault()).toInstant()))
-                .signWith(key(), SignatureAlgorithm.HS256)
-                .compact();
-    }
+    @Value("${sparkminds.app.jwtRefreshExpirationMs}")
+    private Long jwtRefreshExpirationMs;        // milliseconds
 
     private Key key() {
         return Keys.hmacShaKeyFor(Decoders.BASE64.decode(jwtSecret));
     }
 
-    // get username from Jwt token
+    // generate JWT token from email
+    public String generateJwtTokenFromEmail(String email, String jti) {
+        return Jwts.builder()
+                .setSubject(email)
+                .setIssuedAt(Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant()))
+                .setExpiration(Date.from(LocalDateTime.now().plus(jwtExpirationMs, ChronoUnit.MILLIS).atZone(ZoneId.systemDefault()).toInstant()))
+                .setId(jti)
+                .signWith(key(), SignatureAlgorithm.HS256)
+                .compact();
+    }
+
+    // generate JWT token from email
+    public String generateJwtRefreshTokenFromEmail(String email, String jti) {
+        return Jwts.builder()
+                .setSubject(email)
+                .setIssuedAt(Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant()))
+                .setExpiration(Date.from(LocalDateTime.now().plus(jwtRefreshExpirationMs, ChronoUnit.MILLIS).atZone(ZoneId.systemDefault()).toInstant()))
+                .setId(jti)
+                .signWith(key(), SignatureAlgorithm.HS256)
+                .compact();
+    }
+
+    // get email from Jwt token
     public String getEmailFromJwtToken(String token) {
         return Jwts.parserBuilder()
                 .setSigningKey(key())
@@ -47,6 +66,16 @@ public class JwtTokenProvider {
                 .parseClaimsJws(token)
                 .getBody()
                 .getSubject();
+    }
+
+    // parse jti from jwt token
+    public String getJtiFromRefreshToken(String authToken) {
+        return Jwts.parserBuilder()
+                .setSigningKey(key())
+                .build()
+                .parseClaimsJws(authToken)
+                .getBody()
+                .getId();
     }
 
     public boolean validateJwtToken(String authToken) {
@@ -59,13 +88,17 @@ public class JwtTokenProvider {
 
             return true;
         } catch (MalformedJwtException e) {
-            throw new ResourceInvalidException(e.getMessage(), "JWT.token-invalid");
+            logger.error("Invalid JWT token: {}", e.getMessage());
+            throw new ResourceUnauthorizedException("token invalid", "token.token-invalid");
         } catch (ExpiredJwtException e) {
-            throw new ResourceInvalidException(e.getMessage(), "JWT.token-expired");
+            logger.error("JWT token is expired: {}", e.getMessage());
+            throw new ResourceUnauthorizedException("token expired", "token.token-expired");
         } catch (UnsupportedJwtException e) {
-            throw new ResourceInvalidException(e.getMessage(), "JWT.token-unsupported");
+            logger.error("JWT token is unsupported: {}", e.getMessage());
+            throw new ResourceUnauthorizedException("JWT token is unsupported", "token.token-unsupported");
         } catch (IllegalArgumentException e) {
-            throw new ResourceInvalidException(e.getMessage(), "JWT.claim-string-empty");
+            logger.error("JWT claims string is empty: {}", e.getMessage());
+            throw new ResourceUnauthorizedException("JWT claims string is empty", "token.claim-string-empty");
         }
     }
 }

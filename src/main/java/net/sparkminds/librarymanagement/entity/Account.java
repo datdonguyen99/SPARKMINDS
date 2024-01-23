@@ -82,5 +82,5 @@ public class Account {
     private VerificationOtp verificationOtp;
 
     @OneToMany(mappedBy = "account", fetch = FetchType.LAZY)
-    private List<RefreshToken> refreshTokens = new ArrayList<>();
+    private List<Session> sessions = new ArrayList<>();
 }
