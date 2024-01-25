@@ -7,6 +7,7 @@ import net.sparkminds.librarymanagement.entity.Session;
 import net.sparkminds.librarymanagement.exception.ResourceForbiddenException;
 import net.sparkminds.librarymanagement.exception.ResourceInvalidException;
 import net.sparkminds.librarymanagement.exception.ResourceNotFoundException;
+import net.sparkminds.librarymanagement.exception.ResourceUnauthorizedException;
 import net.sparkminds.librarymanagement.payload.request.LoginDto;
 import net.sparkminds.librarymanagement.payload.request.TokenRefreshDto;
 import net.sparkminds.librarymanagement.payload.response.JwtResponse;
@@ -34,6 +35,9 @@ public class AuthServiceImpl implements AuthService {
     @Value("${sparkminds.app.jwtRefreshExpirationMs}")
     private Long jwtRefreshExpirationMs;        // milliseconds
 
+    @Value("${sparkminds.app.blockedStatusExpirationMs}")
+    private Long blockedStatusExpirationMs;        // milliseconds
+
     private final AuthenticationManager authenticationManager;
 
     private final JwtTokenProvider tokenProvider;
@@ -44,6 +48,8 @@ public class AuthServiceImpl implements AuthService {
 
     private final SessionRepository sessionRepository;
 
+    private final MfaServiceImpl mfaService;
+
 
     @Override
     public JwtResponse login(LoginDto loginDto) {
@@ -52,11 +58,22 @@ public class AuthServiceImpl implements AuthService {
             throw new ResourceNotFoundException("Incorrect email", "email.email-not-existed");
         }
 
+        if (account.getStatus().equals(Status.BLOCKED)) {
+            if (LocalDateTime.now().isBefore(account.getLatestLoginTime().plus(blockedStatusExpirationMs, ChronoUnit.MILLIS))) {
+                throw new ResourceInvalidException("Please login after " + account.getLatestLoginTime().plus(blockedStatusExpirationMs, ChronoUnit.MILLIS), "account.account-blocked");
+            } else {
+                account.setStatus(Status.ACTIVE);
+                accountRepository.save(account);
+            }
+        }
+
         if (!account.getStatus().equals(Status.ACTIVE)) {
             throw new ResourceInvalidException("Please verify your account before login", "account.account-not-activated");
         }
 
         if (!accountService.isPasswordCorrect(loginDto.getPassword(), account)) {
+            account.setLoginCount(account.getLoginCount() + 1);
+            accountRepository.save(account);
             throw new ResourceInvalidException("Incorrect password", "password.password-not-correct");
         }
 
@@ -68,6 +85,22 @@ public class AuthServiceImpl implements AuthService {
 
         CustomAccount customAccount = (CustomAccount) authentication.getPrincipal();
 
+        customAccount.getAccount().setLatestLoginTime(LocalDateTime.now());
+        if (customAccount.getAccount().getLoginCount() >= 3) {
+            customAccount.getAccount().setLoginCount(0);
+            customAccount.getAccount().setStatus(Status.BLOCKED);
+        } else {
+            customAccount.getAccount().setLoginCount(customAccount.getAccount().getLoginCount() + 1);
+        }
+        accountRepository.save(customAccount.getAccount());
+
+        if (customAccount.getAccount().isEnableMFA()) {
+            if (loginDto.getOtp().equals("")) {
+                throw new ResourceUnauthorizedException("OTP field is empty", "2fa.otp-not-found");
+            }
+            mfaService.verifyOtpCode(customAccount.getAccount().getSecretKey(), loginDto.getOtp());
+        }
+
         String jti = UUID.randomUUID().toString().replace("-", "");
         Session session = Session.builder()
                 .jti(jti)
@@ -78,6 +111,10 @@ public class AuthServiceImpl implements AuthService {
 
         String accessToken = tokenProvider.generateJwtTokenFromEmail(customAccount.getAccount().getEmail(), jti);
         String refreshToken = tokenProvider.generateJwtRefreshTokenFromEmail(customAccount.getAccount().getEmail(), jti);
+
+        customAccount.getAccount().setLoginCount(0);
+        customAccount.getAccount().setStatus(Status.ACTIVE);
+        accountRepository.save(customAccount.getAccount());
 
         return JwtResponse.builder()
                 .accessToken(accessToken)

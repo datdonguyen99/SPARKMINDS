@@ -1,5 +1,6 @@
 package net.sparkminds.librarymanagement.config;
 
+import com.warrenstrange.googleauth.GoogleAuthenticator;
 import lombok.RequiredArgsConstructor;
 import net.sparkminds.librarymanagement.security.JwtAuthenticationEntryPoint;
 import net.sparkminds.librarymanagement.security.JwtAuthenticationFilter;
@@ -27,6 +28,11 @@ public class SecurityConfig {
     private final AccountServiceImpl accountService;
 
     private final JwtAuthenticationEntryPoint unauthorizedHandler;
+
+    @Bean
+    public GoogleAuthenticator googleAuthenticator() {
+        return new GoogleAuthenticator();
+    }
 
     @Bean
     public JwtAuthenticationFilter authenticationFilter() {

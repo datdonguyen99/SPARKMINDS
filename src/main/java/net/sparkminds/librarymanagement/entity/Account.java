@@ -20,13 +20,11 @@ import jakarta.persistence.JoinColumn;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import jakarta.validation.constraints.NotNull;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 import net.sparkminds.librarymanagement.utils.Status;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -83,4 +81,19 @@ public class Account {
 
     @OneToMany(mappedBy = "account", fetch = FetchType.LAZY)
     private List<Session> sessions = new ArrayList<>();
+
+    @Column(name = "secret_key", length = 50)
+    private String secretKey;
+
+    @Column(name = "enable_mfa")
+    @Builder.Default
+    private boolean enableMFA = false;
+
+    @Column(name = "latest_login_time")
+    private LocalDateTime latestLoginTime;
+
+    @NotNull
+    @Column(name = "login_count")
+    @Builder.Default
+    private int loginCount = 0;
 }
