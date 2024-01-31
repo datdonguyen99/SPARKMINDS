@@ -1,6 +1,5 @@
 package net.sparkminds.librarymanagement.config;
 
-import com.warrenstrange.googleauth.GoogleAuthenticator;
 import lombok.RequiredArgsConstructor;
 import net.sparkminds.librarymanagement.security.JwtAuthenticationEntryPoint;
 import net.sparkminds.librarymanagement.security.JwtAuthenticationFilter;
@@ -28,11 +27,6 @@ public class SecurityConfig {
     private final AccountServiceImpl accountService;
 
     private final JwtAuthenticationEntryPoint unauthorizedHandler;
-
-    @Bean
-    public GoogleAuthenticator googleAuthenticator() {
-        return new GoogleAuthenticator();
-    }
 
     @Bean
     public JwtAuthenticationFilter authenticationFilter() {
@@ -80,9 +74,10 @@ public class SecurityConfig {
         http
                 .csrf(CsrfConfigurer::disable)        // Disable CSRF protection
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("api/v1/**").permitAll()        // Allow unauthenticated access to GET requests under "api/v1/"
-                        .requestMatchers("/api/v1/auth/**").permitAll()        // Allow unauthenticated access to requests under "/api/v1/auth/"
-                        .requestMatchers("/api/v1/test/**").permitAll()
+//                        .requestMatchers("api/v1/**").permitAll()        // Allow unauthenticated access to GET requests under "api/v1/"
+                        .requestMatchers("/api/v1/common/**").permitAll()        // Allow unauthenticated access to requests under "/api/v1/common/"
+                        .requestMatchers("/api/v1/user/**").hasRole("USER")
+                        .requestMatchers("/api/v1/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated())        // Require authentication for any other request
                 .exceptionHandling(exception -> exception
                         .authenticationEntryPoint(unauthorizedHandler))

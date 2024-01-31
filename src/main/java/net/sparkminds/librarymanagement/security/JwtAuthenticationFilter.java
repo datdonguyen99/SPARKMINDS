@@ -1,5 +1,9 @@
 package net.sparkminds.librarymanagement.security;
 
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.MalformedJwtException;
+import io.jsonwebtoken.UnsupportedJwtException;
+import io.jsonwebtoken.security.SignatureException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -28,32 +32,40 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request,
                                     HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
-        // get JWT token from http request
-        String token = getTokenFromRequest(request);
+        try {
+            // get JWT token from http request
+            String token = getTokenFromRequest(request);
 
-        // validate token
-        if(StringUtils.hasText(token) && jwtTokenProvider.validateJwtToken(token)){
-            // get email from token
-            String email = jwtTokenProvider.getEmailFromJwtToken(token);
+            // validate token
+            if (StringUtils.hasText(token)) {
+                // get email from token
+                String email = jwtTokenProvider.getEmailFromJwtToken(token);
 
-            // load the user associated with token
-            UserDetails userDetails = userDetailsService.loadUserByUsername(email);
+                // load the user associated with token
+                UserDetails userDetails = userDetailsService.loadUserByUsername(email);
 
-            UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+                UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
 
-            authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
-            SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+                SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+            }
+        } catch (ExpiredJwtException ex) {
+            // Handle token expiration
+            request.setAttribute("expired", ex.getMessage());
+        } catch (MalformedJwtException | SignatureException | UnsupportedJwtException | IllegalArgumentException ex) {
+            // Handle invalid token
+            request.setAttribute("Invalid", ex.getMessage());
         }
 
         filterChain.doFilter(request, response);
     }
 
-    private String getTokenFromRequest(HttpServletRequest request){
+    private String getTokenFromRequest(HttpServletRequest request) {
         String bearerToken = request.getHeader("Authorization");
 
-        if(StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer ")){
-            return bearerToken.substring(7, bearerToken.length());
+        if (StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer ")) {
+            return bearerToken.substring(7);
         }
 
         return null;

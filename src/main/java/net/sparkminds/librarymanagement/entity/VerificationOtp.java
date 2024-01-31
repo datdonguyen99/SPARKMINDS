@@ -3,7 +3,7 @@ package net.sparkminds.librarymanagement.entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Entity;
@@ -39,8 +39,8 @@ public class VerificationOtp {
     @Pattern(regexp = "^\\d{6}$", message = "Invalid OTP format")
     private String otp;
 
-    @OneToOne(targetEntity = Account.class, fetch = FetchType.EAGER)
-    @JoinColumn(nullable = false, name = "account_id", referencedColumnName = "id")
+    @ManyToOne(targetEntity = Account.class, fetch = FetchType.EAGER)
+    @JoinColumn(nullable = false, name = "account_id")
     private Account account;
 
     @Column(name = "expire_date")

@@ -1,7 +1,6 @@
 package net.sparkminds.librarymanagement.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.GeneratedValue;
@@ -17,6 +16,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.CascadeType;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import jakarta.validation.constraints.NotNull;
@@ -73,11 +73,11 @@ public class Account {
     @JoinColumn(nullable = false, name = "role_id", referencedColumnName = "id")
     private Role role;
 
-    @OneToOne(mappedBy = "account", fetch = FetchType.EAGER)
-    private VerificationToken verificationToken;
+    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<VerificationToken> verificationToken = new ArrayList<>();
 
-    @OneToOne(mappedBy = "account", fetch = FetchType.EAGER)
-    private VerificationOtp verificationOtp;
+    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<VerificationOtp> verificationOtp = new ArrayList<>();
 
     @OneToMany(mappedBy = "account", fetch = FetchType.LAZY)
     private List<Session> sessions = new ArrayList<>();

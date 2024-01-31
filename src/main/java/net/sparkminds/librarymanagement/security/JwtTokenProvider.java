@@ -7,7 +7,6 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.UnsupportedJwtException;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
-import net.sparkminds.librarymanagement.exception.ResourceUnauthorizedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -89,16 +88,13 @@ public class JwtTokenProvider {
             return true;
         } catch (MalformedJwtException e) {
             logger.error("Invalid JWT token: {}", e.getMessage());
-            throw new ResourceUnauthorizedException("token invalid", "token.token-invalid");
         } catch (ExpiredJwtException e) {
             logger.error("JWT token is expired: {}", e.getMessage());
-            throw new ResourceUnauthorizedException("token expired", "token.token-expired");
         } catch (UnsupportedJwtException e) {
             logger.error("JWT token is unsupported: {}", e.getMessage());
-            throw new ResourceUnauthorizedException("JWT token is unsupported", "token.token-unsupported");
         } catch (IllegalArgumentException e) {
             logger.error("JWT claims string is empty: {}", e.getMessage());
-            throw new ResourceUnauthorizedException("JWT claims string is empty", "token.claim-string-empty");
         }
+        return false;
     }
 }

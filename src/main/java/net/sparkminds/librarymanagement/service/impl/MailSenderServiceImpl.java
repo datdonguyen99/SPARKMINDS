@@ -87,4 +87,60 @@ public class MailSenderServiceImpl implements MailSenderService {
 
         return stringWriter.getBuffer().toString();
     }
+
+    @Override
+    public void sendEmailToResetPassword(String email, String newPassword) {
+        String toAddress = email;
+        String fromAddress = "datdn@automail.com";
+        String senderName = "Automatic-Change-Password-Mail";
+        String subject = "Account password have already been change!";
+        MimeMessage message = javaMailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message, "utf-8");
+        String htmlContent = "<h2>Your account password have been change!</h2>"
+                + "<p>Your email: " + email + "</p>"
+                + "<p>Your new password: " + newPassword + "</p>"
+                + "<br/><br/><p>Best regards,<br/>Your Company</p>";
+
+        try {
+            helper.setFrom(fromAddress, senderName);
+            helper.setTo(toAddress);
+            helper.setSubject(subject);
+            helper.setText(htmlContent, true);
+        } catch (MessagingException e) {
+            throw new ResourceInvalidException(e.getMessage(), "MimeMessageHelper.MimeMessageHelper-configure-fail");
+        } catch (UnsupportedEncodingException e) {
+            throw new ResourceInvalidException(e.getMessage(), "Unsupported-encoding-error");
+        }
+
+        javaMailSender.send(message);
+    }
+
+    @Override
+    public void sendEmailToChangeEmail(String oldEmail, String newEmail, String siteURL) {
+        String toAddress = newEmail;
+        String fromAddress = "datdn@automail.com";
+        String senderName = "Automatic-Change-Email-Mail";
+        String subject = "Account email have already been change!";
+        Account account = accountRepository.findByEmail(oldEmail);
+        String verifyURL = siteURL + "/verify-change-email?code=" + tokenRepository.findByAccount(account).getToken() + "&email=" + newEmail;
+
+        MimeMessage message = javaMailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message, "utf-8");
+        String htmlContent = "<h2>Your account email have been change, plz click this link below to verify!</h2>"
+                + "<p>Link verify: " + verifyURL + "</p>"
+                + "<br/><br/><p>Best regards,<br/>Your Company</p>";
+
+        try {
+            helper.setFrom(fromAddress, senderName);
+            helper.setTo(toAddress);
+            helper.setSubject(subject);
+            helper.setText(htmlContent, true);
+        } catch (MessagingException e) {
+            throw new ResourceInvalidException(e.getMessage(), "MimeMessageHelper.MimeMessageHelper-configure-fail");
+        } catch (UnsupportedEncodingException e) {
+            throw new ResourceInvalidException(e.getMessage(), "Unsupported-encoding-error");
+        }
+
+        javaMailSender.send(message);
+    }
 }
