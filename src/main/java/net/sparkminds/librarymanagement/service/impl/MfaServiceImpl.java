@@ -23,8 +23,9 @@ public class MfaServiceImpl implements MfaService {
 
     @Override
     public MFAResponse generateMFACode() {
+        CustomAccount customAccount = (CustomAccount) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         GoogleAuthenticatorKey key = googleAuthenticator.createCredentials();
-        String otpAuthURL = GoogleAuthenticatorQRGenerator.getOtpAuthURL("Authenticator", "datdonguyen@gmail.com", key);
+        String otpAuthURL = GoogleAuthenticatorQRGenerator.getOtpAuthURL("Authenticator", customAccount.getAccount().getEmail(), key);
 
         return MFAResponse.builder()
                 .secretKey(key.getKey())

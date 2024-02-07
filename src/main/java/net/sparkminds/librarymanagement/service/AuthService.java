@@ -9,6 +9,4 @@ public interface AuthService {
     JwtResponse login(LoginDto loginDto);
 
     TokenRefreshResponse refreshToken(TokenRefreshDto tokenRefreshDto);
-
-    void logout(String authorizationHeader);
 }

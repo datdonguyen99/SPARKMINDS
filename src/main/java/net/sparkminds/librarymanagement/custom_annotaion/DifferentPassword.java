@@ -11,7 +11,7 @@ import java.lang.annotation.RetentionPolicy;
 
 @Documented
 @Constraint(validatedBy = DifferentPasswordValidator.class)
-@Target({ElementType.TYPE})
+@Target({ElementType.TYPE, ElementType.ANNOTATION_TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface DifferentPassword {
     String message() default "Old password and new password must be different";

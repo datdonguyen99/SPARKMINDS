@@ -7,13 +7,14 @@ import net.sparkminds.librarymanagement.payload.request.ChangePassDto;
 public class DifferentPasswordValidator implements ConstraintValidator<DifferentPassword, Object> {
     @Override
     public void initialize(DifferentPassword constraintAnnotation) {
+        /*
+         * initialize if needed
+         */
     }
 
     @Override
     public boolean isValid(Object value, ConstraintValidatorContext context) {
-        if (value instanceof ChangePassDto passDto) {
-            return !passDto.getOldPassword().equals(passDto.getNewPassword());
-        }
-        return true;
+        ChangePassDto passDto = (ChangePassDto) value;
+        return !passDto.getOldPassword().equals(passDto.getNewPassword());
     }
 }

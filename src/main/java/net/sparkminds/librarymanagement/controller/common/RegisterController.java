@@ -1,5 +1,6 @@
 package net.sparkminds.librarymanagement.controller.common;
 
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import net.sparkminds.librarymanagement.payload.request.OtpDto;
@@ -14,7 +15,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("api/v1/common/")
 @RequiredArgsConstructor
@@ -27,6 +30,7 @@ public class RegisterController {
      * @param registerDTO registerDTO
      * @return {@link ResponseEntity}
      */
+    @Operation(summary = "Register", description = "Register", tags = {"Register functions"})
     @PostMapping(value = {"/register", "/sign-up"})
     public ResponseEntity<Void> register(@RequestBody @Valid RegisterDto registerDTO) {
         registerService.register(registerDTO);
@@ -39,6 +43,7 @@ public class RegisterController {
      * @param code code
      * @return {@link ResponseEntity}
      */
+    @Operation(summary = "Verify by token", description = "Link verify is sent to email", tags = {"Register functions"})
     @GetMapping("/verify/token")
     public ResponseEntity<Void> verifyUserByToken(@RequestParam("code") String code) {
         registerService.verifyToken(code);
@@ -51,6 +56,7 @@ public class RegisterController {
      * @param otpDto otpDto
      * @return {@link ResponseEntity}
      */
+    @Operation(summary = "Verify by OTP", description = "OTP is sent to email", tags = {"Register functions"})
     @PostMapping("/verify/otp")
     public ResponseEntity<Void> verifyUserByOtp(@RequestBody @Valid OtpDto otpDto) {
         registerService.verifyOtp(otpDto);
@@ -63,6 +69,7 @@ public class RegisterController {
      * @param resendDto resendDto
      * @return {@link ResponseEntity}
      */
+    @Operation(summary = "Resend token", description = "Link verify will be sent to email", tags = {"Register functions"})
     @PostMapping("/resend/token")
     public ResponseEntity<Void> resendToken(@RequestBody @Valid ResendDto resendDto) {
         registerService.resendToken(resendDto);
@@ -75,6 +82,7 @@ public class RegisterController {
      * @param resendDto resendDto
      * @return {@link ResponseEntity}
      */
+    @Operation(summary = "Resend OTP", description = "OTP verify will be sent to email", tags = {"Register functions"})
     @PostMapping("/resend/otp")
     public ResponseEntity<Void> resendOtp(@RequestBody @Valid ResendDto resendDto) {
         registerService.resendOTP(resendDto);

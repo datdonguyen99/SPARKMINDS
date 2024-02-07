@@ -12,14 +12,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("api/v1")
 public class TestController {
     @GetMapping("/user/u")
+//    @PreAuthorize("hasRole('USER')")
 //    @Secured("ROLE_USER")
     public String userAccess() {
         return "User Content.";
     }
 
     @GetMapping("/admin/a")
+//    @PreAuthorize("hasRole('ADMIN')")
 //    @Secured("ROLE_ADMIN")
-//    @PreAuthorize("hasRole('ROLE_USER')")
     public String adminAccess() {
         return "Admin Content.";
     }

@@ -20,7 +20,11 @@ import jakarta.persistence.CascadeType;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import jakarta.validation.constraints.NotNull;
-import lombok.*;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.Builder;
 import lombok.experimental.SuperBuilder;
 import net.sparkminds.librarymanagement.utils.Status;
 
@@ -36,7 +40,7 @@ import java.util.List;
 @Entity
 @Table(name = "accounts", uniqueConstraints = {@UniqueConstraint(columnNames = {"email"})})
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Account {
+public class Account extends Auditable {
     private static final long serialVersionUID = 1L;
 
     /**

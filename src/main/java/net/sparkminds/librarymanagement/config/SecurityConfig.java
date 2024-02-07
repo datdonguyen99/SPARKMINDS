@@ -1,6 +1,7 @@
 package net.sparkminds.librarymanagement.config;
 
 import lombok.RequiredArgsConstructor;
+import net.sparkminds.librarymanagement.security.JwtAccessDeniedHandler;
 import net.sparkminds.librarymanagement.security.JwtAuthenticationEntryPoint;
 import net.sparkminds.librarymanagement.security.JwtAuthenticationFilter;
 import net.sparkminds.librarymanagement.service.impl.AccountServiceImpl;
@@ -28,10 +29,9 @@ public class SecurityConfig {
 
     private final JwtAuthenticationEntryPoint unauthorizedHandler;
 
-    @Bean
-    public JwtAuthenticationFilter authenticationFilter() {
-        return new JwtAuthenticationFilter();
-    }
+    private final JwtAuthenticationFilter authenticationFilter;
+
+    private final JwtAccessDeniedHandler accessDeniedHandler;
 
     @Bean
     public static PasswordEncoder passwordEncoder() {
@@ -74,19 +74,20 @@ public class SecurityConfig {
         http
                 .csrf(CsrfConfigurer::disable)        // Disable CSRF protection
                 .authorizeHttpRequests(authorize -> authorize
-//                        .requestMatchers("api/v1/**").permitAll()        // Allow unauthenticated access to GET requests under "api/v1/"
+                        .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()        // Allow unauthenticated access to swagger
                         .requestMatchers("/api/v1/common/**").permitAll()        // Allow unauthenticated access to requests under "/api/v1/common/"
                         .requestMatchers("/api/v1/user/**").hasRole("USER")
                         .requestMatchers("/api/v1/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated())        // Require authentication for any other request
                 .exceptionHandling(exception -> exception
-                        .authenticationEntryPoint(unauthorizedHandler))
+                        .authenticationEntryPoint(unauthorizedHandler)
+                        .accessDeniedHandler(accessDeniedHandler))
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
         http.authenticationProvider(authenticationProvider());
 
-        http.addFilterBefore(authenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.getOrBuild();        // Build and return the SecurityFilterChain
     }

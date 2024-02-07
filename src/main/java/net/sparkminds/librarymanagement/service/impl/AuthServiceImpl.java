@@ -45,6 +45,9 @@ public class AuthServiceImpl implements AuthService {
     @Value("${sparkminds.app.blockedStatusExpirationMs}")
     private Long blockedStatusExpirationMs;        // milliseconds
 
+    @Value("${sparkminds.app.jwtSecret}")
+    private String jwtSecret;
+
     private final AuthenticationManager authenticationManager;
 
     private final JwtTokenProvider tokenProvider;
@@ -55,8 +58,6 @@ public class AuthServiceImpl implements AuthService {
 
     private final MfaServiceImpl mfaService;
 
-    @Value("${sparkminds.app.jwtSecret}")
-    private String jwtSecret;
 
     @Override
     public JwtResponse login(LoginDto loginDto) {
@@ -67,6 +68,9 @@ public class AuthServiceImpl implements AuthService {
             );
         } catch (AuthenticationException e) {
             Account account = accountRepository.findByEmail(loginDto.getEmail());
+            if (account == null) {
+                throw new ResourceInvalidException("Incorrect email or password", "login.invalid-credentials");
+            }
 
             if (account.getStatus().equals(Status.BLOCKED)) {
                 if (LocalDateTime.now().isBefore(account.getLatestLoginTime().plus(blockedStatusExpirationMs, ChronoUnit.MILLIS))) {
@@ -82,6 +86,7 @@ public class AuthServiceImpl implements AuthService {
                 if (account.getLoginCount() >= 3) {
                     account.setLoginCount(0);
                     account.setStatus(Status.BLOCKED);
+                    throw new ResourceInvalidException("Please login after " + account.getLatestLoginTime().plus(blockedStatusExpirationMs, ChronoUnit.MILLIS), "account.account-blocked");
                 }
                 account.setLatestLoginTime(LocalDateTime.now());
                 accountRepository.save(account);
@@ -109,8 +114,8 @@ public class AuthServiceImpl implements AuthService {
         customAccount.getAccount().setLatestLoginTime(LocalDateTime.now());
 
         if (customAccount.getAccount().isEnableMFA()) {
-            if (loginDto.getOtp().equals("")) {
-                throw new ResourceUnauthorizedException("OTP field is empty", "2fa.otp-not-found");
+            if (!loginDto.getOtp().matches("\\d{6}")) {
+                throw new ResourceUnauthorizedException("Invalid OTP format", "account.otp.invalid-otp-format");
             }
             mfaService.verifyOtpCode(customAccount.getAccount().getSecretKey(), loginDto.getOtp());
         }
@@ -167,33 +172,17 @@ public class AuthServiceImpl implements AuthService {
             throw new ResourceUnauthorizedException("claims string is empty", "token.claim-string-empty");
         }
 
-        String jti = tokenProvider.getJtiFromRefreshToken(tokenRefreshDto.getRefreshToken());
-
-        Session session = sessionRepository.findLatestActiveSessionByJti(jti)
-                .orElseThrow(() -> new ResourceNotFoundException("Refresh token not found", "refreshToken.refreshToken-not-existed"));
-
-        String email = tokenProvider.getEmailFromJwtToken(tokenRefreshDto.getRefreshToken());
-        String newRefreshToken = tokenProvider.generateJwtRefreshTokenFromEmail(email, jti);
-
-        session.setExpireDate(LocalDateTime.now().plus(jwtRefreshExpirationMs, ChronoUnit.MILLIS));
-        sessionRepository.save(session);
-
-        return TokenRefreshResponse.builder()
-                .accessToken(tokenRefreshDto.getRefreshToken())
-                .refreshToken(newRefreshToken)
-                .build();
-    }
-
-    @Override
-    public void logout(String authorizationHeader) {
-        if (!authorizationHeader.startsWith("Bearer ")) {
-            return;
+        if (!tokenProvider.isRefreshToken(tokenRefreshDto.getRefreshToken())) {
+            throw new ResourceUnauthorizedException("token invalid", "token.token-invalid");
         }
 
-        String token = authorizationHeader.substring(7);
-        String jti = tokenProvider.getJtiFromRefreshToken(token);
-        Session session = sessionRepository.findByJti(jti);
-        session.setActive(false);
-        sessionRepository.save(session);
+        String jti = tokenProvider.getJtiFromRefreshToken(tokenRefreshDto.getRefreshToken());
+        String email = tokenProvider.getEmailFromJwtToken(tokenRefreshDto.getRefreshToken());
+        String newAccessToken = tokenProvider.generateJwtTokenFromEmail(email, jti);
+
+        return TokenRefreshResponse.builder()
+                .accessToken(newAccessToken)
+                .refreshToken(tokenRefreshDto.getRefreshToken())
+                .build();
     }
 }

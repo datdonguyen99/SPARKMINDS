@@ -8,6 +8,8 @@ import net.sparkminds.librarymanagement.payload.request.ResetPassDto;
 public interface ChangeUserInfo {
     void resetPassword(ResetPassDto resetPassDto);
 
+    void verifyResetPassword(String email, String password);
+
     void changePassword(ChangePassDto changePassDto);
 
     void changeEmail(ChangeEmailDto changeEmailDto);

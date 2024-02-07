@@ -14,6 +14,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.Builder;
+import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
 
@@ -21,10 +22,10 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Getter
 @Setter
-@Builder
+@SuperBuilder
 @Entity
 @Table(name = "session")
-public class Session {
+public class Session extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")

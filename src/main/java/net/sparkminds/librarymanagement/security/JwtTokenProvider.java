@@ -1,5 +1,6 @@
 package net.sparkminds.librarymanagement.security;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.MalformedJwtException;
@@ -42,6 +43,7 @@ public class JwtTokenProvider {
                 .setIssuedAt(Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant()))
                 .setExpiration(Date.from(LocalDateTime.now().plus(jwtExpirationMs, ChronoUnit.MILLIS).atZone(ZoneId.systemDefault()).toInstant()))
                 .setId(jti)
+                .claim("token_type", "access")
                 .signWith(key(), SignatureAlgorithm.HS256)
                 .compact();
     }
@@ -53,6 +55,7 @@ public class JwtTokenProvider {
                 .setIssuedAt(Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant()))
                 .setExpiration(Date.from(LocalDateTime.now().plus(jwtRefreshExpirationMs, ChronoUnit.MILLIS).atZone(ZoneId.systemDefault()).toInstant()))
                 .setId(jti)
+                .claim("token_type", "refresh")
                 .signWith(key(), SignatureAlgorithm.HS256)
                 .compact();
     }
@@ -75,6 +78,16 @@ public class JwtTokenProvider {
                 .parseClaimsJws(authToken)
                 .getBody()
                 .getId();
+    }
+
+    public boolean isRefreshToken(String refreshToken) {
+        Claims claims = Jwts.parserBuilder()
+                .setSigningKey(key())
+                .build()
+                .parseClaimsJws(refreshToken)
+                .getBody();
+
+        return claims.containsKey("token_type") && claims.get("token_type").equals("refresh");
     }
 
     public boolean validateJwtToken(String authToken) {

@@ -8,7 +8,11 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import net.sparkminds.librarymanagement.entity.Session;
+import net.sparkminds.librarymanagement.exception.ResourceInvalidException;
+import net.sparkminds.librarymanagement.exception.ResourceNotFoundException;
+import net.sparkminds.librarymanagement.repository.SessionRepository;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,12 +25,13 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 
 @Component
+@RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
-    @Autowired
-    private JwtTokenProvider jwtTokenProvider;
+    private final JwtTokenProvider jwtTokenProvider;
 
-    @Autowired
-    private UserDetailsService userDetailsService;
+    private final UserDetailsService userDetailsService;
+
+    private final SessionRepository sessionRepository;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request,
@@ -38,17 +43,22 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
             // validate token
             if (StringUtils.hasText(token)) {
-                // get email from token
-                String email = jwtTokenProvider.getEmailFromJwtToken(token);
+                // check session isActive?
+                if (isActiveSession(token)) {
+                    // get email from token
+                    String email = jwtTokenProvider.getEmailFromJwtToken(token);
 
-                // load the user associated with token
-                UserDetails userDetails = userDetailsService.loadUserByUsername(email);
+                    // load the user associated with token
+                    UserDetails userDetails = userDetailsService.loadUserByUsername(email);
 
-                UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+                    UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
 
-                authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                    authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
-                SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+                    SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+                } else {
+                    throw new ResourceInvalidException("Token is invalid^^", "token.token-not-valid");
+                }
             }
         } catch (ExpiredJwtException ex) {
             // Handle token expiration
@@ -69,5 +79,12 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         }
 
         return null;
+    }
+
+    private boolean isActiveSession(String token) {
+        String jti = jwtTokenProvider.getJtiFromRefreshToken(token);
+        Session session = sessionRepository.findByJti(jti).orElseThrow(() -> new ResourceNotFoundException("Session not found", "session.token.token-not-found"));
+
+        return session.isActive();
     }
 }

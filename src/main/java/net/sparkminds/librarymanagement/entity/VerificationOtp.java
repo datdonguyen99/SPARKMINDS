@@ -17,8 +17,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Calendar;
-import java.util.Date;
+import java.time.Duration;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 
 import static net.sparkminds.librarymanagement.utils.AppConstants.EXPIRATION;
 
@@ -28,7 +30,7 @@ import static net.sparkminds.librarymanagement.utils.AppConstants.EXPIRATION;
 @Setter
 @Entity
 @Table(name = "otps")
-public class VerificationOtp {
+public class VerificationOtp extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -45,13 +47,10 @@ public class VerificationOtp {
 
     @Column(name = "expire_date")
     @Future
-    private Date expiryDate;
+    private Instant expiryDate;
 
-    private Date calculateExpiryDate(final int expiryTimeInSeconds) {
-        final Calendar cal = Calendar.getInstance();
-        cal.setTimeInMillis(new Date().getTime());
-        cal.add(Calendar.SECOND, expiryTimeInSeconds);
-        return new Date(cal.getTime().getTime());
+    private Instant calculateExpiryDate(final int expiryTimeInSeconds) {
+        return LocalDateTime.now().plus(Duration.ofSeconds(expiryTimeInSeconds)).toInstant(ZoneOffset.UTC);
     }
 
     public void updateOtp(final String otp) {

@@ -23,6 +23,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static net.sparkminds.librarymanagement.utils.AppConstants.EMAIL_TEMPLATE_FILE_PATH;
+import static net.sparkminds.librarymanagement.utils.AppConstants.SITE_URL;
 
 @Service
 @RequiredArgsConstructor
@@ -89,16 +90,20 @@ public class MailSenderServiceImpl implements MailSenderService {
     }
 
     @Override
-    public void sendEmailToResetPassword(String email, String newPassword) {
-        String toAddress = email;
+    public void sendEmailToVerifyResetPassword(String oldEmail, String newPassword) {
+        String toAddress = oldEmail;
         String fromAddress = "datdn@automail.com";
         String senderName = "Automatic-Change-Password-Mail";
-        String subject = "Account password have already been change!";
+        String subject = "Verify change account password";
+        String verifyURL = SITE_URL + "/verify/reset-password?email=" + oldEmail + "&password=" + newPassword;
+
         MimeMessage message = javaMailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, "utf-8");
         String htmlContent = "<h2>Your account password have been change!</h2>"
-                + "<p>Your email: " + email + "</p>"
+                + "<p>Your email: " + oldEmail + "</p>"
                 + "<p>Your new password: " + newPassword + "</p>"
+                + "<br/>"
+                + "<p>Click this link to verify change new password: " + verifyURL + "</p>"
                 + "<br/><br/><p>Best regards,<br/>Your Company</p>";
 
         try {
@@ -116,13 +121,12 @@ public class MailSenderServiceImpl implements MailSenderService {
     }
 
     @Override
-    public void sendEmailToChangeEmail(String oldEmail, String newEmail, String siteURL) {
+    public void sendEmailToChangeEmail(String oldEmail, String newEmail, String token) {
         String toAddress = newEmail;
         String fromAddress = "datdn@automail.com";
         String senderName = "Automatic-Change-Email-Mail";
         String subject = "Account email have already been change!";
-        Account account = accountRepository.findByEmail(oldEmail);
-        String verifyURL = siteURL + "/verify-change-email?code=" + tokenRepository.findByAccount(account).getToken() + "&email=" + newEmail;
+        String verifyURL = SITE_URL + "/verify/change-email?code=" + token + "&email=" + newEmail;
 
         MimeMessage message = javaMailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, "utf-8");
