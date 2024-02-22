@@ -16,5 +16,8 @@ public class AppConstants {
     public static final List<String> ALLOWED_EXTENSIONS = Arrays.asList("csv");
     public static final long MAX_FILE_SIZE = 5 * 1024 * 1024;        // 5MB
     public static final String CSV_FILE_PATH_READ = "C:\\Users\\datdo\\IdeaProjects\\";
-    private AppConstants(){}
+    public static final List<String> EXPECTED_HEADERS = Arrays.asList("id", "title", "authorId", "publisherId", "publishedYear", "numberOfPages", "isbn", "quantity", "imagePath");
+
+    private AppConstants() {
+    }
 }

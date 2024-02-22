@@ -1,15 +1,11 @@
 package net.sparkminds.librarymanagement.service;
 
-import com.opencsv.exceptions.CsvException;
 import net.sparkminds.librarymanagement.payload.request.BookDto;
 import net.sparkminds.librarymanagement.payload.response.BookResponse;
 import net.sparkminds.librarymanagement.service.criteria.BookCriteria;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.io.IOException;
-import java.util.List;
 
 public interface BookService {
     /**

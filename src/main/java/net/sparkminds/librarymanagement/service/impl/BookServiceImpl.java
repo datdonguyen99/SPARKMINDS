@@ -1,6 +1,7 @@
 package net.sparkminds.librarymanagement.service.impl;
 
 import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvValidationException;
 import lombok.RequiredArgsConstructor;
 import net.sparkminds.librarymanagement.entity.Author;
 import net.sparkminds.librarymanagement.entity.Book;
@@ -24,7 +25,9 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -126,9 +129,15 @@ public class BookServiceImpl implements BookService {
             throw new ResourceInvalidException("File size should be less than 5MB.", "file.size-invalid");
         }
 
+        if (!validateHeader(CSV_FILE_PATH_READ + file.getOriginalFilename())){
+            throw new ResourceInvalidException("Invalid header", "file.header.header-invalid");
+        }
+
         // Process CSV file
         try (FileReader fileReader = new FileReader(CSV_FILE_PATH_READ + file.getOriginalFilename());
              CSVReader csvReader = new CSVReader(fileReader)) {
+            csvReader.readNext();        // Omit header
+
             List<String[]> rows = csvReader.readAll();
             List<Book> booksList = new ArrayList<>();
 
@@ -151,6 +160,35 @@ public class BookServiceImpl implements BookService {
             bookRepository.saveAll(booksList);
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    private boolean validateHeader(String filePath) {
+        try (CSVReader reader = new CSVReader(new FileReader(filePath))) {
+            String[] header = reader.readNext();
+            if (header == null) {
+                return false;
+            }
+
+            for (String expectedHeader : EXPECTED_HEADERS) {
+                boolean found = false;
+                for (String h : header) {
+                    if (expectedHeader.equals(h.trim())) {
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) {
+                    return false;
+                }
+            }
+            return true;
+        } catch (FileNotFoundException e) {
+            throw new ResourceNotFoundException(e.getMessage(),"file.file-not-found");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (CsvValidationException e) {
+            throw new RuntimeException(e);
         }
     }
 }
