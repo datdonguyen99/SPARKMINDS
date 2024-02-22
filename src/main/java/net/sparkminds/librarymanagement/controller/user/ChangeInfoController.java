@@ -46,7 +46,7 @@ public class ChangeInfoController {
     @Operation(summary = "Verify change phone", description = "Use OTP to verify when user change phone number", tags = {"Change User Info functions"})
     @PostMapping("/verify/change-phone-number")
     public ResponseEntity<Void> verifyChangePhoneNumber(@RequestBody @Valid VerifyChangePhoneNumberDto changePhoneNumberDto) {
-        changeUserInfo.verifyChangePhoneNumber(changePhoneNumberDto.getPhoneNumber(), changePhoneNumberDto.getOTP());
+        changeUserInfo.verifyChangePhoneNumber(changePhoneNumberDto.getPhoneNumber(), changePhoneNumberDto.getOtp());
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 }

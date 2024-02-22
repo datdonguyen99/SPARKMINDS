@@ -4,22 +4,631 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
 
-    <changeSet id="1" author="dat">
-        <comment>Create table person.</comment>
-        <createTable tableName="person">
-            <column name="id" type="BIGINT">
-                <constraints primaryKey="true" nullable="false"/>
-            </column>
-            <column name="first_name" type="VARCHAR(255)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="last_name" type="VARCHAR(255)">
-                <constraints nullable="false"/>
-            </column>
-            <!-- Add other columns as needed -->
-        </createTable>
-    </changeSet>
+    <!--    <changeSet id="1" author="dat">-->
+    <!--        <comment>Create table person.</comment>-->
+    <!--        <createTable tableName="person">-->
+    <!--            <column name="id" type="BIGINT">-->
+    <!--                <constraints primaryKey="true" nullable="false"/>-->
+    <!--            </column>-->
+    <!--            <column name="first_name" type="VARCHAR(255)">-->
+    <!--                <constraints nullable="false"/>-->
+    <!--            </column>-->
+    <!--            <column name="last_name" type="VARCHAR(255)">-->
+    <!--                <constraints nullable="false"/>-->
+    <!--            </column>-->
+    <!--            &lt;!&ndash; Add other columns as needed &ndash;&gt;-->
+    <!--        </createTable>-->
+    <!--    </changeSet>-->
+
+
+    <!--    &lt;!&ndash; Create Table books &ndash;&gt;-->
+    <!--    <changeSet id="create-books-table" author="DAT-DO">-->
+    <!--        <createTable tableName="books">-->
+    <!--            <column name="id" type="BIGINT">-->
+    <!--                <constraints primaryKey="true" nullable="false"/>-->
+    <!--            </column>-->
+    <!--            <column name="title" type="VARCHAR(50)">-->
+    <!--                <constraints nullable="false" checkConstraint="title != ''"/>-->
+    <!--            </column>-->
+    <!--            <column name="author_id" type="BIGINT">-->
+    <!--                <constraints nullable="false"/>-->
+    <!--            </column>-->
+    <!--            <column name="publisher_id" type="BIGINT">-->
+    <!--                <constraints nullable="false"/>-->
+    <!--            </column>-->
+    <!--            <column name="published_year" type="INTEGER">-->
+    <!--                <constraints nullable="false"/>-->
+    <!--            </column>-->
+    <!--            <column name="number_of_pages" type="INTEGER">-->
+    <!--                <constraints nullable="false"/>-->
+    <!--            </column>-->
+    <!--            <column name="isbn" type="VARCHAR(50)"/>-->
+    <!--            <column name="quantity" type="INTEGER"/>-->
+    <!--            <column name="image" type="BLOB"/>-->
+    <!--        </createTable>-->
+    <!--        <addForeignKeyConstraint baseTableName="books" baseColumnNames="author_id"-->
+    <!--                                 constraintName="fk_author_id" referencedTableName="author" referencedColumnNames="id"-->
+    <!--                                 onDelete="CASCADE" onUpdate="CASCADE"/>-->
+    <!--        <addForeignKeyConstraint baseTableName="books" baseColumnNames="publisher_id"-->
+    <!--                                 constraintName="fk_publisher_id" referencedTableName="publisher"-->
+    <!--                                 referencedColumnNames="id"-->
+    <!--                                 onDelete="CASCADE" onUpdate="CASCADE"/>-->
+    <!--    </changeSet>-->
+
+    <!--    &lt;!&ndash; Create Table authors &ndash;&gt;-->
+    <!--    <changeSet id="create_table_authors" author="DAT-DO">-->
+    <!--        <createTable tableName="authors">-->
+    <!--            <column name="id" type="BIGINT">-->
+    <!--                <constraints primaryKey="true" nullable="false"/>-->
+    <!--            </column>-->
+    <!--            <column name="name" type="VARCHAR(50)">-->
+    <!--                <constraints nullable="false"/>-->
+    <!--            </column>-->
+    <!--            <column name="address" type="VARCHAR(100)"/>-->
+    <!--        </createTable>-->
+    <!--    </changeSet>-->
+
+    <!--    &lt;!&ndash; Create Table publishers &ndash;&gt;-->
+    <!--    <changeSet id="create-publishers-table" author="DAT-DO">-->
+    <!--        <createTable tableName="publishers">-->
+    <!--            <column name="id" type="BIGINT" autoIncrement="true">-->
+    <!--                <constraints primaryKey="true" nullable="false"/>-->
+    <!--            </column>-->
+    <!--            <column name="name" type="VARCHAR(50)">-->
+    <!--                <constraints nullable="false"/>-->
+    <!--            </column>-->
+    <!--            <column name="address" type="VARCHAR(100)"/>-->
+    <!--        </createTable>-->
+    <!--    </changeSet>-->
+
 
     <!-- Add other change sets as needed -->
+    <changeSet id="insertDataIntoAuthorTable" author="DAT-DO">
+        <insert tableName="authors">
+            <column name="id" value="1"/>
+            <column name="address" value="123 Oak Street, Springfield, MA 01103"/>
+            <column name="name" value="Harper Lee"/>
+        </insert>
+
+        <insert tableName="authors">
+            <column name="id" value="2"/>
+            <column name="address" value="456 Maple Avenue, Arlington, TX 76010"/>
+            <column name="name" value="George Orwell"/>
+        </insert>
+
+        <insert tableName="authors">
+            <column name="id" value="3"/>
+            <column name="address" value="789 Pine Road, Portland, OR 97201"/>
+            <column name="name" value="F. Scott Fitzgerald"/>
+        </insert>
+
+        <insert tableName="authors">
+            <column name="id" value="4"/>
+            <column name="address" value="321 Elm Court, Denver, CO 80202"/>
+            <column name="name" value="Jane Austen"/>
+        </insert>
+
+        <insert tableName="authors">
+            <column name="id" value="5"/>
+            <column name="address" value="567 Cedar Lane, Atlanta, GA 30303"/>
+            <column name="name" value="J.D. Salinger"/>
+        </insert>
+
+        <insert tableName="authors">
+            <column name="id" value="6"/>
+            <column name="address" value="890 Birch Street, Seattle, WA 98101"/>
+            <column name="name" value="J.K. Rowling"/>
+        </insert>
+
+        <insert tableName="authors">
+            <column name="id" value="7"/>
+            <column name="address" value="234 Willow Way, Miami, FL 33125"/>
+            <column name="name" value="J.R.R. Tolkien"/>
+        </insert>
+
+        <insert tableName="authors">
+            <column name="id" value="8"/>
+            <column name="address" value="678 Sycamore Drive, Chicago, IL 60601"/>
+            <column name="name" value="George R.R. Martin"/>
+        </insert>
+
+        <insert tableName="authors">
+            <column name="id" value="9"/>
+            <column name="address" value="901 Magnolia Avenue, San Francisco, CA 94102"/>
+            <column name="name" value="Anne Frank "/>
+        </insert>
+
+        <insert tableName="authors">
+            <column name="id" value="10"/>
+            <column name="address" value="678 Juniper Road, Boston, MA 02108"/>
+            <column name="name" value="Aldous Huxley"/>
+        </insert>
+
+        <insert tableName="authors">
+            <column name="id" value="11"/>
+            <column name="address" value="789 Birchwood Court, Philadelphia, PA 19107"/>
+            <column name="name" value="C.S. Lewis"/>
+        </insert>
+
+        <insert tableName="authors">
+            <column name="id" value="12"/>
+            <column name="address" value="234 Cedar Avenue, Phoenix, AZ 85003"/>
+            <column name="name" value="Douglas Adams"/>
+        </insert>
+
+        <insert tableName="authors">
+            <column name="id" value="13"/>
+            <column name="address" value="789 Elm Street, Las Vegas, NV 89101"/>
+            <column name="name" value="Suzanne Collins"/>
+        </insert>
+
+        <insert tableName="authors">
+            <column name="id" value="14"/>
+            <column name="address" value="456 Cherry Lane, Detroit, MI 48201"/>
+            <column name="name" value="Margaret Mitchell"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="insertDataIntoPublisherTable" author="DAT-DO">
+        <insert tableName="publishers">
+            <column name="id" value="1"/>
+            <column name="address" value="123 Oak Street, Springfield, MA 01103"/>
+            <column name="name" value="Houghton Mifflin Harcourt"/>
+        </insert>
+
+        <insert tableName="publishers">
+            <column name="id" value="2"/>
+            <column name="address" value="456 Maple Avenue, Arlington, TX 76010"/>
+            <column name="name" value="HarperCollins"/>
+        </insert>
+
+        <insert tableName="publishers">
+            <column name="id" value="3"/>
+            <column name="address" value="789 Pine Road, Portland, OR 97201"/>
+            <column name="name" value="Penguin Classics"/>
+        </insert>
+
+        <insert tableName="publishers">
+            <column name="id" value="4"/>
+            <column name="address" value="321 Elm Court, Denver, CO 80202"/>
+            <column name="name" value="Bantam Books"/>
+        </insert>
+
+        <insert tableName="publishers">
+            <column name="id" value="5"/>
+            <column name="address" value="567 Cedar Lane, Atlanta, GA 30303"/>
+            <column name="name" value="Harper Perennial Modern Classics"/>
+        </insert>
+
+        <insert tableName="publishers">
+            <column name="id" value="6"/>
+            <column name="address" value="890 Birch Street, Seattle, WA 98101"/>
+            <column name="name" value="Pan Books"/>
+        </insert>
+
+        <insert tableName="publishers">
+            <column name="id" value="7"/>
+            <column name="address" value="234 Willow Way, Miami, FL 33125"/>
+            <column name="name" value="Scholastic Corporation"/>
+        </insert>
+
+        <insert tableName="publishers">
+            <column name="id" value="8"/>
+            <column name="address" value="678 Sycamore Drive, Chicago, IL 60601"/>
+            <column name="name" value="Doubleday"/>
+        </insert>
+
+        <insert tableName="publishers">
+            <column name="id" value="9"/>
+            <column name="address" value="901 Magnolia Avenue, San Francisco, CA 94102"/>
+            <column name="name" value="Macmillan Publishers"/>
+        </insert>
+
+        <insert tableName="publishers">
+            <column name="id" value="10"/>
+            <column name="address" value="678 Juniper Road, Boston, MA 02108"/>
+            <column name="name" value="HarperOne"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="insertDataIntoBookTable" author="DAT-DO">
+        <insert tableName="books">
+            <column name="id" value="1"/>
+            <column name="title" value="To Kill a Mockingbird"/>
+            <column name="author_id" value="1"/>
+            <column name="publisher_id" value="3"/>
+            <column name="published_year" value="2020"/>
+            <column name="number_of_pages" value="804"/>
+            <column name="isbn" value="ISBN-10: 014118275X / ISBN-13: 978-0141182759"/>
+            <column name="quantity" value="86"/>
+            <column name="is_available" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="books">
+            <column name="id" value="2"/>
+            <column name="title" value="The Great Gatsby"/>
+            <column name="author_id" value="2"/>
+            <column name="publisher_id" value="2"/>
+            <column name="published_year" value="2011"/>
+            <column name="number_of_pages" value="239"/>
+            <column name="isbn" value="ISBN-10: 0765378552 / ISBN-13: 978-0765378557"/>
+            <column name="quantity" value="93"/>
+            <column name="is_available" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="books">
+            <column name="id" value="3"/>
+            <column name="title" value="Pride and Prejudice"/>
+            <column name="author_id" value="3"/>
+            <column name="publisher_id" value="1"/>
+            <column name="published_year" value="1999"/>
+            <column name="number_of_pages" value="164"/>
+            <column name="isbn" value="ISBN-10: 1421543044 / ISBN-13: 978-1421543048"/>
+            <column name="quantity" value="29"/>
+            <column name="is_available" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="books">
+            <column name="id" value="4"/>
+            <column name="title" value="The Catcher in the Rye"/>
+            <column name="author_id" value="4"/>
+            <column name="publisher_id" value="10"/>
+            <column name="published_year" value="2004"/>
+            <column name="number_of_pages" value="219"/>
+            <column name="isbn" value="ISBN-10: 0380977766 / ISBN-13: 978-0380977768"/>
+            <column name="quantity" value="63"/>
+            <column name="is_available" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="books">
+            <column name="id" value="5"/>
+            <column name="title" value="Harry Potter and the Philosopher's Stone"/>
+            <column name="author_id" value="5"/>
+            <column name="publisher_id" value="9"/>
+            <column name="published_year" value="2007"/>
+            <column name="number_of_pages" value="231"/>
+            <column name="isbn" value="ISBN-10: 0316155107 / ISBN-13: 978-0316155103"/>
+            <column name="quantity" value="98"/>
+            <column name="is_available" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="books">
+            <column name="id" value="6"/>
+            <column name="title" value="The Lord of the Rings"/>
+            <column name="author_id" value="6"/>
+            <column name="publisher_id" value="8"/>
+            <column name="published_year" value="2015"/>
+            <column name="number_of_pages" value="278"/>
+            <column name="isbn" value="ISBN-10: 0812509250 / ISBN-13: 978-0812509251"/>
+            <column name="quantity" value="63"/>
+            <column name="is_available" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="books">
+            <column name="id" value="7"/>
+            <column name="title" value="The Hobbit"/>
+            <column name="author_id" value="7"/>
+            <column name="publisher_id" value="7"/>
+            <column name="published_year" value="1994"/>
+            <column name="number_of_pages" value="319"/>
+            <column name="isbn" value="ISBN-10: 054792822X / ISBN-13: 978-0547928227"/>
+            <column name="quantity" value="09"/>
+            <column name="is_available" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="books">
+            <column name="id" value="8"/>
+            <column name="title" value="Animal Farm"/>
+            <column name="author_id" value="8"/>
+            <column name="publisher_id" value="6"/>
+            <column name="published_year" value="2009"/>
+            <column name="number_of_pages" value="368"/>
+            <column name="isbn" value="ISBN-10: 0380795278 / ISBN-13: 978-0380795270"/>
+            <column name="quantity" value="42"/>
+            <column name="is_available" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="books">
+            <column name="id" value="9"/>
+            <column name="title" value="Calculus 1"/>
+            <column name="author_id" value="9"/>
+            <column name="publisher_id" value="5"/>
+            <column name="published_year" value="2010"/>
+            <column name="number_of_pages" value="512"/>
+            <column name="isbn" value="ISBN-10: 142313847X / ISBN-13: 978-1423138476"/>
+            <column name="quantity" value="29"/>
+            <column name="is_available" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="books">
+            <column name="id" value="10"/>
+            <column name="title" value="Brave New World"/>
+            <column name="author_id" value="10"/>
+            <column name="publisher_id" value="4"/>
+            <column name="published_year" value="2002"/>
+            <column name="number_of_pages" value="459"/>
+            <column name="isbn" value="ISBN-10: 1595143173 / ISBN-13: 978-1595143177"/>
+            <column name="quantity" value="70"/>
+            <column name="is_available" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="books">
+            <column name="id" value="11"/>
+            <column name="title" value="The Chronicles of Narnia"/>
+            <column name="author_id" value="11"/>
+            <column name="publisher_id" value="3"/>
+            <column name="published_year" value="2001"/>
+            <column name="number_of_pages" value="248"/>
+            <column name="isbn" value="ISBN-10: 076531178X / ISBN-13: 978-0765311784"/>
+            <column name="quantity" value="80"/>
+            <column name="is_available" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="books">
+            <column name="id" value="12"/>
+            <column name="title" value="The Hitchhiker's Guide to the Galaxy"/>
+            <column name="author_id" value="13"/>
+            <column name="publisher_id" value="2"/>
+            <column name="published_year" value="2014"/>
+            <column name="number_of_pages" value="307"/>
+            <column name="isbn" value="ISBN-10: 0385537859 / ISBN-13: 978-0385537858"/>
+            <column name="quantity" value="122"/>
+            <column name="is_available" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="books">
+            <column name="id" value="13"/>
+            <column name="title" value="Data Structure and Algorithm"/>
+            <column name="author_id" value="1"/>
+            <column name="publisher_id" value="1"/>
+            <column name="published_year" value="2015"/>
+            <column name="number_of_pages" value="280"/>
+            <column name="isbn" value="ISBN-10: 0441172717 / ISBN-13: 978-0441172719"/>
+            <column name="quantity" value="79"/>
+            <column name="is_available" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="books">
+            <column name="id" value="14"/>
+            <column name="title" value="The Da Vinci Code"/>
+            <column name="author_id" value="2"/>
+            <column name="publisher_id" value="1"/>
+            <column name="published_year" value="2018"/>
+            <column name="number_of_pages" value="139"/>
+            <column name="isbn" value="ISBN-10: 031285325X / ISBN-13: 978-0312853251"/>
+            <column name="quantity" value="127"/>
+            <column name="is_available" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="books">
+            <column name="id" value="15"/>
+            <column name="title" value="Principle Programming Language"/>
+            <column name="author_id" value="3"/>
+            <column name="publisher_id" value="2"/>
+            <column name="published_year" value="2019"/>
+            <column name="number_of_pages" value="631"/>
+            <column name="isbn" value="ISBN-10: 0765377947 / ISBN-13: 978-0765377949"/>
+            <column name="quantity" value="140"/>
+            <column name="is_available" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="books">
+            <column name="id" value="16"/>
+            <column name="title" value="Gone with the Wind"/>
+            <column name="author_id" value="4"/>
+            <column name="publisher_id" value="3"/>
+            <column name="published_year" value="2023"/>
+            <column name="number_of_pages" value="555"/>
+            <column name="isbn" value="ISBN-10: 0061120244 / ISBN-13: 978-0061120247"/>
+            <column name="quantity" value="08"/>
+            <column name="is_available" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="books">
+            <column name="id" value="17"/>
+            <column name="title" value="A Song of Ice and Fire"/>
+            <column name="author_id" value="5"/>
+            <column name="publisher_id" value="4"/>
+            <column name="published_year" value="2012"/>
+            <column name="number_of_pages" value="458"/>
+            <column name="isbn" value="ISBN-10: 0446310786 / ISBN-13: 978-0446310789"/>
+            <column name="quantity" value="01"/>
+            <column name="is_available" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="books">
+            <column name="id" value="18"/>
+            <column name="title" value="The Girl with the Dragon Tattoo"/>
+            <column name="author_id" value="6"/>
+            <column name="publisher_id" value="5"/>
+            <column name="published_year" value="1987"/>
+            <column name="number_of_pages" value="716"/>
+            <column name="isbn" value="ISBN-10: 0345350499 / ISBN-13: 978-0345350496"/>
+            <column name="quantity" value="66"/>
+            <column name="is_available" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="books">
+            <column name="id" value="19"/>
+            <column name="title" value="Data Mining"/>
+            <column name="author_id" value="7"/>
+            <column name="publisher_id" value="6"/>
+            <column name="published_year" value="2017"/>
+            <column name="number_of_pages" value="127"/>
+            <column name="isbn" value="ISBN-10: 0425189867 / ISBN-13: 978-0425189863"/>
+            <column name="quantity" value="82"/>
+            <column name="is_available" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="books">
+            <column name="id" value="20"/>
+            <column name="title" value="The Alchemist"/>
+            <column name="author_id" value="9"/>
+            <column name="publisher_id" value="7"/>
+            <column name="published_year" value="2013"/>
+            <column name="number_of_pages" value="258"/>
+            <column name="isbn" value="ISBN-10: 0440423201 / ISBN-13: 978-0440423208"/>
+            <column name="quantity" value="98"/>
+            <column name="is_available" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="books">
+            <column name="id" value="21"/>
+            <column name="title" value="Fundamental Programming"/>
+            <column name="author_id" value="10"/>
+            <column name="publisher_id" value="9"/>
+            <column name="published_year" value="1896"/>
+            <column name="number_of_pages" value="348"/>
+            <column name="isbn" value="ISBN-10: 0316693205 / ISBN-13: 978-0316693203"/>
+            <column name="quantity" value="69"/>
+            <column name="is_available" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="books">
+            <column name="id" value="22"/>
+            <column name="title" value="The Hunger Games"/>
+            <column name="author_id" value="11"/>
+            <column name="publisher_id" value="9"/>
+            <column name="published_year" value="1989"/>
+            <column name="number_of_pages" value="687"/>
+            <column name="isbn" value="ISBN-10: 0765345473 / ISBN-13: 978-0765345474"/>
+            <column name="quantity" value="77"/>
+            <column name="is_available" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="books">
+            <column name="id" value="23"/>
+            <column name="title" value="The Diary of a Young Girl"/>
+            <column name="author_id" value="1"/>
+            <column name="publisher_id" value="10"/>
+            <column name="published_year" value="1995"/>
+            <column name="number_of_pages" value="554"/>
+            <column name="isbn" value="ISBN-10: 0440498058 / ISBN-13: 978-0440498050"/>
+            <column name="quantity" value="150"/>
+            <column name="is_available" valueBoolean="true"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="insertDataIntoLoanTable" author="DAT-DO">
+        <insert tableName="loan">
+            <column name="id" value="1"/>
+            <column name="book_id" value="1"/>
+            <column name="user_id" value="1"/>
+            <column name="borrow_date" value="2024-02-19 9:50:41.191045"/>
+            <column name="return_date" value="2024-02-25 9:50:41.191045"/>
+        </insert>
+
+        <insert tableName="loan">
+            <column name="id" value="2"/>
+            <column name="book_id" value="13"/>
+            <column name="user_id" value="1"/>
+            <column name="borrow_date" value="2024-02-20 5:40:41.191045"/>
+            <column name="return_date" value="2024-03-05 5:50:41.191045"/>
+        </insert>
+
+        <insert tableName="loan">
+            <column name="id" value="3"/>
+            <column name="book_id" value="20"/>
+            <column name="user_id" value="1"/>
+            <column name="borrow_date" value="2024-02-20 05:40:41.191045"/>
+            <column name="return_date" value="2024-03-05 05:50:41.191045"/>
+        </insert>
+
+        <insert tableName="loan">
+            <column name="id" value="4"/>
+            <column name="book_id" value="21"/>
+            <column name="user_id" value="1"/>
+            <column name="borrow_date" value="2024-02-21 07:30:20.123456"/>
+            <column name="return_date" value="2024-03-06 08:45:30.987654"/>
+        </insert>
+
+        <insert tableName="loan">
+            <column name="id" value="5"/>
+            <column name="book_id" value="11"/>
+            <column name="user_id" value="1"/>
+            <column name="borrow_date" value="2024-02-22 09:15:10.135792"/>
+            <column name="return_date" value="2024-03-07 10:20:25.246813"/>
+        </insert>
+
+        <insert tableName="loan">
+            <column name="id" value="6"/>
+            <column name="book_id" value="4"/>
+            <column name="user_id" value="1"/>
+            <column name="borrow_date" value="2024-02-23 11:05:05.987654"/>
+            <column name="return_date" value="2024-03-08 12:35:45.753159"/>
+        </insert>
+
+        <insert tableName="loan">
+            <column name="id" value="7"/>
+            <column name="book_id" value="8"/>
+            <column name="user_id" value="1"/>
+            <column name="borrow_date" value="2024-02-24 13:25:35.753951"/>
+            <column name="return_date" value="2024-03-09 14:40:10.159357"/>
+        </insert>
+
+        <insert tableName="loan">
+            <column name="id" value="8"/>
+            <column name="book_id" value="7"/>
+            <column name="user_id" value="1"/>
+            <column name="borrow_date" value="2024-02-25 15:10:50.369852"/>
+            <column name="return_date" value="2024-03-10 16:55:55.456789"/>
+        </insert>
+
+        <insert tableName="loan">
+            <column name="id" value="9"/>
+            <column name="book_id" value="16"/>
+            <column name="user_id" value="1"/>
+            <column name="borrow_date" value="2024-02-26T17:45:15"/>
+            <column name="return_date" value="2024-03-11T18:30:25"/>
+        </insert>
+
+        <insert tableName="loan">
+            <column name="id" value="10"/>
+            <column name="book_id" value="3"/>
+            <column name="user_id" value="1"/>
+            <column name="borrow_date" value="2024-02-27T19:20:30"/>
+            <column name="return_date" value="2024-03-12T20:45:35"/>
+        </insert>
+
+        <insert tableName="loan">
+            <column name="id" value="11"/>
+            <column name="book_id" value="17"/>
+            <column name="user_id" value="1"/>
+            <column name="borrow_date" value="2024-02-28T21:35:40"/>
+            <column name="return_date" value="2024-03-13T22:50:40"/>
+        </insert>
+
+        <insert tableName="loan">
+            <column name="id" value="12"/>
+            <column name="book_id" value="18"/>
+            <column name="user_id" value="1"/>
+            <column name="borrow_date" value="2024-02-29T23:40:55"/>
+            <column name="return_date" value="2024-03-14T00:25:55"/>
+        </insert>
+
+        <insert tableName="loan">
+            <column name="id" value="13"/>
+            <column name="book_id" value="9"/>
+            <column name="user_id" value="1"/>
+            <column name="borrow_date" value="2024-03-01T01:55:05"/>
+            <column name="return_date" value="2024-03-15T02:40:15"/>
+        </insert>
+
+        <insert tableName="loan">
+            <column name="id" value="14"/>
+            <column name="book_id" value="22"/>
+            <column name="user_id" value="1"/>
+            <column name="borrow_date" value="2024-03-02T03:30:20"/>
+            <column name="return_date" value="2024-03-16T04:25:25"/>
+        </insert>
+
+        <insert tableName="loan">
+            <column name="id" value="15"/>
+            <column name="book_id" value="12"/>
+            <column name="user_id" value="1"/>
+            <column name="borrow_date" value="2024-03-03T05:45:35"/>
+            <column name="return_date" value="2024-03-17T06:50:30"/>
+        </insert>
+    </changeSet>
 
 </databaseChangeLog>
