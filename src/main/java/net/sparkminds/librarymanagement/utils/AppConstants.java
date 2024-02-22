@@ -1,5 +1,8 @@
 package net.sparkminds.librarymanagement.utils;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class AppConstants {
     public static final int EXPIRATION = 60;        // SECONDS
     public static final String TOKEN_INVALID = "TOKEN_INVALID";
@@ -10,5 +13,8 @@ public class AppConstants {
     public static final String OTP_VALID = "TOKEN_VALID";
     public static final String EMAIL_TEMPLATE_FILE_PATH = "src/main/resources/templates/email.ftlh";
     public static final String SITE_URL = "http://localhost:8080/api/v1/common";
+    public static final List<String> ALLOWED_EXTENSIONS = Arrays.asList("csv");
+    public static final long MAX_FILE_SIZE = 5 * 1024 * 1024;        // 5MB
+    public static final String CSV_FILE_PATH_READ = "C:\\Users\\datdo\\IdeaProjects\\";
     private AppConstants(){}
 }

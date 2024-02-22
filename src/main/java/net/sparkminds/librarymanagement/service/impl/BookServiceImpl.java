@@ -1,5 +1,6 @@
 package net.sparkminds.librarymanagement.service.impl;
 
+import com.opencsv.CSVReader;
 import lombok.RequiredArgsConstructor;
 import net.sparkminds.librarymanagement.entity.Author;
 import net.sparkminds.librarymanagement.entity.Book;
@@ -20,6 +21,15 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.FileReader;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+
+import static net.sparkminds.librarymanagement.utils.AppConstants.*;
 
 @Service
 @RequiredArgsConstructor
@@ -33,6 +43,7 @@ public class BookServiceImpl implements BookService {
     private final AuthorRepository authorRepository;
 
     private final PublisherRepository publisherRepository;
+
 
     @Override
     public Page<BookResponse> searchBook(BookCriteria criteria, Pageable pageable) {
@@ -100,5 +111,46 @@ public class BookServiceImpl implements BookService {
         deleteBook.setIsAvailable(false);
 
         bookRepository.save(deleteBook);
+    }
+
+    @Override
+    @Transactional
+    public void importFromCsv(MultipartFile file) {
+        // Validate file extension
+        if (!ALLOWED_EXTENSIONS.contains(StringUtils.getFilenameExtension(file.getOriginalFilename()))) {
+            throw new ResourceInvalidException("Only CSV files are allowed.", "file.file-extension-invalid-format");
+        }
+
+        // Validate file size
+        if (file.getSize() > MAX_FILE_SIZE) {
+            throw new ResourceInvalidException("File size should be less than 5MB.", "file.size-invalid");
+        }
+
+        // Process CSV file
+        try (FileReader fileReader = new FileReader(CSV_FILE_PATH_READ + file.getOriginalFilename());
+             CSVReader csvReader = new CSVReader(fileReader)) {
+            List<String[]> rows = csvReader.readAll();
+            List<Book> booksList = new ArrayList<>();
+
+            for (String[] row : rows) {
+                Book book = new Book();
+
+                book.setTitle(row[1]);
+                Author author = authorRepository.findById(Long.parseLong(row[2])).orElseThrow(() -> new ResourceNotFoundException("author id not found", "author.id.id-not-found"));
+                book.setAuthor(author);
+                Publisher publisher = publisherRepository.findById(Long.parseLong(row[3])).orElseThrow(() -> new ResourceNotFoundException("publisher id not found", "publisher.id.id-not-found"));
+                book.setPublisher(publisher);
+                book.setPublishedYear(Integer.parseInt(row[4]));
+                book.setNumberOfPages(Integer.parseInt(row[5]));
+                book.setIsbn(row[6]);
+                book.setQuantity(new BigDecimal(row[7]));
+                book.setImagePath(row[8]);
+
+                booksList.add(book);
+            }
+            bookRepository.saveAll(booksList);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
