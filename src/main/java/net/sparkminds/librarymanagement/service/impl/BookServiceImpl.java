@@ -18,6 +18,7 @@ import net.sparkminds.librarymanagement.service.BookService;
 import net.sparkminds.librarymanagement.service.criteria.BookCriteria;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -39,6 +43,9 @@ import static net.sparkminds.librarymanagement.utils.AppConstants.*;
 @RequiredArgsConstructor
 public class BookServiceImpl implements BookService {
     private final Logger logger = LoggerFactory.getLogger(BookServiceImpl.class);
+
+    @Value("${image.upload.directory}")
+    private String uploadDirectory;
 
     private final BookRepository bookRepository;
 
@@ -201,5 +208,86 @@ public class BookServiceImpl implements BookService {
         } catch (CsvValidationException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    @Transactional
+    public void saveImage(Long bookId, MultipartFile imageFile) {
+        // Validate file extension
+        if (!ALLOWED_IMAGE_EXTENSIONS.contains(StringUtils.getFilenameExtension(imageFile.getOriginalFilename()))) {
+            throw new ResourceInvalidException("File not allowed.", "file.file-extension-invalid-format");
+        }
+
+        // Validate file size
+        if (imageFile.getSize() > MAX_IMAGE_FILE_SIZE) {
+            throw new ResourceInvalidException("File size should be less than 1MB.", "file.size-invalid");
+        }
+
+        try {
+            // Save image to folder in server
+            String fileName = bookId + "_" + imageFile.getOriginalFilename();
+            Path path = Paths.get(uploadDirectory + fileName);
+            Files.write(path, imageFile.getBytes());
+
+            // Save image's path to db
+            Book book = bookRepository.findById(bookId).orElseThrow(() -> new ResourceNotFoundException("Book id not found", "book.id.id-not-found"));
+            if (book.getImagePath() != null) {
+                throw new ResourceInvalidException("Image have already existed", "book.image.image-already-existed");
+            }
+            book.setImagePath(path.toString());
+            bookRepository.save(book);
+        } catch (IOException e) {
+            throw new ResourceNotFoundException("File not found", "file.file-not-found");
+        }
+    }
+
+    @Override
+    @Transactional
+    public void updateImage(Long bookId, MultipartFile imageFile) {
+        // Validate file extension
+        if (!ALLOWED_IMAGE_EXTENSIONS.contains(StringUtils.getFilenameExtension(imageFile.getOriginalFilename()))) {
+            throw new ResourceInvalidException("File not allowed.", "file.file-extension-invalid-format");
+        }
+
+        // Validate file size
+        if (imageFile.getSize() > MAX_IMAGE_FILE_SIZE) {
+            throw new ResourceInvalidException("File size should be less than 1MB.", "file.size-invalid");
+        }
+
+        try {
+            // Save image to folder in server
+            String fileName = bookId + "_" + imageFile.getOriginalFilename();
+            Path path = Paths.get(uploadDirectory + fileName);
+            Files.write(path, imageFile.getBytes());
+
+            // Save image's path to db
+            Book book = bookRepository.findById(bookId).orElseThrow(() -> new ResourceNotFoundException("Book id not found", "book.id.id-not-found"));
+            if (book.getImagePath() == null) {
+                throw new ResourceInvalidException("Image have not existed", "book.image.image-not-existed");
+            }
+            book.setImagePath(path.toString());
+            bookRepository.save(book);
+        } catch (IOException e) {
+            throw new ResourceNotFoundException("File not found", "file.file-not-found");
+        }
+    }
+
+    @Override
+    public String previewImage(Long bookId) {
+        Book book = bookRepository.findById(bookId).orElseThrow(() -> new ResourceNotFoundException("Book id not found", "book.id.id-not-found"));
+        if (book.getImagePath() == null) {
+            throw new ResourceNotFoundException("Image path not found", "book.image.image-path-not-found");
+        }
+        return book.getImagePath();
+    }
+
+    @Override
+    public void deleteImage(Long bookId) {
+        Book book = bookRepository.findById(bookId).orElseThrow(() -> new ResourceNotFoundException("Book id not found", "book.id.id-not-found"));
+        if (book.getImagePath() == null) {
+            throw new ResourceNotFoundException("Image path not found", "book.image.image-path-not-found");
+        }
+        book.setImagePath(null);
+        bookRepository.save(book);
     }
 }

@@ -74,4 +74,40 @@ public class BookController {
         bookService.importFromCsv(file);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
+
+    @Operation(summary = "Upload book's image", description = "Upload book's image", tags = {"Book functions"})
+    @PostMapping(value = "/books/{bookId}/uploadImage", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<Void> uploadImage(@PathVariable Long bookId,
+                                            @RequestParam(name = "image")
+                                            @Parameter(description = "File to upload", required = true) MultipartFile imageFile) {
+        logger.debug("REST request to upload image : {}, {}", bookId, imageFile);
+        bookService.saveImage(bookId, imageFile);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    @Operation(summary = "Update book's image", description = "Update book's image", tags = {"Book functions"})
+    @PutMapping(value = "/books/{bookId}/updateImage", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<Void> updateImage(@PathVariable Long bookId,
+                                            @RequestParam(name = "image")
+                                            @Parameter(description = "File to upload", required = true) MultipartFile imageFile) {
+        logger.debug("REST request to update image : {}, {}", bookId, imageFile);
+        bookService.updateImage(bookId, imageFile);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    @Operation(summary = "Preview book's image", description = "Preview book's image", tags = {"Book functions"})
+    @GetMapping(value = "/books/{bookId}/previewImage")
+    public ResponseEntity<Void> previewImage(@PathVariable Long bookId) {
+        logger.debug("REST request to preview image : {}", bookId);
+        bookService.previewImage(bookId);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    @Operation(summary = "Delete book's image", description = "Delete book's image", tags = {"Book functions"})
+    @DeleteMapping(value = "/books/{bookId}/deleteImage")
+    public ResponseEntity<Void> deleteImage(@PathVariable Long bookId) {
+        logger.debug("REST request to delete image : {}", bookId);
+        bookService.deleteImage(bookId);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
 }

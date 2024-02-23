@@ -41,5 +41,41 @@ public interface BookService {
      */
     void delete(Long id);
 
+    /**
+     * Upload book from .csv file
+     *
+     * @param file file.csv
+     */
     void importFromCsv(MultipartFile file);
+
+    /**
+     * Upload image for book
+     *
+     * @param bookId    id of book
+     * @param imageFile image to upload
+     */
+    void saveImage(Long bookId, MultipartFile imageFile);
+
+    /**
+     * Update image for book
+     *
+     * @param bookId    id of book
+     * @param imageFile image to update
+     */
+    void updateImage(Long bookId, MultipartFile imageFile);
+
+    /**
+     * Preview image of book
+     *
+     * @param bookId id of book
+     * @return
+     */
+    String previewImage(Long bookId);
+
+    /**
+     * Delete image of book
+     *
+     * @param bookId id of book
+     */
+    void deleteImage(Long bookId);
 }
