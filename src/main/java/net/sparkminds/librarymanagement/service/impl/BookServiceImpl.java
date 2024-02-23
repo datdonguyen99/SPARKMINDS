@@ -31,6 +31,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static net.sparkminds.librarymanagement.utils.AppConstants.*;
 
@@ -129,7 +130,7 @@ public class BookServiceImpl implements BookService {
             throw new ResourceInvalidException("File size should be less than 5MB.", "file.size-invalid");
         }
 
-        if (!validateHeader(CSV_FILE_PATH_READ + file.getOriginalFilename())){
+        if (!validateHeader(CSV_FILE_PATH_READ + file.getOriginalFilename())) {
             throw new ResourceInvalidException("Invalid header", "file.header.header-invalid");
         }
 
@@ -157,7 +158,17 @@ public class BookServiceImpl implements BookService {
 
                 booksList.add(book);
             }
-            bookRepository.saveAll(booksList);
+
+            for (Book book : booksList) {
+                Optional<Book> tempBook = bookRepository.findByTitle(book.getTitle());
+                if (tempBook.isPresent()) {
+                    BigDecimal newQuantity = tempBook.get().getQuantity().add(BigDecimal.ONE);
+                    tempBook.get().setQuantity(newQuantity);
+                    bookRepository.save(tempBook.get());
+                } else {
+                    bookRepository.save(book);
+                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -184,7 +195,7 @@ public class BookServiceImpl implements BookService {
             }
             return true;
         } catch (FileNotFoundException e) {
-            throw new ResourceNotFoundException(e.getMessage(),"file.file-not-found");
+            throw new ResourceNotFoundException(e.getMessage(), "file.file-not-found");
         } catch (IOException e) {
             throw new RuntimeException(e);
         } catch (CsvValidationException e) {
