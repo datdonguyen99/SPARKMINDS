@@ -10,6 +10,7 @@ import net.sparkminds.librarymanagement.exception.ResourceInvalidException;
 import net.sparkminds.librarymanagement.exception.ResourceNotFoundException;
 import net.sparkminds.librarymanagement.payload.request.BookDto;
 import net.sparkminds.librarymanagement.payload.response.BookResponse;
+import net.sparkminds.librarymanagement.payload.response.PreviewImageResponse;
 import net.sparkminds.librarymanagement.repository.AuthorRepository;
 import net.sparkminds.librarymanagement.repository.BookRepository;
 import net.sparkminds.librarymanagement.repository.PublisherRepository;
@@ -273,12 +274,15 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public String previewImage(Long bookId) {
+    public PreviewImageResponse previewImage(Long bookId) {
         Book book = bookRepository.findById(bookId).orElseThrow(() -> new ResourceNotFoundException("Book id not found", "book.id.id-not-found"));
         if (book.getImagePath() == null) {
             throw new ResourceNotFoundException("Image path not found", "book.image.image-path-not-found");
         }
-        return book.getImagePath();
+
+        return PreviewImageResponse.builder()
+                .imgPath(book.getImagePath())
+                .build();
     }
 
     @Override

@@ -2,6 +2,7 @@ package net.sparkminds.librarymanagement.service;
 
 import net.sparkminds.librarymanagement.payload.request.BookDto;
 import net.sparkminds.librarymanagement.payload.response.BookResponse;
+import net.sparkminds.librarymanagement.payload.response.PreviewImageResponse;
 import net.sparkminds.librarymanagement.service.criteria.BookCriteria;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -70,7 +71,7 @@ public interface BookService {
      * @param bookId id of book
      * @return
      */
-    String previewImage(Long bookId);
+    PreviewImageResponse previewImage(Long bookId);
 
     /**
      * Delete image of book

@@ -6,6 +6,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import net.sparkminds.librarymanagement.payload.request.BookDto;
 import net.sparkminds.librarymanagement.payload.response.BookResponse;
+import net.sparkminds.librarymanagement.payload.response.PreviewImageResponse;
 import net.sparkminds.librarymanagement.service.BookService;
 import net.sparkminds.librarymanagement.service.criteria.BookCriteria;
 import org.slf4j.Logger;
@@ -97,10 +98,9 @@ public class BookController {
 
     @Operation(summary = "Preview book's image", description = "Preview book's image", tags = {"Book functions"})
     @GetMapping(value = "/books/{bookId}/previewImage")
-    public ResponseEntity<Void> previewImage(@PathVariable Long bookId) {
+    public ResponseEntity<PreviewImageResponse> previewImage(@PathVariable Long bookId) {
         logger.debug("REST request to preview image : {}", bookId);
-        bookService.previewImage(bookId);
-        return ResponseEntity.status(HttpStatus.OK).build();
+        return new ResponseEntity<>(bookService.previewImage(bookId), HttpStatus.OK);
     }
 
     @Operation(summary = "Delete book's image", description = "Delete book's image", tags = {"Book functions"})
