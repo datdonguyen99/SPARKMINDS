@@ -6,4 +6,6 @@ public interface MailSenderService {
     void sendEmailToVerifyResetPassword(String oldEmail, String newPassword);
 
     void sendEmailToChangeEmail(String oldEmail, String newEmail, String token);
+
+    void sendEmailToUserBorrowedBook(String email, String imgPath);
 }

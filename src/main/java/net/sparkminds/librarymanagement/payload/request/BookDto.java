@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import net.sparkminds.librarymanagement.utils.BookCategory;
 
 import java.math.BigDecimal;
 
@@ -46,4 +47,7 @@ public class BookDto {
     private BigDecimal quantity;
 
     private String imagePath;
+
+    @NotNull(message = "Category field is required")
+    private BookCategory category;
 }

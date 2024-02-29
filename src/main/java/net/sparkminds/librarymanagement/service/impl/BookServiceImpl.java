@@ -17,6 +17,7 @@ import net.sparkminds.librarymanagement.repository.PublisherRepository;
 import net.sparkminds.librarymanagement.service.BookQueryService;
 import net.sparkminds.librarymanagement.service.BookService;
 import net.sparkminds.librarymanagement.service.criteria.BookCriteria;
+import net.sparkminds.librarymanagement.utils.BookCategory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -82,6 +83,7 @@ public class BookServiceImpl implements BookService {
                 .isbn(bookDto.getIsbn())
                 .quantity(bookDto.getQuantity())
                 .imagePath(bookDto.getImagePath())
+                .category(bookDto.getCategory())
                 .build();
 
         bookRepository.save(newBook);
@@ -110,6 +112,7 @@ public class BookServiceImpl implements BookService {
         updatedBook.setIsbn(bookDto.getIsbn());
         updatedBook.setQuantity(bookDto.getQuantity());
         updatedBook.setImagePath(bookDto.getImagePath());
+        updatedBook.setCategory(bookDto.getCategory());
         bookRepository.save(updatedBook);
 
         return BookResponse.buildBookResponse(updatedBook);
@@ -163,6 +166,7 @@ public class BookServiceImpl implements BookService {
                 book.setIsbn(row[6]);
                 book.setQuantity(new BigDecimal(row[7]));
                 book.setImagePath(row[8]);
+                book.setCategory(BookCategory.valueOf(row[9]));
 
                 booksList.add(book);
             }
@@ -170,7 +174,7 @@ public class BookServiceImpl implements BookService {
             for (Book book : booksList) {
                 Optional<Book> tempBook = bookRepository.findByTitle(book.getTitle());
                 if (tempBook.isPresent()) {
-                    BigDecimal newQuantity = tempBook.get().getQuantity().add(BigDecimal.ONE);
+                    BigDecimal newQuantity = tempBook.get().getQuantity().add(book.getQuantity());
                     tempBook.get().setQuantity(newQuantity);
                     bookRepository.save(tempBook.get());
                 } else {

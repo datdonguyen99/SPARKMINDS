@@ -18,7 +18,7 @@ public class AppConstants {
     public static final long MAX_FILE_SIZE = 5 * 1024 * 1024;        // 5MB
     public static final long MAX_IMAGE_FILE_SIZE = 1024 * 1024;        // 1MB
     public static final String CSV_FILE_PATH_READ = "C:\\Users\\datdo\\IdeaProjects\\";
-    public static final List<String> EXPECTED_HEADERS = Arrays.asList("id", "title", "authorId", "publisherId", "publishedYear", "numberOfPages", "isbn", "quantity", "imagePath");
+    public static final List<String> EXPECTED_HEADERS = Arrays.asList("id", "title", "authorId", "publisherId", "publishedYear", "numberOfPages", "isbn", "quantity", "imagePath", "category");
 
     private AppConstants() {
     }

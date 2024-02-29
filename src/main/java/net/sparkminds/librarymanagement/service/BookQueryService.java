@@ -9,6 +9,7 @@ import net.sparkminds.librarymanagement.entity.Publisher_;
 import net.sparkminds.librarymanagement.entity.Loan_;
 import net.sparkminds.librarymanagement.repository.BookRepository;
 import net.sparkminds.librarymanagement.service.criteria.BookCriteria;
+import net.sparkminds.librarymanagement.service.criteria.BorrowBookCriteria;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -17,6 +18,8 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tech.jhipster.service.QueryService;
+
+import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
@@ -32,6 +35,38 @@ public class BookQueryService extends QueryService<Book> {
         final Specification<Book> spec = createSpecification(criteria);
 
         return bookRepository.findAll(spec, pageable);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Book> findByBorrowBook(BorrowBookCriteria criteria) {
+        logger.debug("find by criteria : {}", criteria);
+        final Specification<Book> spec = createSpecification(criteria);
+
+        return bookRepository.findAll(spec);
+    }
+
+    protected Specification<Book> createSpecification(BorrowBookCriteria criteria) {
+        Specification<Book> specification = Specification.where(null);
+
+        if (criteria != null) {
+            // This has to be called first, because the distinct method returns null
+            if (criteria.getDistinct() != null) {
+                specification = specification.and(distinct(criteria.getDistinct()));
+            }
+
+            if (criteria.getTitle() != null) {
+                specification = specification.and(buildStringSpecification(criteria.getTitle(), Book_.title));
+            }
+
+            if (criteria.getCategory() != null) {
+                specification = specification.and(buildSpecification(criteria.getCategory(), Book_.category));
+            }
+
+            specification = specification.and((root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get("isAvailable"), true));
+            specification = specification.and((root, query, criteriaBuilder) -> criteriaBuilder.greaterThan(root.get("quantity"), 0));
+        }
+
+        return specification;
     }
 
     protected Specification<Book> createSpecification(BookCriteria criteria) {

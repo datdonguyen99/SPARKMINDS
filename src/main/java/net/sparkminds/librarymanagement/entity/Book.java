@@ -12,6 +12,8 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.EnumType;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
@@ -20,6 +22,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.Builder;
+import net.sparkminds.librarymanagement.utils.BookCategory;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -73,7 +76,7 @@ public class Book extends Auditable implements Serializable {
     @Size(min = 1, max = 50)
     private String isbn;
 
-    @OneToMany(mappedBy = "book", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "book", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Loan> loans = new ArrayList<>();
 
     @NotNull
@@ -88,4 +91,9 @@ public class Book extends Auditable implements Serializable {
     @Column(name = "is_available")
     @Builder.Default
     private Boolean isAvailable = true;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    @Column(name = "category", nullable = false)
+    private BookCategory category;
 }

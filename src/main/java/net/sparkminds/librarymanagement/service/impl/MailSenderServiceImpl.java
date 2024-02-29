@@ -147,4 +147,31 @@ public class MailSenderServiceImpl implements MailSenderService {
 
         javaMailSender.send(message);
     }
+
+    @Override
+    public void sendEmailToUserBorrowedBook(String email, String imgPath) {
+        String toAddress = email;
+        String fromAddress = "datdn@automail.com";
+        String senderName = "Automatic-Borrow-Book-Mail";
+        String subject = "Borrowed book!";
+
+        MimeMessage message = javaMailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message, "utf-8");
+        String htmlContent = "<h2>Your account have been borrowed book successfully!</h2>"
+                + "<p>Book's image: " + imgPath + "</p>"
+                + "<br/><br/><p>Best regards,<br/>Your Company</p>";
+
+        try {
+            helper.setFrom(fromAddress, senderName);
+            helper.setTo(toAddress);
+            helper.setSubject(subject);
+            helper.setText(htmlContent, true);
+        } catch (MessagingException e) {
+            throw new ResourceInvalidException(e.getMessage(), "MimeMessageHelper.MimeMessageHelper-configure-fail");
+        } catch (UnsupportedEncodingException e) {
+            throw new ResourceInvalidException(e.getMessage(), "Unsupported-encoding-error");
+        }
+
+        javaMailSender.send(message);
+    }
 }
