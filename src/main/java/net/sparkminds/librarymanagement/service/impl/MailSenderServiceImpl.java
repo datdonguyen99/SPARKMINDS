@@ -23,6 +23,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static net.sparkminds.librarymanagement.utils.AppConstants.EMAIL_TEMPLATE_FILE_PATH;
+import static net.sparkminds.librarymanagement.utils.AppConstants.SITE_URL;
 
 @Service
 @RequiredArgsConstructor
@@ -86,5 +87,91 @@ public class MailSenderServiceImpl implements MailSenderService {
         }
 
         return stringWriter.getBuffer().toString();
+    }
+
+    @Override
+    public void sendEmailToVerifyResetPassword(String oldEmail, String newPassword) {
+        String toAddress = oldEmail;
+        String fromAddress = "datdn@automail.com";
+        String senderName = "Automatic-Change-Password-Mail";
+        String subject = "Verify change account password";
+        String verifyURL = SITE_URL + "/verify/reset-password?email=" + oldEmail + "&password=" + newPassword;
+
+        MimeMessage message = javaMailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message, "utf-8");
+        String htmlContent = "<h2>Your account password have been change!</h2>"
+                + "<p>Your email: " + oldEmail + "</p>"
+                + "<p>Your new password: " + newPassword + "</p>"
+                + "<br/>"
+                + "<p>Click this link to verify change new password: " + verifyURL + "</p>"
+                + "<br/><br/><p>Best regards,<br/>Your Company</p>";
+
+        try {
+            helper.setFrom(fromAddress, senderName);
+            helper.setTo(toAddress);
+            helper.setSubject(subject);
+            helper.setText(htmlContent, true);
+        } catch (MessagingException e) {
+            throw new ResourceInvalidException(e.getMessage(), "MimeMessageHelper.MimeMessageHelper-configure-fail");
+        } catch (UnsupportedEncodingException e) {
+            throw new ResourceInvalidException(e.getMessage(), "Unsupported-encoding-error");
+        }
+
+        javaMailSender.send(message);
+    }
+
+    @Override
+    public void sendEmailToChangeEmail(String oldEmail, String newEmail, String token) {
+        String toAddress = newEmail;
+        String fromAddress = "datdn@automail.com";
+        String senderName = "Automatic-Change-Email-Mail";
+        String subject = "Account email have already been change!";
+        String verifyURL = SITE_URL + "/verify/change-email?code=" + token + "&email=" + newEmail;
+
+        MimeMessage message = javaMailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message, "utf-8");
+        String htmlContent = "<h2>Your account email have been change, plz click this link below to verify!</h2>"
+                + "<p>Link verify: " + verifyURL + "</p>"
+                + "<br/><br/><p>Best regards,<br/>Your Company</p>";
+
+        try {
+            helper.setFrom(fromAddress, senderName);
+            helper.setTo(toAddress);
+            helper.setSubject(subject);
+            helper.setText(htmlContent, true);
+        } catch (MessagingException e) {
+            throw new ResourceInvalidException(e.getMessage(), "MimeMessageHelper.MimeMessageHelper-configure-fail");
+        } catch (UnsupportedEncodingException e) {
+            throw new ResourceInvalidException(e.getMessage(), "Unsupported-encoding-error");
+        }
+
+        javaMailSender.send(message);
+    }
+
+    @Override
+    public void sendEmailToUserBorrowedBook(String email, String imgPath) {
+        String toAddress = email;
+        String fromAddress = "datdn@automail.com";
+        String senderName = "Automatic-Borrow-Book-Mail";
+        String subject = "Borrowed book!";
+
+        MimeMessage message = javaMailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message, "utf-8");
+        String htmlContent = "<h2>Your account have been borrowed book successfully!</h2>"
+                + "<p>Book's image: " + imgPath + "</p>"
+                + "<br/><br/><p>Best regards,<br/>Your Company</p>";
+
+        try {
+            helper.setFrom(fromAddress, senderName);
+            helper.setTo(toAddress);
+            helper.setSubject(subject);
+            helper.setText(htmlContent, true);
+        } catch (MessagingException e) {
+            throw new ResourceInvalidException(e.getMessage(), "MimeMessageHelper.MimeMessageHelper-configure-fail");
+        } catch (UnsupportedEncodingException e) {
+            throw new ResourceInvalidException(e.getMessage(), "Unsupported-encoding-error");
+        }
+
+        javaMailSender.send(message);
     }
 }

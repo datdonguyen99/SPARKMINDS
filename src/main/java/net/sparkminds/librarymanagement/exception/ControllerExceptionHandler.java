@@ -1,5 +1,6 @@
 package net.sparkminds.librarymanagement.exception;
 
+import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -65,7 +66,12 @@ public class ControllerExceptionHandler {
                 .message(ex.getBindingResult().getFieldErrors().stream()
                         .map(FieldError::getDefaultMessage)
                         .reduce((msg1, msg2) -> msg1 + ", " + msg2)
-                        .orElse("Validation failed"))
+                        .orElse(ex.getBindingResult().getGlobalErrors().stream()
+                                .map(DefaultMessageSourceResolvable::getDefaultMessage)
+                                .reduce((msg1, msg2) -> msg1 + ", " + msg2)
+                                .orElse("Validation failed"))
+                )
+                .messageCode("validate.validate-fail")
                 .statusCode(HttpStatus.BAD_REQUEST.value())
                 .timestamp(new Date())
                 .build();

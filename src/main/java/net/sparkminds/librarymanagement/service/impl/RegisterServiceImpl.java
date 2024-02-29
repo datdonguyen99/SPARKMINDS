@@ -13,7 +13,11 @@ import net.sparkminds.librarymanagement.exception.ResourceUnauthorizedException;
 import net.sparkminds.librarymanagement.payload.request.OtpDto;
 import net.sparkminds.librarymanagement.payload.request.RegisterDto;
 import net.sparkminds.librarymanagement.payload.request.ResendDto;
-import net.sparkminds.librarymanagement.repository.*;
+import net.sparkminds.librarymanagement.repository.UserRepository;
+import net.sparkminds.librarymanagement.repository.AccountRepository;
+import net.sparkminds.librarymanagement.repository.RoleRepository;
+import net.sparkminds.librarymanagement.repository.VerificationTokenRepository;
+import net.sparkminds.librarymanagement.repository.VerificationOtpRepository;
 import net.sparkminds.librarymanagement.service.MailSenderService;
 import net.sparkminds.librarymanagement.service.RegisterService;
 import net.sparkminds.librarymanagement.utils.RoleName;
@@ -22,10 +26,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.text.DecimalFormat;
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.Random;
 import java.util.UUID;
-import java.util.Calendar;
 
 import static net.sparkminds.librarymanagement.utils.AppConstants.*;
 
@@ -88,13 +92,12 @@ public class RegisterServiceImpl implements RegisterService {
 
     private String getVerificationTokenStatus(final String token) {
         final VerificationToken verificationToken = tokenRepository.findByToken(token);
-        final Calendar cal = Calendar.getInstance();
 
         if (verificationToken == null) {
             return TOKEN_INVALID;
         }
 
-        if (verificationToken.getExpiryDate().getTime() - cal.getTime().getTime() <= 0) {
+        if (verificationToken.getExpiryDate().isBefore(LocalDateTime.now().toInstant(ZoneOffset.UTC))) {
             return TOKEN_EXPIRE;
         }
 
@@ -140,7 +143,7 @@ public class RegisterServiceImpl implements RegisterService {
         User user = (User) account;
         VerificationToken vToken = tokenRepository.findByAccount(account);
 
-        if (vToken != null && !vToken.getExpiryDate().before(new Date())) {
+        if (vToken != null && !vToken.getExpiryDate().isBefore(LocalDateTime.now().toInstant(ZoneOffset.UTC))) {
             throw new ResourceInvalidException("token not expired, plz use link to authenticate", "token.token-not-expired");
         }
 
@@ -156,13 +159,12 @@ public class RegisterServiceImpl implements RegisterService {
 
     private String getVerificationOtpStatus(final String otp) {
         final VerificationOtp verificationOtp = otpRepository.findByOtp(otp);
-        final Calendar cal = Calendar.getInstance();
 
         if (verificationOtp == null) {
             return OTP_INVALID;
         }
 
-        if ((verificationOtp.getExpiryDate().getTime() - cal.getTime().getTime() <= 0)) {
+        if ((verificationOtp.getExpiryDate().isBefore(LocalDateTime.now().toInstant(ZoneOffset.UTC)))) {
             return OTP_EXPIRE;
         }
 
@@ -210,7 +212,7 @@ public class RegisterServiceImpl implements RegisterService {
         User user = (User) account;
         VerificationOtp vOtp = otpRepository.findByAccount(account);
 
-        if (vOtp != null && !vOtp.getExpiryDate().before(new Date())) {
+        if (vOtp != null && !vOtp.getExpiryDate().isBefore(LocalDateTime.now().toInstant(ZoneOffset.UTC))) {
             throw new ResourceInvalidException("OTP not expired, plz use OTP to authenticate", "otp.otp-not-expired");
         }
 

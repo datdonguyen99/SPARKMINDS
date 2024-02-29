@@ -1,7 +1,6 @@
 package net.sparkminds.librarymanagement.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.GeneratedValue;
@@ -14,8 +13,10 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.CascadeType;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import jakarta.validation.constraints.NotNull;
@@ -23,8 +24,13 @@ import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.Builder;
 import lombok.experimental.SuperBuilder;
 import net.sparkminds.librarymanagement.utils.Status;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -34,7 +40,7 @@ import net.sparkminds.librarymanagement.utils.Status;
 @Entity
 @Table(name = "accounts", uniqueConstraints = {@UniqueConstraint(columnNames = {"email"})})
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Account {
+public class Account extends Auditable {
     private static final long serialVersionUID = 1L;
 
     /**
@@ -71,9 +77,27 @@ public class Account {
     @JoinColumn(nullable = false, name = "role_id", referencedColumnName = "id")
     private Role role;
 
-    @OneToOne(mappedBy = "account", fetch = FetchType.EAGER)
-    private VerificationToken verificationToken;
+    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<VerificationToken> verificationToken = new ArrayList<>();
 
-    @OneToOne(mappedBy = "account", fetch = FetchType.EAGER)
-    private VerificationOtp verificationOtp;
+    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<VerificationOtp> verificationOtp = new ArrayList<>();
+
+    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY)
+    private List<Session> sessions = new ArrayList<>();
+
+    @Column(name = "secret_key", length = 50)
+    private String secretKey;
+
+    @Column(name = "enable_mfa")
+    @Builder.Default
+    private boolean enableMFA = false;
+
+    @Column(name = "latest_login_time")
+    private LocalDateTime latestLoginTime;
+
+    @NotNull
+    @Column(name = "login_count")
+    @Builder.Default
+    private int loginCount = 0;
 }
