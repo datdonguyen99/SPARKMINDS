@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static net.sparkminds.librarymanagement.utils.AppConstants.EMAIL_TEMPLATE_FILE_PATH;
@@ -164,6 +165,36 @@ public class MailSenderServiceImpl implements MailSenderService {
         try {
             helper.setFrom(fromAddress, senderName);
             helper.setTo(toAddress);
+            helper.setSubject(subject);
+            helper.setText(htmlContent, true);
+        } catch (MessagingException e) {
+            throw new ResourceInvalidException(e.getMessage(), "MimeMessageHelper.MimeMessageHelper-configure-fail");
+        } catch (UnsupportedEncodingException e) {
+            throw new ResourceInvalidException(e.getMessage(), "Unsupported-encoding-error");
+        }
+
+        javaMailSender.send(message);
+    }
+
+    @Override
+    public void sendEmailMaintenanceToAllAccount(List<String> emails) {
+        List<String> toAddresses = emails;
+        String fromAddress = "datdn@automail.com";
+        String senderName = "Automatic-Maintenance-Mode-Mail";
+        String subject = "System Maintaining!";
+
+        MimeMessage message = javaMailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message, "utf-8");
+        String htmlContent = "<h2>System Maintenance Notification!</h2>"
+                + "<p>Dear User, </p>"
+                + "<p>This is to inform you that our system will be undergoing maintenance from [Start Time] to [End Time]. During this period, the system will be unavailable.</p>"
+                + "<p>We apologize for any inconvenience this may cause and appreciate your patience.</p>"
+                + "<p>Thank you,<br>"
+                + "<br/><br/><p>Best regards,<br/>Your Company</p>";
+
+        try {
+            helper.setFrom(fromAddress, senderName);
+            helper.setBcc(toAddresses.toArray(new String[0]));
             helper.setSubject(subject);
             helper.setText(htmlContent, true);
         } catch (MessagingException e) {
