@@ -80,6 +80,7 @@ public class BookQueryService extends QueryService<Book> {
 
             if (criteria.getId() != null) {
                 specification = specification.and(buildRangeSpecification(criteria.getId(), Book_.id));
+
             }
 
             if (criteria.getTitle() != null) {

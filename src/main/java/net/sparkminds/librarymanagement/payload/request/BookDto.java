@@ -19,9 +19,9 @@ import java.math.BigDecimal;
 @Setter
 public class BookDto {
     @NotEmpty(message = "Title field is required")
-    @Size(min = 3, message = "Title must be at least 3 characters")
+    @Size(min = 3, max = 254, message = "Title must be at least 3 characters")
     private String title;
-
+// validate
     @NotNull(message = "authorId field is required")
     @Positive(message = "authorId must be a positive Long")
     private Long authorId;
