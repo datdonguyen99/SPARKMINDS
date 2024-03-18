@@ -1,8 +1,8 @@
 # SPARKMINDS
 
 ***
-**My SQL:**
+>**My SQL:**
 `ER diagram of library management`
 
-![ER diagram](https://github.com/datdonguyen99/SPARKMINDS/tree/main/src/assets/ER_diagram_library.png)
+![h](https://github.com/datdonguyen99/SPARKMINDS/raw/main/src/assets/ER_diagram_library.png)
 ***
